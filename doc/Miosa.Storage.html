@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.40.1">
+    <meta name="project" content="Miosa v1.0.2">
+
+
+    <title>Miosa.Storage — Miosa v1.0.2</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
+
+    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-YU4BZFVS.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+Miosa
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.0.2
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras="Pages"></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-module" id="main" data-type="modules">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of Miosa</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>
+      <span translate="no">Miosa.<wbr>Storage</span> 
+      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+
+    </h1>
+
+<a href="Miosa.Storage.md" title="Copy Markdown (hold Ctrl/Cmd and click it to open as Markdown)" class="copy-markdown icon-action" rel="help">
+  <i class="ri-markdown-line" aria-hidden="true"></i>
+  <span class="sr-only">Copy Markdown</span>
+</a>
+
+
+
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/storage.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+    <section id="moduledoc">
+<p>Managed S3-compatible object storage — buckets, objects, presigned URLs.</p><p>Object keys are URL-encoded before inclusion in path segments.
+Mutating bucket operations send an <code class="inline">Idempotency-Key</code> header automatically.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="1406476302-1">(</span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="1406476302-2">(</span><span class="s">&quot;MIOSA_API_KEY&quot;</span><span class="p" data-group-id="1406476302-2">)</span><span class="p" data-group-id="1406476302-1">)</span><span class="w">
+
+</span><span class="p" data-group-id="1406476302-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">bucket</span><span class="p" data-group-id="1406476302-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Storage</span><span class="o">.</span><span class="n">create_bucket</span><span class="p" data-group-id="1406476302-4">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1406476302-5">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;assets&quot;</span><span class="p" data-group-id="1406476302-5">}</span><span class="p" data-group-id="1406476302-4">)</span><span class="w">
+</span><span class="p" data-group-id="1406476302-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="1406476302-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Storage</span><span class="o">.</span><span class="n">presign</span><span class="p" data-group-id="1406476302-7">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">bucket</span><span class="p" data-group-id="1406476302-8">[</span><span class="s">&quot;id&quot;</span><span class="p" data-group-id="1406476302-8">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1406476302-9">%{</span><span class="w">
+  </span><span class="ss">key</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;uploads/logo.png&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">operation</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;put&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">expires_in_sec</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="w">
+</span><span class="p" data-group-id="1406476302-9">}</span><span class="p" data-group-id="1406476302-7">)</span><span class="w">
+</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="1406476302-10">(</span><span class="n">result</span><span class="p" data-group-id="1406476302-11">[</span><span class="s">&quot;url&quot;</span><span class="p" data-group-id="1406476302-11">]</span><span class="p" data-group-id="1406476302-10">)</span></code></pre>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h2 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h2>
+<div class="summary-functions summary">
+  <h3>
+    <a href="#functions">Functions</a>
+  </h3>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#create_bucket/2" data-no-tooltip="" translate="no">create_bucket(client, attrs)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Create a storage bucket.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#delete_bucket/2" data-no-tooltip="" translate="no">delete_bucket(client, bucket_id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Delete a bucket by ID.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#delete_object/3" data-no-tooltip="" translate="no">delete_object(client, bucket_id, key)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Delete an object from a bucket. The key is URL-encoded automatically.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_bucket/2" data-no-tooltip="" translate="no">get_bucket(client, bucket_id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Fetch a bucket by ID.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_object/3" data-no-tooltip="" translate="no">get_object(client, bucket_id, key)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Download the raw bytes of an object.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#list_buckets/1" data-no-tooltip="" translate="no">list_buckets(client)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>List all storage buckets for the authenticated tenant.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#list_objects/3" data-no-tooltip="" translate="no">list_objects(client, bucket_id, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>List objects in a bucket.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#presign/3" data-no-tooltip="" translate="no">presign(client, bucket_id, attrs)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Mint a presigned URL for direct browser upload or download.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#put_object/5" data-no-tooltip="" translate="no">put_object(client, bucket_id, key, content, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Upload bytes to an object key in a bucket.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h2 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h2>
+
+    <div class="functions-list">
+<section class="detail" id="create_bucket/2">
+
+  <div class="detail-header">
+    <a href="#create_bucket/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">create_bucket(client, attrs)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/storage.ex#L38" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> create_bucket(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>Create a storage bucket.</p><p>Required: <code class="inline">:name</code>. Optional: <code class="inline">:region</code>, <code class="inline">:public</code>, and any other attrs.
+Pass <code class="inline">:idempotency_key</code> in <code class="inline">attrs</code> to supply your own idempotency key.</p>
+  </section>
+</section>
+<section class="detail" id="delete_bucket/2">
+
+  <div class="detail-header">
+    <a href="#delete_bucket/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">delete_bucket(client, bucket_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/storage.ex#L54" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> delete_bucket(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>Delete a bucket by ID.</p>
+  </section>
+</section>
+<section class="detail" id="delete_object/3">
+
+  <div class="detail-header">
+    <a href="#delete_object/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">delete_object(client, bucket_id, key)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/storage.ex#L110" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> delete_object(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>Delete an object from a bucket. The key is URL-encoded automatically.</p>
+  </section>
+</section>
+<section class="detail" id="get_bucket/2">
+
+  <div class="detail-header">
+    <a href="#get_bucket/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">get_bucket(client, bucket_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/storage.ex#L48" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> get_bucket(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>Fetch a bucket by ID.</p>
+  </section>
+</section>
+<section class="detail" id="get_object/3">
+
+  <div class="detail-header">
+    <a href="#get_object/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">get_object(client, bucket_id, key)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/storage.ex#L102" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> get_object(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>())</pre>
+
+      </div>
+
+<p>Download the raw bytes of an object.</p><p>The key is URL-encoded before being placed in the path.</p>
+  </section>
+</section>
+<section class="detail" id="list_buckets/1">
+
+  <div class="detail-header">
+    <a href="#list_buckets/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">list_buckets(client)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/storage.ex#L27" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> list_buckets(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>()) :: <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>List all storage buckets for the authenticated tenant.</p>
+  </section>
+</section>
+<section class="detail" id="list_objects/3">
+
+    <span id="list_objects/2"></span>
+
+  <div class="detail-header">
+    <a href="#list_objects/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">list_objects(client, bucket_id, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/storage.ex#L69" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> list_objects(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>() | <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) ::
+  <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>List objects in a bucket.</p><p>Options:</p><ul><li><code class="inline">:prefix</code> — Filter by key prefix.</li><li><code class="inline">:limit</code> — Max objects to return.</li><li><code class="inline">:cursor</code> — Pagination cursor.</li></ul>
+  </section>
+</section>
+<section class="detail" id="presign/3">
+
+  <div class="detail-header">
+    <a href="#presign/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">presign(client, bucket_id, attrs)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/storage.ex#L130" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> presign(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>Mint a presigned URL for direct browser upload or download.</p><p>Required <code class="inline">attrs</code>:</p><ul><li><code class="inline">:key</code> — Object key.</li></ul><p>Optional <code class="inline">attrs</code>:</p><ul><li><code class="inline">:operation</code> — <code class="inline">&quot;get&quot;</code> (default) or <code class="inline">&quot;put&quot;</code>.</li><li><code class="inline">:expires_in_sec</code> — Expiry in seconds. Defaults to <code class="inline">300</code>.</li><li><code class="inline">:content_type</code> — Required for <code class="inline">&quot;put&quot;</code> uploads.</li></ul>
+  </section>
+</section>
+<section class="detail" id="put_object/5">
+
+    <span id="put_object/4"></span>
+
+  <div class="detail-header">
+    <a href="#put_object/5" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">put_object(client, bucket_id, key, content, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/storage.ex#L82" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> put_object(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) ::
+  <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>Upload bytes to an object key in a bucket.</p><p><code class="inline">content_type</code> defaults to <code class="inline">&quot;application/octet-stream&quot;</code>.
+The key is URL-encoded before being placed in the path.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="llms.txt" target="_blank">
+                View llms.txt
+              </a>
+
+
+              <a href="Miosa.epub">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.40.1) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

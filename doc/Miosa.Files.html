@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.40.1">
+    <meta name="project" content="Miosa v1.0.2">
+
+
+    <title>Miosa.Files — Miosa v1.0.2</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
+
+    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-YU4BZFVS.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+Miosa
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.0.2
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras="Pages"></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-module" id="main" data-type="modules">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of Miosa</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>
+      <span translate="no">Miosa.<wbr>Files</span> 
+      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+
+    </h1>
+
+<a href="Miosa.Files.md" title="Copy Markdown (hold Ctrl/Cmd and click it to open as Markdown)" class="copy-markdown icon-action" rel="help">
+  <i class="ri-markdown-line" aria-hidden="true"></i>
+  <span class="sr-only">Copy Markdown</span>
+</a>
+
+
+
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/files.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+    <section id="moduledoc">
+<p>Upload, download, list, and manage files inside a MIOSA computer.</p><p>File operations interact with the computer's filesystem via the MIOSA API.
+Paths are absolute paths inside the VM (e.g. <code class="inline">&quot;/home/user/myfile.txt&quot;</code>).</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="c1"># Upload a local file</span><span class="w">
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Files</span><span class="o">.</span><span class="n">upload</span><span class="p" data-group-id="2716385997-1">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;./local.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/user/remote.txt&quot;</span><span class="p" data-group-id="2716385997-1">)</span><span class="w">
+
+</span><span class="c1"># Download a file</span><span class="w">
+</span><span class="p" data-group-id="2716385997-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">content</span><span class="p" data-group-id="2716385997-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Files</span><span class="o">.</span><span class="n">download</span><span class="p" data-group-id="2716385997-3">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/user/remote.txt&quot;</span><span class="p" data-group-id="2716385997-3">)</span><span class="w">
+</span><span class="nc">File</span><span class="o">.</span><span class="n">write!</span><span class="p" data-group-id="2716385997-4">(</span><span class="s">&quot;local_copy.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">content</span><span class="p" data-group-id="2716385997-4">)</span><span class="w">
+
+</span><span class="c1"># List directory contents</span><span class="w">
+</span><span class="p" data-group-id="2716385997-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">entries</span><span class="p" data-group-id="2716385997-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Files</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="2716385997-6">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/user&quot;</span><span class="p" data-group-id="2716385997-6">)</span><span class="w">
+</span><span class="nc">Enum</span><span class="o">.</span><span class="n">each</span><span class="p" data-group-id="2716385997-7">(</span><span class="n">entries</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="2716385997-8">fn</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="2716385997-9">(</span><span class="s">&quot;</span><span class="si" data-group-id="2716385997-10">#{</span><span class="n">e</span><span class="o">.</span><span class="n">type</span><span class="si" data-group-id="2716385997-10">}</span><span class="s">: </span><span class="si" data-group-id="2716385997-11">#{</span><span class="n">e</span><span class="o">.</span><span class="n">name</span><span class="si" data-group-id="2716385997-11">}</span><span class="s">&quot;</span><span class="p" data-group-id="2716385997-9">)</span><span class="w"> </span><span class="k" data-group-id="2716385997-8">end</span><span class="p" data-group-id="2716385997-7">)</span><span class="w">
+
+</span><span class="c1"># Get a temporary download URL</span><span class="w">
+</span><span class="p" data-group-id="2716385997-12">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">export</span><span class="p" data-group-id="2716385997-12">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Files</span><span class="o">.</span><span class="n">export</span><span class="p" data-group-id="2716385997-13">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/user/report.pdf&quot;</span><span class="p" data-group-id="2716385997-13">)</span><span class="w">
+</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="2716385997-14">(</span><span class="s">&quot;Download at: </span><span class="si" data-group-id="2716385997-15">#{</span><span class="n">export</span><span class="o">.</span><span class="n">url</span><span class="si" data-group-id="2716385997-15">}</span><span class="s">&quot;</span><span class="p" data-group-id="2716385997-14">)</span><span class="w">
+
+</span><span class="c1"># Delete a file</span><span class="w">
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Files</span><span class="o">.</span><span class="n">delete</span><span class="p" data-group-id="2716385997-16">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/user/old.txt&quot;</span><span class="p" data-group-id="2716385997-16">)</span></code></pre>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h2 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h2>
+<div class="summary-functions summary">
+  <h3>
+    <a href="#functions">Functions</a>
+  </h3>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#delete/4" data-no-tooltip="" translate="no">delete(client, computer_id, remote_path, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Deletes a file or directory on the computer.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#download/3" data-no-tooltip="" translate="no">download(client, computer_id, remote_path)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Downloads a file from the computer and returns its binary content.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#download_to/4" data-no-tooltip="" translate="no">download_to(client, computer_id, remote_path, local_path)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Downloads a file and writes it to a local path.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#export/3" data-no-tooltip="" translate="no">export(client, computer_id, remote_path)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Generates a temporary signed download URL for a file on the computer.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#list/3" data-no-tooltip="" translate="no">list(client, computer_id, path \\ &quot;/home/user&quot;)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Lists the contents of a directory on the computer.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#upload/5" data-no-tooltip="" translate="no">upload(client, computer_id, local_path, remote_path, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Uploads a local file to the computer at the given remote path.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#write/4" data-no-tooltip="" translate="no">write(client, computer_id, remote_path, content)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Writes string or binary content directly to a file on the computer.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h2 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h2>
+
+    <div class="functions-list">
+<section class="detail" id="delete/4">
+
+    <span id="delete/3"></span>
+
+  <div class="detail-header">
+    <a href="#delete/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">delete(client, computer_id, remote_path, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/files.ex#L143" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> delete(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) ::
+  :ok | {:error, <a href="Miosa.Error.html#t:t/0">Miosa.Error.t</a>()}</pre>
+
+      </div>
+
+<p>Deletes a file or directory on the computer.</p><h2 id="delete/4-options" class="section-heading"><a href="#delete/4-options" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Options</span></h2><ul><li><code class="inline">:recursive</code> — Delete directories recursively. Defaults to <code class="inline">false</code>.</li></ul>
+  </section>
+</section>
+<section class="detail" id="download/3">
+
+  <div class="detail-header">
+    <a href="#download/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">download(client, computer_id, remote_path)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/files.ex#L75" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> download(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>())</pre>
+
+      </div>
+
+<p>Downloads a file from the computer and returns its binary content.</p><p>Returns <code class="inline">{:ok, binary()}</code> where <code class="inline">binary()</code> is the raw file bytes.</p>
+  </section>
+</section>
+<section class="detail" id="download_to/4">
+
+  <div class="detail-header">
+    <a href="#download_to/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">download_to(client, computer_id, remote_path, local_path)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/files.ex#L89" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> download_to(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  :ok | {:error, <a href="Miosa.Error.html#t:t/0">Miosa.Error.t</a>() | File.Error.t()}</pre>
+
+      </div>
+
+<p>Downloads a file and writes it to a local path.</p><p>Returns <code class="inline">:ok</code> on success or <code class="inline">{:error, reason}</code> on failure.
+<code class="inline">reason</code> may be a <a href="Miosa.Error.html"><code class="inline">Miosa.Error</code></a> (API failure) or <a href="https://hexdocs.pm/elixir/File.Error.html"><code class="inline">File.Error</code></a> (filesystem write failure).</p>
+  </section>
+</section>
+<section class="detail" id="export/3">
+
+  <div class="detail-header">
+    <a href="#export/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">export(client, computer_id, remote_path)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/files.ex#L127" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> export(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="Miosa.Types.ExportResult.html#t:t/0">Miosa.Types.ExportResult.t</a>())</pre>
+
+      </div>
+
+<p>Generates a temporary signed download URL for a file on the computer.</p><p>The URL is publicly accessible for a limited time (typically 15–60 minutes).
+Useful for sharing files without streaming through the API.</p><p>Returns <code class="inline">{:ok, Miosa.Types.ExportResult.t()}</code> with <code class="inline">:url</code> and <code class="inline">:expires_at</code>.</p>
+  </section>
+</section>
+<section class="detail" id="list/3">
+
+    <span id="list/2"></span>
+
+  <div class="detail-header">
+    <a href="#list/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">list(client, computer_id, path \\ &quot;/home/user&quot;)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/files.ex#L103" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> list(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>([<a href="Miosa.Types.FileEntry.html#t:t/0">Miosa.Types.FileEntry.t</a>()])</pre>
+
+      </div>
+
+<p>Lists the contents of a directory on the computer.</p><p>Returns a list of <a href="Miosa.Types.FileEntry.html"><code class="inline">Miosa.Types.FileEntry</code></a> structs, each with <code class="inline">:name</code>,
+<code class="inline">:path</code>, <code class="inline">:type</code> (<code class="inline">:file</code>, <code class="inline">:directory</code>, <code class="inline">:symlink</code>), <code class="inline">:size</code>, and <code class="inline">:modified_at</code>.</p>
+  </section>
+</section>
+<section class="detail" id="upload/5">
+
+    <span id="upload/4"></span>
+
+  <div class="detail-header">
+    <a href="#upload/5" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">upload(client, computer_id, local_path, remote_path, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/files.ex#L52" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> upload(
+  <a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(),
+  <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | {:binary, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()},
+  <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: :ok | {:error, <a href="Miosa.Error.html#t:t/0">Miosa.Error.t</a>()}</pre>
+
+      </div>
+
+<p>Uploads a local file to the computer at the given remote path.</p><p><code class="inline">local_path</code> can be:</p><ul><li>A filesystem path string (<code class="inline">&quot;./myfile.txt&quot;</code>)</li><li>A <code class="inline">{:binary, content, filename}</code> tuple for in-memory content</li></ul><h2 id="upload/5-options" class="section-heading"><a href="#upload/5-options" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Options</span></h2><ul><li><code class="inline">:create_dirs</code> — Create parent directories if they don't exist. Defaults to <code class="inline">true</code>.</li></ul>
+  </section>
+</section>
+<section class="detail" id="write/4">
+
+  <div class="detail-header">
+    <a href="#write/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">write(client, computer_id, remote_path, content)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/files.ex#L165" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> write(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>()) ::
+  :ok | {:error, <a href="Miosa.Error.html#t:t/0">Miosa.Error.t</a>()}</pre>
+
+      </div>
+
+<p>Writes string or binary content directly to a file on the computer.</p><p>Convenience wrapper around <a href="#upload/5"><code class="inline">upload/5</code></a> for in-memory content.</p><h2 id="write/4-example" class="section-heading"><a href="#write/4-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Files</span><span class="o">.</span><span class="n">write</span><span class="p" data-group-id="6259647182-1">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/user/hello.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello, world!&quot;</span><span class="p" data-group-id="6259647182-1">)</span></code></pre>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="llms.txt" target="_blank">
+                View llms.txt
+              </a>
+
+
+              <a href="Miosa.epub">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.40.1) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

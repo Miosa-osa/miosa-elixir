@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.40.1">
+    <meta name="project" content="Miosa v1.0.2">
+
+
+    <title>Miosa.CustomDomains — Miosa v1.0.2</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
+
+    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-YU4BZFVS.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+Miosa
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.0.2
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras="Pages"></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-module" id="main" data-type="modules">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of Miosa</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>
+      <span translate="no">Miosa.<wbr>CustomDomains</span> 
+      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+
+    </h1>
+
+<a href="Miosa.CustomDomains.md" title="Copy Markdown (hold Ctrl/Cmd and click it to open as Markdown)" class="copy-markdown icon-action" rel="help">
+  <i class="ri-markdown-line" aria-hidden="true"></i>
+  <span class="sr-only">Copy Markdown</span>
+</a>
+
+
+
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/custom_domains.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+    <section id="moduledoc">
+<p>Register and verify custom domains for MIOSA computers.</p><p>Custom domains allow you to expose a service running inside a computer at
+a user-friendly hostname (e.g. <code class="inline">app.example.com</code>) instead of the default
+generated URL.</p><h2 id="module-workflow" class="section-heading"><a href="#module-workflow" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Workflow</span></h2><ol><li><a href="#register/3"><code class="inline">register/3</code></a> — claim the domain against a computer + port.</li><li>Follow the DNS instructions returned in the <code class="inline">CustomDomain</code> struct.</li><li><a href="#verify/3"><code class="inline">verify/3</code></a> — trigger domain verification; status transitions to <code class="inline">:active</code>.</li><li><a href="#delete/3"><code class="inline">delete/3</code></a> — remove the domain when no longer needed.</li></ol><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="0298719721-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">domain</span><span class="p" data-group-id="0298719721-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.CustomDomains</span><span class="o">.</span><span class="n">register</span><span class="p" data-group-id="0298719721-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0298719721-3">%{</span><span class="w">
+  </span><span class="ss">domain</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;app.example.com&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="ss">port</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="w">
+</span><span class="p" data-group-id="0298719721-3">}</span><span class="p" data-group-id="0298719721-2">)</span><span class="w">
+
+</span><span class="p" data-group-id="0298719721-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">domains</span><span class="p" data-group-id="0298719721-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.CustomDomains</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="0298719721-5">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p" data-group-id="0298719721-5">)</span><span class="w">
+</span><span class="p" data-group-id="0298719721-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">domain</span><span class="p" data-group-id="0298719721-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.CustomDomains</span><span class="o">.</span><span class="n">verify</span><span class="p" data-group-id="0298719721-7">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="n">domain</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="0298719721-7">)</span><span class="w">
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.CustomDomains</span><span class="o">.</span><span class="n">delete</span><span class="p" data-group-id="0298719721-8">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="n">domain</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="0298719721-8">)</span></code></pre>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h2 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h2>
+<div class="summary-types summary">
+  <h3>
+    <a href="#types">Types</a>
+  </h3>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:register_params/0" data-no-tooltip="" translate="no">register_params()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h3>
+    <a href="#functions">Functions</a>
+  </h3>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#delete/3" data-no-tooltip="" translate="no">delete(client, computer_id, domain_id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Removes a custom domain registration.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#list/2" data-no-tooltip="" translate="no">list(client, computer_id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Lists all custom domains registered for a computer.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#register/3" data-no-tooltip="" translate="no">register(client, computer_id, params)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Registers a custom domain for a computer.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#verify/3" data-no-tooltip="" translate="no">verify(client, computer_id, domain_id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Triggers domain ownership verification.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h2 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h2>
+
+    <div class="types-list">
+<section class="detail" id="t:register_params/0">
+
+  <div class="detail-header">
+    <a href="#t:register_params/0" class="detail-link" data-no-tooltip="" aria-label="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">register_params()</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/custom_domains.ex#L31" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> register_params() :: %{
+  :domain =&gt; <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  optional(:port) =&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(),
+  optional(:tls) =&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()
+}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h2 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h2>
+
+    <div class="functions-list">
+<section class="detail" id="delete/3">
+
+  <div class="detail-header">
+    <a href="#delete/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">delete(client, computer_id, domain_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/custom_domains.ex#L99" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> delete(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  :ok | {:error, <a href="Miosa.Error.html#t:t/0">Miosa.Error.t</a>()}</pre>
+
+      </div>
+
+<p>Removes a custom domain registration.</p><p>In-flight requests to the domain will immediately return 404 after deletion.</p>
+  </section>
+</section>
+<section class="detail" id="list/2">
+
+  <div class="detail-header">
+    <a href="#list/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">list(client, computer_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/custom_domains.ex#L62" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> list(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>([<a href="Miosa.Types.CustomDomain.html#t:t/0">Miosa.Types.CustomDomain.t</a>()])</pre>
+
+      </div>
+
+<p>Lists all custom domains registered for a computer.</p>
+  </section>
+</section>
+<section class="detail" id="register/3">
+
+  <div class="detail-header">
+    <a href="#register/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">register(client, computer_id, params)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/custom_domains.ex#L51" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> register(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="#t:register_params/0">register_params</a>()) ::
+  <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="Miosa.Types.CustomDomain.html#t:t/0">Miosa.Types.CustomDomain.t</a>())</pre>
+
+      </div>
+
+<p>Registers a custom domain for a computer.</p><h2 id="register/3-params" class="section-heading"><a href="#register/3-params" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Params</span></h2><ul><li><code class="inline">:domain</code> — Required. The fully-qualified domain name.</li><li><code class="inline">:port</code> — Port inside the computer to route traffic to. Defaults to <code class="inline">80</code>.</li><li><code class="inline">:tls</code> — Whether to provision TLS. Defaults to <code class="inline">true</code>.</li></ul><p>Returns a <code class="inline">CustomDomain</code> struct whose <code class="inline">:dns_instructions</code> field contains
+the CNAME or A-record value to configure with your DNS provider.</p>
+  </section>
+</section>
+<section class="detail" id="verify/3">
+
+  <div class="detail-header">
+    <a href="#verify/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">verify(client, computer_id, domain_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/custom_domains.ex#L86" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> verify(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="Miosa.Types.CustomDomain.html#t:t/0">Miosa.Types.CustomDomain.t</a>())</pre>
+
+      </div>
+
+<p>Triggers domain ownership verification.</p><p>The API checks that the required DNS record is in place. On success the
+domain transitions to <code class="inline">:active</code> status.</p><p>Returns the updated <code class="inline">CustomDomain</code> struct.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="llms.txt" target="_blank">
+                View llms.txt
+              </a>
+
+
+              <a href="Miosa.epub">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.40.1) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

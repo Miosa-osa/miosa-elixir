@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.40.1">
+    <meta name="project" content="Miosa v1.0.2">
+
+
+    <title>API Reference — Miosa v1.0.2</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
+
+    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-YU4BZFVS.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+Miosa
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.0.2
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras="Pages"></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-extra" id="main" data-type="extras">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of Miosa</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>API Reference <small class="app-vsn">Miosa v#1.0.2</small></h1>
+<a href="api-reference.md" title="Copy Markdown (hold Ctrl/Cmd and click it to open as Markdown)" class="copy-markdown icon-action" rel="help">
+  <i class="ri-markdown-line" aria-hidden="true"></i>
+  <span class="sr-only">Copy Markdown</span>
+</a>
+
+
+      <a href="https://github.com/Miosa-osa/miosa-elixir" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+    <section class="details-list">
+      <h2 id="modules" class="section-heading">Modules</h2>
+      <div class="summary">
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.html" translate="no">Miosa</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Official Elixir SDK for the MIOSA API.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Admin.html" translate="no">Miosa.<wbr>Admin</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Admin surface — <code class="inline">/api/v1/admin/*</code>.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Analytics.html" translate="no">Miosa.<wbr>Analytics</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Analytics — admin-scoped overview and timeseries metrics.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.ApiKeys.html" translate="no">Miosa.<wbr>ApiKeys</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>API key management — programmatic CRUD for tenant API keys.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Audit.html" translate="no">Miosa.<wbr>Audit</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Tenant-wide egress audit log.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.AuditLog.html" translate="no">Miosa.<wbr>AuditLog</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Audit log — admin-scoped event stream.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Benchmarks.html" translate="no">Miosa.<wbr>Benchmarks</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Admin-triggered platform benchmark runs.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.BuilderSessions.html" translate="no">Miosa.<wbr>BuilderSessions</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Builder UI session metadata — durable, cross-device Builder state.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Channels.html" translate="no">Miosa.<wbr>Channels</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Notification channels — Slack, Discord, email, and per-channel enable/disable.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Checkpoints.html" translate="no">Miosa.<wbr>Checkpoints</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Create and restore disk snapshots (checkpoints) of MIOSA computers.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Client.html" translate="no">Miosa.<wbr>Client</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>HTTP transport layer for the MIOSA API.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.CommandCenter.html" translate="no">Miosa.<wbr>CommandCenter</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Read-only views of the Optimal AI agent fleet.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Community.html" translate="no">Miosa.<wbr>Community</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Community template and agent catalog with install and rate actions.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Completions.html" translate="no">Miosa.<wbr>Completions</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>OpenAI-compatible chat and text completion endpoints.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Computer.html" translate="no">Miosa.<wbr>Computer</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Lifecycle actions for a specific MIOSA computer.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Computer.Agent.html" translate="no">Miosa.<wbr>Computer.<wbr>Agent</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Computer-Use Agent (CUA) session management for a computer.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Computer.AutoStop.html" translate="no">Miosa.<wbr>Computer.<wbr>AutoStop</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Read and update idle-timeout config for a computer.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Computer.Env.html" translate="no">Miosa.<wbr>Computer.<wbr>Env</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Encrypted env-var CRUD scoped to one computer.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Computer.Inbox.html" translate="no">Miosa.<wbr>Computer.<wbr>Inbox</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Per-computer inbox configuration for Optimal inbound-email routing.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Computer.Logs.html" translate="no">Miosa.<wbr>Computer.<wbr>Logs</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Read and stream VM logs for a computer.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Computer.Metrics.html" translate="no">Miosa.<wbr>Computer.<wbr>Metrics</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Time-series RAM/CPU/credit metrics for a computer.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Computer.Osa.html" translate="no">Miosa.<wbr>Computer.<wbr>Osa</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Task dispatch to the in-VM OSA agent.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Computer.Ports.html" translate="no">Miosa.<wbr>Computer.<wbr>Ports</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Per-port visibility control for a computer.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Computer.Terminal.html" translate="no">Miosa.<wbr>Computer.<wbr>Terminal</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>PTY session management for a computer.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Computer.Volumes.html" translate="no">Miosa.<wbr>Computer.<wbr>Volumes</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Per-computer volume attachment management.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Computers.html" translate="no">Miosa.<wbr>Computers</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Manage MIOSA computers (VM workspaces).</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Credits.html" translate="no">Miosa.<wbr>Credits</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Query credit balance, transaction history, and usage for the authenticated tenant.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.CronJobs.html" translate="no">Miosa.<wbr>CronJobs</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Cron jobs — scheduled work with full CRUD, pause/resume, run-now, and
+execution history.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.CustomDomains.html" translate="no">Miosa.<wbr>CustomDomains</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Register and verify custom domains for MIOSA computers.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Dashboard.html" translate="no">Miosa.<wbr>Dashboard</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Dashboard — aggregated platform overview, polled on login.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Databases.html" translate="no">Miosa.<wbr>Databases</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Managed Postgres databases — CRUD, lifecycle, credentials, logs.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Deployments.html" translate="no">Miosa.<wbr>Deployments</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Deployments — sandbox → production publishing surface.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Desktop.html" translate="no">Miosa.<wbr>Desktop</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Control the desktop environment of a running MIOSA computer.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Email.html" translate="no">Miosa.<wbr>Email</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Admin email surface with sub-modules for campaigns, templates, and inbox.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Email.Campaigns.html" translate="no">Miosa.<wbr>Email.<wbr>Campaigns</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Admin email campaign lifecycle (GET/POST/etc. <code class="inline">/admin/email-campaigns</code>).</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Email.Inbox.html" translate="no">Miosa.<wbr>Email.<wbr>Inbox</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Inbound and outbound direct messages (<code class="inline">/admin/email-inbox</code>).</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Email.Templates.html" translate="no">Miosa.<wbr>Email.<wbr>Templates</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Reusable email templates keyed by name (<code class="inline">/admin/email-templates</code>).</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Embeddings.html" translate="no">Miosa.<wbr>Embeddings</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>OpenAI-compatible embedding vectors.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Error.html" translate="no">Miosa.<wbr>Error</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Exception raised for MIOSA API errors.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Events.html" translate="no">Miosa.<wbr>Events</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Subscribe to real-time computer lifecycle events via SSE.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Exec.html" translate="no">Miosa.<wbr>Exec</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Execute commands and scripts inside a running MIOSA computer.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Exec.Command.html" translate="no">Miosa.<wbr>Exec.<wbr>Command</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A GenServer holding a long-lived interactive command session over WebSocket.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.ExternalKeys.html" translate="no">Miosa.<wbr>ExternalKeys</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>External BYOK keys — Anthropic, OpenAI, Google, Groq, and similar.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Files.html" translate="no">Miosa.<wbr>Files</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Upload, download, list, and manage files inside a MIOSA computer.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.FlatCustomDomains.html" translate="no">Miosa.<wbr>FlatCustomDomains</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Tenant-scoped custom domain management across all computers and deployments.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Functions.html" translate="no">Miosa.<wbr>Functions</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Edge functions — serverless, request-driven code that runs close to the user.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.HealthChecks.html" translate="no">Miosa.<wbr>HealthChecks</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Health checks — uptime monitoring for URLs and TCP endpoints.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Integrations.html" translate="no">Miosa.<wbr>Integrations</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>OAuth account-level integrations — GitHub, Slack, Linear, Discord.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Mcp.html" translate="no">Miosa.<wbr>Mcp</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Model Context Protocol — JSON-RPC dispatch and streaming SSE channel.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Models.html" translate="no">Miosa.<wbr>Models</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>List available LLM models routed through the MIOSA intelligence gateway.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Network.html" translate="no">Miosa.<wbr>Network</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Tenant-wide egress network policy and allowlist management.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.NetworkPolicy.html" translate="no">Miosa.<wbr>NetworkPolicy</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Read and write the network egress/ingress policy for a MIOSA computer.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.OauthFlow.html" translate="no">Miosa.<wbr>OauthFlow</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A pending OAuth Connect flow.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.OpenComputers.html" translate="no">Miosa.<wbr>OpenComputers</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>OpenComputers API surface — register and control your own machines via MIOSA.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.OpenComputers.Agents.html" translate="no">Miosa.<wbr>OpenComputers.<wbr>Agents</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>AI agent dispatch for registered hosts.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.OpenComputers.Clusters.html" translate="no">Miosa.<wbr>OpenComputers.<wbr>Clusters</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Inference cluster management.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.OpenComputers.DesktopVnc.html" translate="no">Miosa.<wbr>OpenComputers.<wbr>DesktopVnc</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Issue WebSocket tickets for desktop (VNC/KasmVNC) sessions on registered hosts.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.OpenComputers.Fs.html" translate="no">Miosa.<wbr>OpenComputers.<wbr>Fs</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Remote file system operations on registered hosts.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.OpenComputers.Hosts.html" translate="no">Miosa.<wbr>OpenComputers.<wbr>Hosts</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Host registration and lifecycle.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.OpenComputers.Jobs.html" translate="no">Miosa.<wbr>OpenComputers.<wbr>Jobs</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Remote job execution on registered hosts.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.OpenComputers.Secrets.html" translate="no">Miosa.<wbr>OpenComputers.<wbr>Secrets</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Encrypted secret management for OpenComputers.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.OpenComputers.Terminal.html" translate="no">Miosa.<wbr>OpenComputers.<wbr>Terminal</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Issue WebSocket tickets for terminal sessions on registered hosts.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.OpenComputers.Tunnels.html" translate="no">Miosa.<wbr>OpenComputers.<wbr>Tunnels</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>HTTP tunnel management for registered hosts.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.ProjectAuth.html" translate="no">Miosa.<wbr>ProjectAuth</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Project Auth — built-in authentication for generated apps inside
+sandboxes and deployments.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.ProjectIntegrations.html" translate="no">Miosa.<wbr>ProjectIntegrations</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Per-project integrations — Stripe, Resend, Twilio, and similar third-party
+provider keys injected as env vars into sandbox/deployment VMs at boot.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.ProviderDefaults.html" translate="no">Miosa.<wbr>ProviderDefaults</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Admin LLM provider routing config.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Regions.html" translate="no">Miosa.<wbr>Regions</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Datacenter regions, compute sizes, pricing, and community templates — read-only catalog.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Sandbox.Env.html" translate="no">Miosa.<wbr>Sandbox.<wbr>Env</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Per-sandbox env-var reader (GET <code class="inline">/sandboxes/:id/env</code>).</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Sandbox.Events.html" translate="no">Miosa.<wbr>Sandbox.<wbr>Events</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>SSE event streams for a sandbox.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Sandbox.Previews.html" translate="no">Miosa.<wbr>Sandbox.<wbr>Previews</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Preview URL management for a sandbox.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Sandbox.Processes.html" translate="no">Miosa.<wbr>Sandbox.<wbr>Processes</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Background process management for a sandbox.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Sandbox.Tags.html" translate="no">Miosa.<wbr>Sandbox.<wbr>Tags</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Tag replacement for a sandbox (PATCH <code class="inline">/sandboxes/:id/tags</code>).</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Sandbox.Terminal.html" translate="no">Miosa.<wbr>Sandbox.<wbr>Terminal</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>PTY session control for a sandbox.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.SandboxTemplates.html" translate="no">Miosa.<wbr>SandboxTemplates</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Sandbox template management — define reusable base images for sandboxes.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Sandboxes.html" translate="no">Miosa.<wbr>Sandboxes</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Sandboxes — a thin helper over <a href="Miosa.Computers.html"><code class="inline">Miosa.Computers</code></a> that defaults
+<code class="inline">template_type</code> to <code class="inline">&quot;miosa-sandbox&quot;</code> (ephemeral code-exec rootfs, no
+desktop).</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Sandboxes.Audit.html" translate="no">Miosa.<wbr>Sandboxes.<wbr>Audit</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Sandbox-bound view of <a href="Miosa.Audit.html"><code class="inline">Miosa.Audit</code></a>.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Sandboxes.Network.html" translate="no">Miosa.<wbr>Sandboxes.<wbr>Network</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Sandbox-bound view of <a href="Miosa.Network.html"><code class="inline">Miosa.Network</code></a>.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Sandboxes.Secrets.html" translate="no">Miosa.<wbr>Sandboxes.<wbr>Secrets</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Sandbox-bound view of <a href="Miosa.Secrets.html"><code class="inline">Miosa.Secrets</code></a>.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Secrets.html" translate="no">Miosa.<wbr>Secrets</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Tenant-wide egress secret and OAuth credential vault.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Services.html" translate="no">Miosa.<wbr>Services</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Manage long-running background services inside a MIOSA computer.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Settings.html" translate="no">Miosa.<wbr>Settings</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Tenant settings — workspace config, branding, and BYOK provider keys.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.SnapshotsStandalone.html" translate="no">Miosa.<wbr>SnapshotsStandalone</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Fleet-wide snapshot index for admin callers.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Storage.html" translate="no">Miosa.<wbr>Storage</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Managed S3-compatible object storage — buckets, objects, presigned URLs.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Tenant.html" translate="no">Miosa.<wbr>Tenant</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Current tenant info — plan limits and live usage counters.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.html" translate="no">Miosa.<wbr>Types</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Typed structs representing all MIOSA API response objects.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.AgentEvent.html" translate="no">Miosa.<wbr>Types.<wbr>AgentEvent</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A server-sent event from a running agent session.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.AgentSession.html" translate="no">Miosa.<wbr>Types.<wbr>AgentSession</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A CUA (Computer-Use Agent) session running on a computer.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.Computer.html" translate="no">Miosa.<wbr>Types.<wbr>Computer</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a MIOSA computer (VM workspace).</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.ComputerEvent.html" translate="no">Miosa.<wbr>Types.<wbr>ComputerEvent</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A real-time lifecycle event emitted by a MIOSA computer.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.CreditBalance.html" translate="no">Miosa.<wbr>Types.<wbr>CreditBalance</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Current credit balance for the authenticated tenant.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.CreditTransaction.html" translate="no">Miosa.<wbr>Types.<wbr>CreditTransaction</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A single credit debit or credit event.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.CursorPosition.html" translate="no">Miosa.<wbr>Types.<wbr>CursorPosition</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Current mouse cursor position on the desktop.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.CustomDomain.html" translate="no">Miosa.<wbr>Types.<wbr>CustomDomain</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a custom domain registered for a MIOSA computer.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.DirEntry.html" translate="no">Miosa.<wbr>Types.<wbr>DirEntry</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A single entry returned by a directory listing.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.ExecResult.html" translate="no">Miosa.<wbr>Types.<wbr>ExecResult</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Result of a command executed inside a computer.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.ExportResult.html" translate="no">Miosa.<wbr>Types.<wbr>ExportResult</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Result of a file export operation.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.FileEntry.html" translate="no">Miosa.<wbr>Types.<wbr>FileEntry</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A file or directory entry in a computer's filesystem.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.FileStat.html" translate="no">Miosa.<wbr>Types.<wbr>FileStat</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Detailed stat information for a single filesystem path.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.NetworkPolicy.html" translate="no">Miosa.<wbr>Types.<wbr>NetworkPolicy</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>The full network policy for a computer, expressed as an ordered list of rules.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.NetworkPolicyRule.html" translate="no">Miosa.<wbr>Types.<wbr>NetworkPolicyRule</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A single network firewall rule (allow or deny).</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.Service.html" translate="no">Miosa.<wbr>Types.<wbr>Service</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a managed background service running inside a computer.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.ServiceLogEvent.html" translate="no">Miosa.<wbr>Types.<wbr>ServiceLogEvent</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>A single log line emitted by a background service.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.Snapshot.html" translate="no">Miosa.<wbr>Types.<wbr>Snapshot</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a disk checkpoint (snapshot) of a MIOSA computer.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.Window.html" translate="no">Miosa.<wbr>Types.<wbr>Window</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents an open window on the computer desktop.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Types.Workspace.html" translate="no">Miosa.<wbr>Types.<wbr>Workspace</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Represents a MIOSA workspace — a named group of computers.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Usage.html" translate="no">Miosa.<wbr>Usage</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Usage — current period summary, per-session metering, and report queries.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Volumes.html" translate="no">Miosa.<wbr>Volumes</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Persistent block storage volumes that survive instance restarts.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Webhooks.html" translate="no">Miosa.<wbr>Webhooks</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Tenant-level outgoing webhooks — CRUD, test delivery, and delivery history.</p></div>
+
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="Miosa.Workspaces.html" translate="no">Miosa.<wbr>Workspaces</a>
+
+  </div>
+
+    <div class="summary-synopsis"><p>Manage MIOSA workspaces.</p></div>
+
+</div>
+
+      </div>
+    </section>
+
+
+</div>
+    <footer class="footer">
+
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="llms.txt" target="_blank">
+                View llms.txt
+              </a>
+
+
+              <a href="Miosa.epub">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.40.1) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

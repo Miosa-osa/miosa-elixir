@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.40.1">
+    <meta name="project" content="Miosa v1.0.2">
+
+
+    <title>Miosa.Network — Miosa v1.0.2</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
+
+    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-YU4BZFVS.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+Miosa
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.0.2
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras="Pages"></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-module" id="main" data-type="modules">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of Miosa</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>
+      <span translate="no">Miosa.<wbr>Network</span> 
+      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+
+    </h1>
+
+<a href="Miosa.Network.md" title="Copy Markdown (hold Ctrl/Cmd and click it to open as Markdown)" class="copy-markdown icon-action" rel="help">
+  <i class="ri-markdown-line" aria-hidden="true"></i>
+  <span class="sr-only">Copy Markdown</span>
+</a>
+
+
+
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+    <section id="moduledoc">
+<p>Tenant-wide egress network policy and allowlist management.</p><p>Backed by <code class="inline">/api/v1/egress/policies</code>, <code class="inline">/api/v1/egress/allowlist</code>, and
+<code class="inline">/api/v1/egress/audit/suggestions</code>.</p><p>The egress firewall operates in two modes:</p><ul><li><strong><code class="inline">enforce</code></strong> — denied requests are actively blocked.</li><li><strong><code class="inline">audit_only</code></strong> — requests are logged but never blocked (observe mode).</li></ul><p>Use <a href="#observe/2"><code class="inline">observe/2</code></a> to run in shadow mode during rollout, then <a href="#lockdown/2"><code class="inline">lockdown/2</code></a>
+when you are ready to enforce.</p><h2 id="module-client-level-usage" class="section-heading"><a href="#module-client-level-usage" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Client-level usage</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="1720787681-1">(</span><span class="s">&quot;msk_u_...&quot;</span><span class="p" data-group-id="1720787681-1">)</span><span class="w">
+
+</span><span class="p" data-group-id="1720787681-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">rule</span><span class="p" data-group-id="1720787681-2">}</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">allow</span><span class="p" data-group-id="1720787681-3">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;api.github.com&quot;</span><span class="p" data-group-id="1720787681-3">)</span><span class="w">
+</span><span class="p" data-group-id="1720787681-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">rule</span><span class="p" data-group-id="1720787681-4">}</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">deny</span><span class="p" data-group-id="1720787681-5">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;suspicious.host.io&quot;</span><span class="p" data-group-id="1720787681-5">)</span><span class="w">
+</span><span class="p" data-group-id="1720787681-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">policy</span><span class="p" data-group-id="1720787681-6">}</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">lockdown</span><span class="p" data-group-id="1720787681-7">(</span><span class="n">client</span><span class="p" data-group-id="1720787681-7">)</span><span class="w">
+</span><span class="p" data-group-id="1720787681-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">policy</span><span class="p" data-group-id="1720787681-8">}</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">observe</span><span class="p" data-group-id="1720787681-9">(</span><span class="n">client</span><span class="p" data-group-id="1720787681-9">)</span><span class="w">
+</span><span class="p" data-group-id="1720787681-10">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">items</span><span class="p" data-group-id="1720787681-10">}</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">suggestions</span><span class="p" data-group-id="1720787681-11">(</span><span class="n">client</span><span class="p" data-group-id="1720787681-11">)</span><span class="w">
+</span><span class="p" data-group-id="1720787681-12">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">policies</span><span class="p" data-group-id="1720787681-12">}</span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">policies</span><span class="p" data-group-id="1720787681-13">(</span><span class="n">client</span><span class="p" data-group-id="1720787681-13">)</span><span class="w">
+</span><span class="p" data-group-id="1720787681-14">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">rules</span><span class="p" data-group-id="1720787681-14">}</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">rules</span><span class="p" data-group-id="1720787681-15">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">policy_id</span><span class="p" data-group-id="1720787681-15">)</span></code></pre><h2 id="module-sandbox-bound-usage" class="section-heading"><a href="#module-sandbox-bound-usage" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Sandbox-bound usage</span></h2><p>See <a href="Miosa.Sandboxes.Network.html"><code class="inline">Miosa.Sandboxes.Network</code></a> for the resource-scoped variant.</p>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h2 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h2>
+<div class="summary-functions summary">
+  <h3>
+    <a href="#functions">Functions</a>
+  </h3>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#allow/3" data-no-tooltip="" translate="no">allow(client, host, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Add an <code class="inline">allow</code> rule for <code class="inline">host</code> to the tenant egress allowlist.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#create_policy/2" data-no-tooltip="" translate="no">create_policy(client, attrs)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Create a new egress policy.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#deny/3" data-no-tooltip="" translate="no">deny(client, host, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Add a <code class="inline">deny</code> rule for <code class="inline">host</code> to the tenant egress allowlist.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#lockdown/2" data-no-tooltip="" translate="no">lockdown(client, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Set the policy to <code class="inline">mode=enforce</code> — denied requests are blocked.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#observe/2" data-no-tooltip="" translate="no">observe(client, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Set the policy to <code class="inline">mode=audit_only</code> — requests are logged but not blocked.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#policies/2" data-no-tooltip="" translate="no">policies(client, filters \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>List egress policies.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#remove_rule/2" data-no-tooltip="" translate="no">remove_rule(client, rule_id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Delete an allowlist rule by ID.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#rules/3" data-no-tooltip="" translate="no">rules(client, policy_id \\ nil, filters \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>List allowlist rules.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#suggestions/2" data-no-tooltip="" translate="no">suggestions(client, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Return AI-generated allowlist suggestions based on recent denied egress traffic.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#update_policy/3" data-no-tooltip="" translate="no">update_policy(client, policy_id, attrs)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Update an existing egress policy.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h2 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h2>
+
+    <div class="functions-list">
+<section class="detail" id="allow/3">
+
+    <span id="allow/2"></span>
+
+  <div class="detail-header">
+    <a href="#allow/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">allow(client, host, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L55" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> allow(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) :: <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>Add an <code class="inline">allow</code> rule for <code class="inline">host</code> to the tenant egress allowlist.</p><h2 id="allow/3-options-as-keyword-list" class="section-heading"><a href="#allow/3-options-as-keyword-list" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Options (as keyword list)</span></h2><ul><li><code class="inline">:methods</code> — list of HTTP methods to allow. <code class="inline">nil</code> = all.</li><li><code class="inline">:path_glob</code> — glob pattern to restrict path scope.</li><li><code class="inline">:policy_id</code> — attach to a named policy.</li><li><code class="inline">:resource_id</code>, <code class="inline">:resource_type</code> — scope to a specific resource.</li><li><code class="inline">:note</code> — human-readable description.</li></ul>
+  </section>
+</section>
+<section class="detail" id="create_policy/2">
+
+  <div class="detail-header">
+    <a href="#create_policy/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">create_policy(client, attrs)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L133" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> create_policy(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>Create a new egress policy.</p><h2 id="create_policy/2-required-attrs" class="section-heading"><a href="#create_policy/2-required-attrs" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Required attrs</span></h2><ul><li><code class="inline">:name</code></li></ul><h2 id="create_policy/2-optional-attrs" class="section-heading"><a href="#create_policy/2-optional-attrs" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Optional attrs</span></h2><ul><li><code class="inline">:mode</code> — <code class="inline">&quot;enforce&quot;</code> (default) or <code class="inline">&quot;audit_only&quot;</code>.</li><li><code class="inline">:default_effect</code> — <code class="inline">&quot;deny&quot;</code> (default) or <code class="inline">&quot;allow&quot;</code>.</li><li><code class="inline">:resource_id</code>, <code class="inline">:resource_type</code> — scope to a specific resource.</li><li><code class="inline">:description</code></li></ul>
+  </section>
+</section>
+<section class="detail" id="deny/3">
+
+    <span id="deny/2"></span>
+
+  <div class="detail-header">
+    <a href="#deny/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">deny(client, host, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L65" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> deny(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) :: <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>Add a <code class="inline">deny</code> rule for <code class="inline">host</code> to the tenant egress allowlist.</p><p>Accepts the same options as <a href="#allow/3"><code class="inline">allow/3</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="lockdown/2">
+
+    <span id="lockdown/1"></span>
+
+  <div class="detail-header">
+    <a href="#lockdown/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">lockdown(client, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L172" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> lockdown(
+  <a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>Set the policy to <code class="inline">mode=enforce</code> — denied requests are blocked.</p><h2 id="lockdown/2-options-keyword" class="section-heading"><a href="#lockdown/2-options-keyword" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Options (keyword)</span></h2><ul><li><code class="inline">:policy_id</code> — target a specific policy. When absent, the tenant
+default policy is patched.</li><li><code class="inline">:resource_id</code>, <code class="inline">:resource_type</code> — resource-scoped patch.</li></ul>
+  </section>
+</section>
+<section class="detail" id="observe/2">
+
+    <span id="observe/1"></span>
+
+  <div class="detail-header">
+    <a href="#observe/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">observe(client, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L182" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> observe(
+  <a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>Set the policy to <code class="inline">mode=audit_only</code> — requests are logged but not blocked.</p><p>Accepts the same options as <a href="#lockdown/2"><code class="inline">lockdown/2</code></a>.</p>
+  </section>
+</section>
+<section class="detail" id="policies/2">
+
+    <span id="policies/1"></span>
+
+  <div class="detail-header">
+    <a href="#policies/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">policies(client, filters \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L109" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> policies(
+  <a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>([<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()])</pre>
+
+      </div>
+
+<p>List egress policies.</p><p>Accepts optional filters as a keyword list.</p>
+  </section>
+</section>
+<section class="detail" id="remove_rule/2">
+
+  <div class="detail-header">
+    <a href="#remove_rule/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">remove_rule(client, rule_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L92" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> remove_rule(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: :ok | {:error, <a href="Miosa.Error.html#t:t/0">Miosa.Error.t</a>()}</pre>
+
+      </div>
+
+<p>Delete an allowlist rule by ID.</p>
+  </section>
+</section>
+<section class="detail" id="rules/3">
+
+    <span id="rules/1"></span>
+
+    <span id="rules/2"></span>
+
+  <div class="detail-header">
+    <a href="#rules/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">rules(client, policy_id \\ nil, filters \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L76" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> rules(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>() | nil, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) ::
+  <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>([<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()])</pre>
+
+      </div>
+
+<p>List allowlist rules.</p><p>Accepts optional filters as a keyword list: <code class="inline">policy_id</code>, <code class="inline">resource_id</code>,
+<code class="inline">resource_type</code>.</p>
+  </section>
+</section>
+<section class="detail" id="suggestions/2">
+
+    <span id="suggestions/1"></span>
+
+  <div class="detail-header">
+    <a href="#suggestions/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">suggestions(client, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L199" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> suggestions(
+  <a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>([<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()])</pre>
+
+      </div>
+
+<p>Return AI-generated allowlist suggestions based on recent denied egress traffic.</p><h2 id="suggestions/2-options-keyword" class="section-heading"><a href="#suggestions/2-options-keyword" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Options (keyword)</span></h2><ul><li><code class="inline">:resource_id</code>, <code class="inline">:resource_type</code> — scope to a specific resource.</li><li><code class="inline">:since</code> — lookback window, e.g. <code class="inline">&quot;7d&quot;</code> (default), <code class="inline">&quot;24h&quot;</code>.</li></ul>
+  </section>
+</section>
+<section class="detail" id="update_policy/3">
+
+  <div class="detail-header">
+    <a href="#update_policy/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">update_policy(client, policy_id, attrs)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L148" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> update_policy(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>Update an existing egress policy.</p><p><code class="inline">attrs</code> may include <code class="inline">:mode</code>, <code class="inline">:default_effect</code>, <code class="inline">:name</code>, <code class="inline">:description</code>.</p>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="llms.txt" target="_blank">
+                View llms.txt
+              </a>
+
+
+              <a href="Miosa.epub">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.40.1) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

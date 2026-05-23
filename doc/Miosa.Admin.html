@@ -1,0 +1,1836 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.40.1">
+    <meta name="project" content="Miosa v1.0.2">
+
+
+    <title>Miosa.Admin — Miosa v1.0.2</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
+
+    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-YU4BZFVS.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+Miosa
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.0.2
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras="Pages"></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-module" id="main" data-type="modules">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of Miosa</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>
+      <span translate="no">Miosa.<wbr>Admin</span> 
+      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+
+    </h1>
+
+<a href="Miosa.Admin.md" title="Copy Markdown (hold Ctrl/Cmd and click it to open as Markdown)" class="copy-markdown icon-action" rel="help">
+  <i class="ri-markdown-line" aria-hidden="true"></i>
+  <span class="sr-only">Copy Markdown</span>
+</a>
+
+
+
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+    <section id="moduledoc">
+<p>Admin surface — <code class="inline">/api/v1/admin/*</code>.</p><p>Requires an admin credential: a <code class="inline">msk_a_*</code> / <code class="inline">msk_p_*</code> API key or an admin
+JWT. Calls from a user-role credential return <code class="inline">{:error, %Miosa.Error{status: 403}}</code>.</p><p>For endpoints not covered by the typed helpers below, use <a href="#request/5"><code class="inline">request/5</code></a>
+which accepts an arbitrary method + path.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="1105658338-1">(</span><span class="s">&quot;msk_a_...&quot;</span><span class="p" data-group-id="1105658338-1">)</span><span class="w">
+
+</span><span class="p" data-group-id="1105658338-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="1105658338-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Admin</span><span class="o">.</span><span class="n">grant_credits</span><span class="p" data-group-id="1105658338-3">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;tenant-uuid&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;goodwill&quot;</span><span class="p" data-group-id="1105658338-3">)</span><span class="w">
+</span><span class="p" data-group-id="1105658338-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">users</span><span class="p" data-group-id="1105658338-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Admin</span><span class="o">.</span><span class="n">list_users</span><span class="p" data-group-id="1105658338-5">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="ss">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="ss">status</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;active&quot;</span><span class="p" data-group-id="1105658338-5">)</span><span class="w">
+</span><span class="p" data-group-id="1105658338-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="1105658338-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Admin</span><span class="o">.</span><span class="n">change_tenant_plan</span><span class="p" data-group-id="1105658338-7">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;tenant-uuid&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;pro&quot;</span><span class="p" data-group-id="1105658338-7">)</span></code></pre>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h2 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h2>
+<div class="summary-types summary">
+  <h3>
+    <a href="#types">Types</a>
+  </h3>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#t:result/0" data-no-tooltip="" translate="no">result()</a>
+
+      </div>
+
+    </div>
+
+</div>
+<div class="summary-functions summary">
+  <h3>
+    <a href="#functions">Functions</a>
+  </h3>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#api_key_stats/1" data-no-tooltip="" translate="no">api_key_stats(client)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#audit_log/2" data-no-tooltip="" translate="no">audit_log(client, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Read the platform audit log.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#ban_user/4" data-no-tooltip="" translate="no">ban_user(client, user_id, reason, opts \\ [])</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#billing_summary/1" data-no-tooltip="" translate="no">billing_summary(client)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#bulk_revoke_api_keys/2" data-no-tooltip="" translate="no">bulk_revoke_api_keys(client, key_ids)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#bulk_user_action/4" data-no-tooltip="" translate="no">bulk_user_action(client, user_ids, action, opts \\ [])</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#change_tenant_plan/4" data-no-tooltip="" translate="no">change_tenant_plan(client, tenant_id, plan, opts \\ [])</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#change_user_role/3" data-no-tooltip="" translate="no">change_user_role(client, user_id, role)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#create_api_key/2" data-no-tooltip="" translate="no">create_api_key(client, opts)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Create an API key on behalf of a tenant/user.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#dashboard/1" data-no-tooltip="" translate="no">dashboard(client)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#deduct_credits/4" data-no-tooltip="" translate="no">deduct_credits(client, tenant_id, amount, description)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#delete_computer/2" data-no-tooltip="" translate="no">delete_computer(client, computer_id)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#delete_tenant/2" data-no-tooltip="" translate="no">delete_tenant(client, tenant_id)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#delete_user/2" data-no-tooltip="" translate="no">delete_user(client, user_id)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#detailed_health/1" data-no-tooltip="" translate="no">detailed_health(client)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#force_logout/2" data-no-tooltip="" translate="no">force_logout(client, user_id)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#get_user/2" data-no-tooltip="" translate="no">get_user(client, user_id)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#grant_credits/5" data-no-tooltip="" translate="no">grant_credits(client, tenant_id, amount, description, opts \\ [])</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#list_api_keys/2" data-no-tooltip="" translate="no">list_api_keys(client, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>List API keys across tenants.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#list_computers/2" data-no-tooltip="" translate="no">list_computers(client, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>List all computers across tenants.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#list_optimal_models/1" data-no-tooltip="" translate="no">list_optimal_models(client)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#list_tenants/2" data-no-tooltip="" translate="no">list_tenants(client, opts \\ [])</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#list_users/2" data-no-tooltip="" translate="no">list_users(client, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>List users.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#optimal_status/1" data-no-tooltip="" translate="no">optimal_status(client)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#purge_stale_computers/1" data-no-tooltip="" translate="no">purge_stale_computers(client)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#refund_credits/5" data-no-tooltip="" translate="no">refund_credits(client, tenant_id, amount, description, opts \\ [])</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#request/5" data-no-tooltip="" translate="no">request(client, method, path, body \\ nil, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Call any admin endpoint directly.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#restart_computer/2" data-no-tooltip="" translate="no">restart_computer(client, computer_id)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#resume_computer/2" data-no-tooltip="" translate="no">resume_computer(client, computer_id)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#revoke_api_key/2" data-no-tooltip="" translate="no">revoke_api_key(client, key_id)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#stats/1" data-no-tooltip="" translate="no">stats(client)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#suspend_computer/2" data-no-tooltip="" translate="no">suspend_computer(client, computer_id)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#suspend_tenant/3" data-no-tooltip="" translate="no">suspend_tenant(client, tenant_id, opts \\ [])</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#suspend_user/3" data-no-tooltip="" translate="no">suspend_user(client, user_id, opts \\ [])</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#switch_optimal_model/2" data-no-tooltip="" translate="no">switch_optimal_model(client, model_id)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#tenant_balance/2" data-no-tooltip="" translate="no">tenant_balance(client, tenant_id)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#tenant_credit_history/3" data-no-tooltip="" translate="no">tenant_credit_history(client, tenant_id, opts \\ [])</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#tenant_detail/2" data-no-tooltip="" translate="no">tenant_detail(client, tenant_id)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#unban_user/2" data-no-tooltip="" translate="no">unban_user(client, user_id)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#unsuspend_tenant/2" data-no-tooltip="" translate="no">unsuspend_tenant(client, tenant_id)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#unsuspend_user/2" data-no-tooltip="" translate="no">unsuspend_user(client, user_id)</a>
+
+      </div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#update_user/3" data-no-tooltip="" translate="no">update_user(client, user_id, attrs)</a>
+
+      </div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="types" class="details-list">
+    <h2 class="section-heading">
+      <a class="hover-link" href="#types">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Types</span>
+    </h2>
+
+    <div class="types-list">
+<section class="detail" id="t:result/0">
+
+  <div class="detail-header">
+    <a href="#t:result/0" class="detail-link" data-no-tooltip="" aria-label="Link to this type">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">result()</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L23" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@type</span> result() :: {:ok, <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()} | {:error, <a href="Miosa.Error.html#t:t/0">Miosa.Error.t</a>()}</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+  <section id="functions" class="details-list">
+    <h2 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h2>
+
+    <div class="functions-list">
+<section class="detail" id="api_key_stats/1">
+
+  <div class="detail-header">
+    <a href="#api_key_stats/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">api_key_stats(client)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L292" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> api_key_stats(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="audit_log/2">
+
+    <span id="audit_log/1"></span>
+
+  <div class="detail-header">
+    <a href="#audit_log/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">audit_log(client, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L56" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> audit_log(
+  <a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+<p>Read the platform audit log.</p><p>Options: <code class="inline">:limit</code>, <code class="inline">:cursor</code>.</p>
+  </section>
+</section>
+<section class="detail" id="ban_user/4">
+
+    <span id="ban_user/3"></span>
+
+  <div class="detail-header">
+    <a href="#ban_user/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">ban_user(client, user_id, reason, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L154" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> ban_user(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="billing_summary/1">
+
+  <div class="detail-header">
+    <a href="#billing_summary/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">billing_summary(client)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L61" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> billing_summary(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="bulk_revoke_api_keys/2">
+
+  <div class="detail-header">
+    <a href="#bulk_revoke_api_keys/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">bulk_revoke_api_keys(client, key_ids)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L295" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> bulk_revoke_api_keys(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()]) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="bulk_user_action/4">
+
+    <span id="bulk_user_action/3"></span>
+
+  <div class="detail-header">
+    <a href="#bulk_user_action/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">bulk_user_action(client, user_ids, action, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L165" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> bulk_user_action(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), [<a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()], <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) ::
+  <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="change_tenant_plan/4">
+
+    <span id="change_tenant_plan/3"></span>
+
+  <div class="detail-header">
+    <a href="#change_tenant_plan/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">change_tenant_plan(client, tenant_id, plan, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L203" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> change_tenant_plan(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) ::
+  <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="change_user_role/3">
+
+  <div class="detail-header">
+    <a href="#change_user_role/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">change_user_role(client, user_id, role)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L133" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> change_user_role(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="create_api_key/2">
+
+  <div class="detail-header">
+    <a href="#create_api_key/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">create_api_key(client, opts)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L275" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> create_api_key(
+  <a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+<p>Create an API key on behalf of a tenant/user.</p><p>Required options: <code class="inline">:name</code>, <code class="inline">:tenant_id</code>, <code class="inline">:user_id</code>.
+Optional: <code class="inline">:key_type</code> (default <code class="inline">&quot;user&quot;</code>), <code class="inline">:purpose</code> (default <code class="inline">&quot;api&quot;</code>),
+<code class="inline">:rate_limit_rpm</code>, <code class="inline">:expires_at</code>, <code class="inline">:allowed_ips</code>.</p>
+  </section>
+</section>
+<section class="detail" id="dashboard/1">
+
+  <div class="detail-header">
+    <a href="#dashboard/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">dashboard(client)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L45" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> dashboard(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="deduct_credits/4">
+
+  <div class="detail-header">
+    <a href="#deduct_credits/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">deduct_credits(client, tenant_id, amount, description)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L79" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> deduct_credits(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="delete_computer/2">
+
+  <div class="detail-header">
+    <a href="#delete_computer/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">delete_computer(client, computer_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L229" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> delete_computer(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="delete_tenant/2">
+
+  <div class="detail-header">
+    <a href="#delete_tenant/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">delete_tenant(client, tenant_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L210" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> delete_tenant(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="delete_user/2">
+
+  <div class="detail-header">
+    <a href="#delete_user/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">delete_user(client, user_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L130" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> delete_user(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="detailed_health/1">
+
+  <div class="detail-header">
+    <a href="#detailed_health/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">detailed_health(client)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L64" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> detailed_health(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="force_logout/2">
+
+  <div class="detail-header">
+    <a href="#force_logout/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">force_logout(client, user_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L138" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> force_logout(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="get_user/2">
+
+  <div class="detail-header">
+    <a href="#get_user/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">get_user(client, user_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L122" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> get_user(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="grant_credits/5">
+
+    <span id="grant_credits/4"></span>
+
+  <div class="detail-header">
+    <a href="#grant_credits/5" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">grant_credits(client, tenant_id, amount, description, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L69" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> grant_credits(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) ::
+  <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="list_api_keys/2">
+
+    <span id="list_api_keys/1"></span>
+
+  <div class="detail-header">
+    <a href="#list_api_keys/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">list_api_keys(client, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L261" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> list_api_keys(
+  <a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+<p>List API keys across tenants.</p><p>Options: <code class="inline">:limit</code>, <code class="inline">:cursor</code>, <code class="inline">:tenant_id</code>, <code class="inline">:status</code> (<code class="inline">&quot;active&quot; | &quot;revoked&quot; | &quot;expired&quot;</code>).</p>
+  </section>
+</section>
+<section class="detail" id="list_computers/2">
+
+    <span id="list_computers/1"></span>
+
+  <div class="detail-header">
+    <a href="#list_computers/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">list_computers(client, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L222" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> list_computers(
+  <a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+<p>List all computers across tenants.</p><p>Options: <code class="inline">:limit</code>, <code class="inline">:cursor</code>, <code class="inline">:status</code>, <code class="inline">:tenant_id</code>.</p>
+  </section>
+</section>
+<section class="detail" id="list_optimal_models/1">
+
+  <div class="detail-header">
+    <a href="#list_optimal_models/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">list_optimal_models(client)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L310" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> list_optimal_models(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="list_tenants/2">
+
+    <span id="list_tenants/1"></span>
+
+  <div class="detail-header">
+    <a href="#list_tenants/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">list_tenants(client, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L177" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> list_tenants(
+  <a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="list_users/2">
+
+    <span id="list_users/1"></span>
+
+  <div class="detail-header">
+    <a href="#list_users/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">list_users(client, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L117" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> list_users(
+  <a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()
+) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+<p>List users.</p><p>Options: <code class="inline">:limit</code>, <code class="inline">:cursor</code>, <code class="inline">:q</code>, <code class="inline">:status</code> (<code class="inline">&quot;active&quot; | &quot;suspended&quot; | &quot;deleted&quot;</code>).</p>
+  </section>
+</section>
+<section class="detail" id="optimal_status/1">
+
+  <div class="detail-header">
+    <a href="#optimal_status/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">optimal_status(client)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L307" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> optimal_status(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="purge_stale_computers/1">
+
+  <div class="detail-header">
+    <a href="#purge_stale_computers/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">purge_stale_computers(client)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L249" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> purge_stale_computers(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="refund_credits/5">
+
+    <span id="refund_credits/4"></span>
+
+  <div class="detail-header">
+    <a href="#refund_credits/5" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">refund_credits(client, tenant_id, amount, description, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L89" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> refund_credits(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) ::
+  <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="request/5">
+
+    <span id="request/3"></span>
+
+    <span id="request/4"></span>
+
+  <div class="detail-header">
+    <a href="#request/5" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">request(client, method, path, body \\ nil, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L34" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> request(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">atom</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>() | nil, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) ::
+  <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+<p>Call any admin endpoint directly.</p><p><code class="inline">method</code> is one of <code class="inline">:get</code>, <code class="inline">:post</code>, <code class="inline">:put</code>, <code class="inline">:patch</code>, <code class="inline">:delete</code>.
+<code class="inline">path</code> is relative to <code class="inline">/api/v1</code> and should include the <code class="inline">/admin</code> prefix.</p>
+  </section>
+</section>
+<section class="detail" id="restart_computer/2">
+
+  <div class="detail-header">
+    <a href="#restart_computer/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">restart_computer(client, computer_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L244" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> restart_computer(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="resume_computer/2">
+
+  <div class="detail-header">
+    <a href="#resume_computer/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">resume_computer(client, computer_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L239" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> resume_computer(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="revoke_api_key/2">
+
+  <div class="detail-header">
+    <a href="#revoke_api_key/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">revoke_api_key(client, key_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L300" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> revoke_api_key(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="stats/1">
+
+  <div class="detail-header">
+    <a href="#stats/1" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">stats(client)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L48" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> stats(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="suspend_computer/2">
+
+  <div class="detail-header">
+    <a href="#suspend_computer/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">suspend_computer(client, computer_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L234" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> suspend_computer(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="suspend_tenant/3">
+
+    <span id="suspend_tenant/2"></span>
+
+  <div class="detail-header">
+    <a href="#suspend_tenant/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">suspend_tenant(client, tenant_id, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L187" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> suspend_tenant(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="suspend_user/3">
+
+    <span id="suspend_user/2"></span>
+
+  <div class="detail-header">
+    <a href="#suspend_user/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">suspend_user(client, user_id, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L143" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> suspend_user(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="switch_optimal_model/2">
+
+  <div class="detail-header">
+    <a href="#switch_optimal_model/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">switch_optimal_model(client, model_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L313" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> switch_optimal_model(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="tenant_balance/2">
+
+  <div class="detail-header">
+    <a href="#tenant_balance/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">tenant_balance(client, tenant_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L98" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> tenant_balance(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="tenant_credit_history/3">
+
+    <span id="tenant_credit_history/2"></span>
+
+  <div class="detail-header">
+    <a href="#tenant_credit_history/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">tenant_credit_history(client, tenant_id, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L103" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> tenant_credit_history(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="tenant_detail/2">
+
+  <div class="detail-header">
+    <a href="#tenant_detail/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">tenant_detail(client, tenant_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L182" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> tenant_detail(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="unban_user/2">
+
+  <div class="detail-header">
+    <a href="#unban_user/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">unban_user(client, user_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L160" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> unban_user(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="unsuspend_tenant/2">
+
+  <div class="detail-header">
+    <a href="#unsuspend_tenant/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">unsuspend_tenant(client, tenant_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L198" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> unsuspend_tenant(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="unsuspend_user/2">
+
+  <div class="detail-header">
+    <a href="#unsuspend_user/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">unsuspend_user(client, user_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L149" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> unsuspend_user(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+<section class="detail" id="update_user/3">
+
+  <div class="detail-header">
+    <a href="#update_user/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">update_user(client, user_id, attrs)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L125" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> update_user(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="#t:result/0">result</a>()</pre>
+
+      </div>
+
+
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="llms.txt" target="_blank">
+                View llms.txt
+              </a>
+
+
+              <a href="Miosa.epub">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.40.1) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>

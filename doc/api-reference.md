@@ -1,0 +1,138 @@
+# Miosa v1.0.2 - API Reference
+
+## Modules
+
+- [Miosa.Analytics](Miosa.Analytics.md): Analytics — admin-scoped overview and timeseries metrics.
+- [Miosa.ApiKeys](Miosa.ApiKeys.md): API key management — programmatic CRUD for tenant API keys.
+- [Miosa.AuditLog](Miosa.AuditLog.md): Audit log — admin-scoped event stream.
+- [Miosa.Benchmarks](Miosa.Benchmarks.md): Admin-triggered platform benchmark runs.
+- [Miosa.BuilderSessions](Miosa.BuilderSessions.md): Builder UI session metadata — durable, cross-device Builder state.
+- [Miosa.Channels](Miosa.Channels.md): Notification channels — Slack, Discord, email, and per-channel enable/disable.
+- [Miosa.CommandCenter](Miosa.CommandCenter.md): Read-only views of the Optimal AI agent fleet.
+- [Miosa.Community](Miosa.Community.md): Community template and agent catalog with install and rate actions.
+- [Miosa.Completions](Miosa.Completions.md): OpenAI-compatible chat and text completion endpoints.
+- [Miosa.Computer.AutoStop](Miosa.Computer.AutoStop.md): Read and update idle-timeout config for a computer.
+- [Miosa.Computer.Env](Miosa.Computer.Env.md): Encrypted env-var CRUD scoped to one computer.
+- [Miosa.Computer.Inbox](Miosa.Computer.Inbox.md): Per-computer inbox configuration for Optimal inbound-email routing.
+- [Miosa.Computer.Logs](Miosa.Computer.Logs.md): Read and stream VM logs for a computer.
+- [Miosa.Computer.Metrics](Miosa.Computer.Metrics.md): Time-series RAM/CPU/credit metrics for a computer.
+- [Miosa.Computer.Osa](Miosa.Computer.Osa.md): Task dispatch to the in-VM OSA agent.
+- [Miosa.Computer.Ports](Miosa.Computer.Ports.md): Per-port visibility control for a computer.
+- [Miosa.Computer.Terminal](Miosa.Computer.Terminal.md): PTY session management for a computer.
+- [Miosa.Computer.Volumes](Miosa.Computer.Volumes.md): Per-computer volume attachment management.
+- [Miosa.CronJobs](Miosa.CronJobs.md): Cron jobs — scheduled work with full CRUD, pause/resume, run-now, and
+execution history.
+- [Miosa.Dashboard](Miosa.Dashboard.md): Dashboard — aggregated platform overview, polled on login.
+- [Miosa.Databases](Miosa.Databases.md): Managed Postgres databases — CRUD, lifecycle, credentials, logs.
+- [Miosa.Deployments](Miosa.Deployments.md): Deployments — sandbox → production publishing surface.
+- [Miosa.Email](Miosa.Email.md): Admin email surface with sub-modules for campaigns, templates, and inbox.
+- [Miosa.Email.Campaigns](Miosa.Email.Campaigns.md): Admin email campaign lifecycle (GET/POST/etc. `/admin/email-campaigns`).
+
+- [Miosa.Email.Inbox](Miosa.Email.Inbox.md): Inbound and outbound direct messages (`/admin/email-inbox`).
+
+- [Miosa.Email.Templates](Miosa.Email.Templates.md): Reusable email templates keyed by name (`/admin/email-templates`).
+
+- [Miosa.Embeddings](Miosa.Embeddings.md): OpenAI-compatible embedding vectors.
+- [Miosa.ExternalKeys](Miosa.ExternalKeys.md): External BYOK keys — Anthropic, OpenAI, Google, Groq, and similar.
+- [Miosa.FlatCustomDomains](Miosa.FlatCustomDomains.md): Tenant-scoped custom domain management across all computers and deployments.
+- [Miosa.Functions](Miosa.Functions.md): Edge functions — serverless, request-driven code that runs close to the user.
+- [Miosa.HealthChecks](Miosa.HealthChecks.md): Health checks — uptime monitoring for URLs and TCP endpoints.
+- [Miosa.Integrations](Miosa.Integrations.md): OAuth account-level integrations — GitHub, Slack, Linear, Discord.
+- [Miosa.Mcp](Miosa.Mcp.md): Model Context Protocol — JSON-RPC dispatch and streaming SSE channel.
+- [Miosa.Models](Miosa.Models.md): List available LLM models routed through the MIOSA intelligence gateway.
+- [Miosa.ProjectAuth](Miosa.ProjectAuth.md): Project Auth — built-in authentication for generated apps inside
+sandboxes and deployments.
+- [Miosa.ProjectIntegrations](Miosa.ProjectIntegrations.md): Per-project integrations — Stripe, Resend, Twilio, and similar third-party
+provider keys injected as env vars into sandbox/deployment VMs at boot.
+- [Miosa.ProviderDefaults](Miosa.ProviderDefaults.md): Admin LLM provider routing config.
+- [Miosa.Regions](Miosa.Regions.md): Datacenter regions, compute sizes, pricing, and community templates — read-only catalog.
+- [Miosa.Sandbox.Env](Miosa.Sandbox.Env.md): Per-sandbox env-var reader (GET `/sandboxes/:id/env`).
+- [Miosa.Sandbox.Events](Miosa.Sandbox.Events.md): SSE event streams for a sandbox.
+- [Miosa.Sandbox.Previews](Miosa.Sandbox.Previews.md): Preview URL management for a sandbox.
+- [Miosa.Sandbox.Tags](Miosa.Sandbox.Tags.md): Tag replacement for a sandbox (PATCH `/sandboxes/:id/tags`).
+
+- [Miosa.Sandbox.Terminal](Miosa.Sandbox.Terminal.md): PTY session control for a sandbox.
+- [Miosa.SandboxTemplates](Miosa.SandboxTemplates.md): Sandbox template management — define reusable base images for sandboxes.
+- [Miosa.Settings](Miosa.Settings.md): Tenant settings — workspace config, branding, and BYOK provider keys.
+- [Miosa.SnapshotsStandalone](Miosa.SnapshotsStandalone.md): Fleet-wide snapshot index for admin callers.
+- [Miosa.Storage](Miosa.Storage.md): Managed S3-compatible object storage — buckets, objects, presigned URLs.
+- [Miosa.Tenant](Miosa.Tenant.md): Current tenant info — plan limits and live usage counters.
+- [Miosa.Types.AgentEvent](Miosa.Types.AgentEvent.md): A server-sent event from a running agent session.
+- [Miosa.Types.AgentSession](Miosa.Types.AgentSession.md): A CUA (Computer-Use Agent) session running on a computer.
+- [Miosa.Types.Computer](Miosa.Types.Computer.md): Represents a MIOSA computer (VM workspace).
+- [Miosa.Types.ComputerEvent](Miosa.Types.ComputerEvent.md): A real-time lifecycle event emitted by a MIOSA computer.
+- [Miosa.Types.CreditBalance](Miosa.Types.CreditBalance.md): Current credit balance for the authenticated tenant.
+- [Miosa.Types.CreditTransaction](Miosa.Types.CreditTransaction.md): A single credit debit or credit event.
+- [Miosa.Types.CursorPosition](Miosa.Types.CursorPosition.md): Current mouse cursor position on the desktop.
+- [Miosa.Types.CustomDomain](Miosa.Types.CustomDomain.md): Represents a custom domain registered for a MIOSA computer.
+- [Miosa.Types.DirEntry](Miosa.Types.DirEntry.md): A single entry returned by a directory listing.
+- [Miosa.Types.ExecResult](Miosa.Types.ExecResult.md): Result of a command executed inside a computer.
+- [Miosa.Types.ExportResult](Miosa.Types.ExportResult.md): Result of a file export operation.
+- [Miosa.Types.FileEntry](Miosa.Types.FileEntry.md): A file or directory entry in a computer's filesystem.
+- [Miosa.Types.FileStat](Miosa.Types.FileStat.md): Detailed stat information for a single filesystem path.
+- [Miosa.Types.NetworkPolicy](Miosa.Types.NetworkPolicy.md): The full network policy for a computer, expressed as an ordered list of rules.
+- [Miosa.Types.NetworkPolicyRule](Miosa.Types.NetworkPolicyRule.md): A single network firewall rule (allow or deny).
+- [Miosa.Types.Service](Miosa.Types.Service.md): Represents a managed background service running inside a computer.
+- [Miosa.Types.ServiceLogEvent](Miosa.Types.ServiceLogEvent.md): A single log line emitted by a background service.
+- [Miosa.Types.Snapshot](Miosa.Types.Snapshot.md): Represents a disk checkpoint (snapshot) of a MIOSA computer.
+- [Miosa.Types.Window](Miosa.Types.Window.md): Represents an open window on the computer desktop.
+- [Miosa.Types.Workspace](Miosa.Types.Workspace.md): Represents a MIOSA workspace — a named group of computers.
+- [Miosa.Usage](Miosa.Usage.md): Usage — current period summary, per-session metering, and report queries.
+- [Miosa.Volumes](Miosa.Volumes.md): Persistent block storage volumes that survive instance restarts.
+- [Miosa.Webhooks](Miosa.Webhooks.md): Tenant-level outgoing webhooks — CRUD, test delivery, and delivery history.
+
+- Core
+  - [Miosa](Miosa.md): Official Elixir SDK for the MIOSA API.
+  - [Miosa.Client](Miosa.Client.md): HTTP transport layer for the MIOSA API.
+
+- Resources
+  - [Miosa.Admin](Miosa.Admin.md): Admin surface — `/api/v1/admin/*`.
+  - [Miosa.Checkpoints](Miosa.Checkpoints.md): Create and restore disk snapshots (checkpoints) of MIOSA computers.
+  - [Miosa.Computer](Miosa.Computer.md): Lifecycle actions for a specific MIOSA computer.
+  - [Miosa.Computer.Agent](Miosa.Computer.Agent.md): Computer-Use Agent (CUA) session management for a computer.
+  - [Miosa.Computers](Miosa.Computers.md): Manage MIOSA computers (VM workspaces).
+  - [Miosa.Credits](Miosa.Credits.md): Query credit balance, transaction history, and usage for the authenticated tenant.
+  - [Miosa.CustomDomains](Miosa.CustomDomains.md): Register and verify custom domains for MIOSA computers.
+  - [Miosa.Desktop](Miosa.Desktop.md): Control the desktop environment of a running MIOSA computer.
+  - [Miosa.Events](Miosa.Events.md): Subscribe to real-time computer lifecycle events via SSE.
+  - [Miosa.Exec](Miosa.Exec.md): Execute commands and scripts inside a running MIOSA computer.
+  - [Miosa.Exec.Command](Miosa.Exec.Command.md): A GenServer holding a long-lived interactive command session over WebSocket.
+  - [Miosa.Files](Miosa.Files.md): Upload, download, list, and manage files inside a MIOSA computer.
+  - [Miosa.NetworkPolicy](Miosa.NetworkPolicy.md): Read and write the network egress/ingress policy for a MIOSA computer.
+  - [Miosa.Sandbox.Processes](Miosa.Sandbox.Processes.md): Background process management for a sandbox.
+  - [Miosa.Sandboxes](Miosa.Sandboxes.md): Sandboxes — a thin helper over `Miosa.Computers` that defaults
+`template_type` to `"miosa-sandbox"` (ephemeral code-exec rootfs, no
+desktop).
+  - [Miosa.Services](Miosa.Services.md): Manage long-running background services inside a MIOSA computer.
+  - [Miosa.Workspaces](Miosa.Workspaces.md): Manage MIOSA workspaces.
+
+- OpenComputers
+  - [Miosa.OpenComputers](Miosa.OpenComputers.md): OpenComputers API surface — register and control your own machines via MIOSA.
+  - [Miosa.OpenComputers.Agents](Miosa.OpenComputers.Agents.md): AI agent dispatch for registered hosts.
+  - [Miosa.OpenComputers.Clusters](Miosa.OpenComputers.Clusters.md): Inference cluster management.
+  - [Miosa.OpenComputers.DesktopVnc](Miosa.OpenComputers.DesktopVnc.md): Issue WebSocket tickets for desktop (VNC/KasmVNC) sessions on registered hosts.
+
+  - [Miosa.OpenComputers.Fs](Miosa.OpenComputers.Fs.md): Remote file system operations on registered hosts.
+
+  - [Miosa.OpenComputers.Hosts](Miosa.OpenComputers.Hosts.md): Host registration and lifecycle.
+  - [Miosa.OpenComputers.Jobs](Miosa.OpenComputers.Jobs.md): Remote job execution on registered hosts.
+  - [Miosa.OpenComputers.Secrets](Miosa.OpenComputers.Secrets.md): Encrypted secret management for OpenComputers.
+  - [Miosa.OpenComputers.Terminal](Miosa.OpenComputers.Terminal.md): Issue WebSocket tickets for terminal sessions on registered hosts.
+
+  - [Miosa.OpenComputers.Tunnels](Miosa.OpenComputers.Tunnels.md): HTTP tunnel management for registered hosts.
+
+- Egress
+  - [Miosa.Audit](Miosa.Audit.md): Tenant-wide egress audit log.
+  - [Miosa.Network](Miosa.Network.md): Tenant-wide egress network policy and allowlist management.
+  - [Miosa.OauthFlow](Miosa.OauthFlow.md): A pending OAuth Connect flow.
+  - [Miosa.Sandboxes.Audit](Miosa.Sandboxes.Audit.md): Sandbox-bound view of `Miosa.Audit`.
+  - [Miosa.Sandboxes.Network](Miosa.Sandboxes.Network.md): Sandbox-bound view of `Miosa.Network`.
+  - [Miosa.Sandboxes.Secrets](Miosa.Sandboxes.Secrets.md): Sandbox-bound view of `Miosa.Secrets`.
+  - [Miosa.Secrets](Miosa.Secrets.md): Tenant-wide egress secret and OAuth credential vault.
+
+- Types
+  - [Miosa.Types](Miosa.Types.md): Typed structs representing all MIOSA API response objects.
+
+- Errors
+  - [Miosa.Error](Miosa.Error.md): Exception raised for MIOSA API errors.
+

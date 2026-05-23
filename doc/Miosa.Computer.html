@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="ExDoc v0.40.1">
+    <meta name="project" content="Miosa v1.0.2">
+
+
+    <title>Miosa.Computer — Miosa v1.0.2</title>
+
+    <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
+
+    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="docs_config.js"></script>
+    <script defer src="dist/html-YU4BZFVS.js"></script>
+
+  </head>
+  <body>
+    <script>(()=>{var t="ex_doc:settings",e="dark";var o="dark",s="light";var E="sidebar_state",n="closed";var r="sidebar_width";var a="sidebar-open";var i=new URLSearchParams(window.location.search),S=i.get("theme")||JSON.parse(localStorage.getItem(t)||"{}").theme;(S===o||S!==s&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.body.classList.add(e);var d=sessionStorage.getItem(E),A=d!==n&&!window.matchMedia(`screen and (max-width: ${768}px)`).matches;document.body.classList.toggle(a,A);var c=sessionStorage.getItem(r);c&&document.body.style.setProperty("--sidebarWidth",`${c}px`);var p=/(Macintosh|iPhone|iPad|iPod)/.test(window.navigator.userAgent);document.documentElement.classList.toggle("apple-os",p);})();
+</script>
+
+<div class="body-wrapper">
+
+<button id="sidebar-menu" class="sidebar-button sidebar-toggle" aria-label="toggle sidebar" aria-controls="sidebar">
+  <i class="ri-menu-line ri-lg" title="Collapse/expand sidebar"></i>
+</button>
+
+<nav id="sidebar" class="sidebar">
+
+  <div class="sidebar-header">
+    <div class="sidebar-projectInfo">
+
+      <div>
+        <a href="readme.html" class="sidebar-projectName" translate="no">
+Miosa
+        </a>
+        <div class="sidebar-projectVersion" translate="no">
+          v1.0.2
+        </div>
+      </div>
+    </div>
+    <ul id="sidebar-list-nav" class="sidebar-list-nav" role="tablist" data-extras="Pages"></ul>
+  </div>
+</nav>
+
+<output role="status" id="toast"></output>
+
+<main class="content page-module" id="main" data-type="modules">
+  <div id="content" class="content-inner">
+    <div class="top-search">
+      <div class="search-settings">
+        <form class="search-bar" action="search.html">
+          <label class="search-label">
+            <span class="sr-only">Search documentation of Miosa</span>
+            <div class="search-input-wrapper">
+              <input name="q" type="text" class="search-input" placeholder="Press / to search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+              <button type="button" tabindex="-1" class="search-close-button" aria-hidden="true">
+                <i class="ri-close-line ri-lg" title="Cancel search"></i>
+              </button>
+            </div>
+          </label>
+        </form>
+        <div class="autocomplete">
+        </div>
+        <div class="engine-selector" data-multiple="false">
+          <button type="button" class="engine-button" aria-label="Select search engine" aria-haspopup="true" aria-expanded="false">
+            <i class="ri-search-2-line" aria-hidden="true"></i>
+            <span class="engine-name">Default</span>
+            <i class="ri-arrow-down-s-line" aria-hidden="true"></i>
+          </button>
+          <div class="engine-dropdown" hidden role="menu">
+
+              <button type="button"
+                      class="engine-option"
+                      data-engine-url="search.html?q="
+                      role="menuitemradio"
+                      aria-checked="true">
+                <span class="name">Default</span>
+                <span class="help">In-browser search</span>
+              </button>
+
+          </div>
+        </div>
+        <button class="icon-settings display-settings">
+          <i class="ri-settings-3-line"></i>
+          <span class="sr-only">Settings</span>
+        </button>
+      </div>
+    </div>
+
+<div id="top-content">
+  <div class="heading-with-actions top-heading">
+    <h1>
+      <span translate="no">Miosa.<wbr>Computer</span> 
+      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+
+    </h1>
+
+<a href="Miosa.Computer.md" title="Copy Markdown (hold Ctrl/Cmd and click it to open as Markdown)" class="copy-markdown icon-action" rel="help">
+  <i class="ri-markdown-line" aria-hidden="true"></i>
+  <span class="sr-only">Copy Markdown</span>
+</a>
+
+
+
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
+
+  </div>
+
+
+    <section id="moduledoc">
+<p>Lifecycle actions for a specific MIOSA computer.</p><p>This module covers power operations: start, stop, restart, and destroy.
+All functions require a <a href="Miosa.Client.html"><code class="inline">Miosa.Client</code></a> and a computer ID string.</p><p>For creating and listing computers, see <a href="Miosa.Computers.html"><code class="inline">Miosa.Computers</code></a>.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="3549218923-1">(</span><span class="s">&quot;msk_u_...&quot;</span><span class="p" data-group-id="3549218923-1">)</span><span class="w">
+
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">start</span><span class="p" data-group-id="3549218923-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;comp_abc123&quot;</span><span class="p" data-group-id="3549218923-2">)</span><span class="w">
+
+</span><span class="c1"># Poll until running</span><span class="w">
+</span><span class="p" data-group-id="3549218923-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">computer</span><span class="p" data-group-id="3549218923-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">wait_until_running</span><span class="p" data-group-id="3549218923-4">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;comp_abc123&quot;</span><span class="p" data-group-id="3549218923-4">)</span><span class="w">
+
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">stop</span><span class="p" data-group-id="3549218923-5">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;comp_abc123&quot;</span><span class="p" data-group-id="3549218923-5">)</span><span class="w">
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">destroy</span><span class="p" data-group-id="3549218923-6">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;comp_abc123&quot;</span><span class="p" data-group-id="3549218923-6">)</span></code></pre>
+    </section>
+
+</div>
+
+  <section id="summary" class="details-list">
+    <h2 class="section-heading">
+      <a class="hover-link" href="#summary">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Summary</span>
+    </h2>
+<div class="summary-functions summary">
+  <h3>
+    <a href="#functions">Functions</a>
+  </h3>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#apps/2" data-no-tooltip="" translate="no">apps(client, computer_id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>List installed applications on a computer (GET <code class="inline">/computers/:computer_id/apps</code>).</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#clone/3" data-no-tooltip="" translate="no">clone(client, computer_id, attrs \\ %{})</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Clone a computer into a new computer (POST <code class="inline">/computers/:computer_id/clone</code>).</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#destroy/2" data-no-tooltip="" translate="no">destroy(client, computer_id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Destroys a computer permanently.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#move/3" data-no-tooltip="" translate="no">move(client, computer_id, attrs)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Move a computer to a different region or host
+(POST <code class="inline">/computers/:computer_id/move</code>).</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#preview_url/4" data-no-tooltip="" translate="no">preview_url(client, computer_id, port, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the preview URL for a specific port on the computer.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#public_url/3" data-no-tooltip="" translate="no">public_url(client, computer_id, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Returns the public URL for the computer desktop stream.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#resize/3" data-no-tooltip="" translate="no">resize(client, computer_id, attrs)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Resize a computer (PATCH <code class="inline">/computers/:computer_id/resize</code>).</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#restart/2" data-no-tooltip="" translate="no">restart(client, computer_id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Restarts a running computer.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#screenshot_region/6" data-no-tooltip="" translate="no">screenshot_region(client, computer_id, x, y, width, height)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Take a screenshot of a sub-region
+(GET <code class="inline">/computers/:computer_id/screenshot</code>).</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#start/2" data-no-tooltip="" translate="no">start(client, computer_id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Starts a stopped computer.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#stop/2" data-no-tooltip="" translate="no">stop(client, computer_id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Stops a running computer (graceful shutdown).</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#stream_token/2" data-no-tooltip="" translate="no">stream_token(client, computer_id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Issue a short-lived stream token for a computer
+(POST <code class="inline">/computers/:computer_id/stream-token</code>).</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#urls/2" data-no-tooltip="" translate="no">urls(client, computer_id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>List the named public URLs for a computer (GET <code class="inline">/computers/:computer_id/urls</code>).</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#vnc_credentials/2" data-no-tooltip="" translate="no">vnc_credentials(client, computer_id)</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Fetch the VNC/KasmVNC credentials for a computer
+(GET <code class="inline">/computers/:computer_id/vnc-credentials</code>).</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#wait_until_running/3" data-no-tooltip="" translate="no">wait_until_running(client, computer_id, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Blocks until the computer reaches <code class="inline">:running</code> status or times out.</p></div>
+
+    </div>
+
+    <div class="summary-row">
+      <div class="summary-signature">
+        <a href="#wait_until_stopped/3" data-no-tooltip="" translate="no">wait_until_stopped(client, computer_id, opts \\ [])</a>
+
+      </div>
+
+        <div class="summary-synopsis"><p>Blocks until the computer reaches <code class="inline">:stopped</code> status or times out.</p></div>
+
+    </div>
+
+</div>
+
+  </section>
+
+
+  <section id="functions" class="details-list">
+    <h2 class="section-heading">
+      <a class="hover-link" href="#functions">
+        <i class="ri-link-m" aria-hidden="true"></i>
+      </a>
+      <span class="text">Functions</span>
+    </h2>
+
+    <div class="functions-list">
+<section class="detail" id="apps/2">
+
+  <div class="detail-header">
+    <a href="#apps/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">apps(client, computer_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L137" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> apps(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">list</a>())</pre>
+
+      </div>
+
+<p>List installed applications on a computer (GET <code class="inline">/computers/:computer_id/apps</code>).</p>
+  </section>
+</section>
+<section class="detail" id="clone/3">
+
+    <span id="clone/2"></span>
+
+  <div class="detail-header">
+    <a href="#clone/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">clone(client, computer_id, attrs \\ %{})</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L170" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> clone(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>Clone a computer into a new computer (POST <code class="inline">/computers/:computer_id/clone</code>).</p><p>Optional <code class="inline">attrs</code> are merged into the clone creation payload.</p>
+  </section>
+</section>
+<section class="detail" id="destroy/2">
+
+  <div class="detail-header">
+    <a href="#destroy/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">destroy(client, computer_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L75" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> destroy(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: :ok | {:error, <a href="Miosa.Error.html#t:t/0">Miosa.Error.t</a>()}</pre>
+
+      </div>
+
+<p>Destroys a computer permanently.</p><p>This is equivalent to <a href="Miosa.Computers.html#delete/2"><code class="inline">Miosa.Computers.delete/2</code></a> with <code class="inline">force: true</code>.
+All data is lost. This action cannot be undone.</p>
+  </section>
+</section>
+<section class="detail" id="move/3">
+
+  <div class="detail-header">
+    <a href="#move/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">move(client, computer_id, attrs)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L191" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> move(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>Move a computer to a different region or host
+(POST <code class="inline">/computers/:computer_id/move</code>).</p>
+  </section>
+</section>
+<section class="detail" id="preview_url/4">
+
+    <span id="preview_url/3"></span>
+
+  <div class="detail-header">
+    <a href="#preview_url/4" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">preview_url(client, computer_id, port, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L232" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> preview_url(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">pos_integer</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) ::
+  <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+<p>Returns the preview URL for a specific port on the computer.</p><p>The preview URL provides authenticated HTTP access to a service running inside
+the computer. Append a path after the returned URL as needed.</p><h2 id="preview_url/4-parameters" class="section-heading"><a href="#preview_url/4-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">computer_id</code> — Computer ID string.</li><li><code class="inline">port</code> — Port number the service is listening on inside the VM.</li><li><code class="inline">opts</code>:<ul><li><code class="inline">:base_url</code> — Override the base domain. Defaults to <code class="inline">&quot;https://preview.miosa.ai&quot;</code>.</li></ul></li></ul><h2 id="preview_url/4-example" class="section-heading"><a href="#preview_url/4-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">preview_url</span><span class="p" data-group-id="1094095208-1">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;comp_abc&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3000</span><span class="p" data-group-id="1094095208-1">)</span><span class="w">
+</span><span class="c1"># =&gt; &quot;https://preview.miosa.ai/comp_abc/3000&quot;</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="public_url/3">
+
+    <span id="public_url/2"></span>
+
+  <div class="detail-header">
+    <a href="#public_url/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">public_url(client, computer_id, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L253" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> public_url(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) :: <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()</pre>
+
+      </div>
+
+<p>Returns the public URL for the computer desktop stream.</p><p>This URL is the root access point for the computer's web interface
+(VNC/KasmVNC). Requires the computer to be running and <code class="inline">:visibility</code>
+set to <code class="inline">:public</code> or authenticated with an API key.</p><h2 id="public_url/3-example" class="section-heading"><a href="#public_url/3-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">public_url</span><span class="p" data-group-id="3093699465-1">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;comp_abc&quot;</span><span class="p" data-group-id="3093699465-1">)</span><span class="w">
+</span><span class="c1"># =&gt; &quot;https://desktop.miosa.ai/comp_abc&quot;</span></code></pre>
+  </section>
+</section>
+<section class="detail" id="resize/3">
+
+  <div class="detail-header">
+    <a href="#resize/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">resize(client, computer_id, attrs)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L181" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> resize(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>Resize a computer (PATCH <code class="inline">/computers/:computer_id/resize</code>).</p><p>Pass <code class="inline">cpu</code>, <code class="inline">memory_mb</code>, or any other size params.</p>
+  </section>
+</section>
+<section class="detail" id="restart/2">
+
+  <div class="detail-header">
+    <a href="#restart/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">restart(client, computer_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L62" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> restart(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: :ok | {:error, <a href="Miosa.Error.html#t:t/0">Miosa.Error.t</a>()}</pre>
+
+      </div>
+
+<p>Restarts a running computer.</p><p>Equivalent to stop + start. The computer will be unavailable briefly
+during the restart.</p>
+  </section>
+</section>
+<section class="detail" id="screenshot_region/6">
+
+  <div class="detail-header">
+    <a href="#screenshot_region/6" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">screenshot_region(client, computer_id, x, y, width, height)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L205" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> screenshot_region(
+  <a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(),
+  <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>(),
+  <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">integer</a>()
+) ::
+  <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">binary</a>())</pre>
+
+      </div>
+
+<p>Take a screenshot of a sub-region
+(GET <code class="inline">/computers/:computer_id/screenshot</code>).</p><p>Coordinates are in 0–1000 space (MIOSA canonical coordinate system).
+Returns raw PNG binary.</p>
+  </section>
+</section>
+<section class="detail" id="start/2">
+
+  <div class="detail-header">
+    <a href="#start/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">start(client, computer_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L37" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> start(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: :ok | {:error, <a href="Miosa.Error.html#t:t/0">Miosa.Error.t</a>()}</pre>
+
+      </div>
+
+<p>Starts a stopped computer.</p><p>Returns <code class="inline">:ok</code> once the start request is accepted. The computer transitions
+through <code class="inline">:starting</code> → <code class="inline">:running</code>. Use <a href="#wait_until_running/3"><code class="inline">wait_until_running/3</code></a> to block until
+ready.</p>
+  </section>
+</section>
+<section class="detail" id="stop/2">
+
+  <div class="detail-header">
+    <a href="#stop/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">stop(client, computer_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L49" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> stop(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: :ok | {:error, <a href="Miosa.Error.html#t:t/0">Miosa.Error.t</a>()}</pre>
+
+      </div>
+
+<p>Stops a running computer (graceful shutdown).</p><p>The computer status transitions to <code class="inline">:stopping</code> → <code class="inline">:stopped</code>.</p>
+  </section>
+</section>
+<section class="detail" id="stream_token/2">
+
+  <div class="detail-header">
+    <a href="#stream_token/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">stream_token(client, computer_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L160" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> stream_token(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>Issue a short-lived stream token for a computer
+(POST <code class="inline">/computers/:computer_id/stream-token</code>).</p>
+  </section>
+</section>
+<section class="detail" id="urls/2">
+
+  <div class="detail-header">
+    <a href="#urls/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">urls(client, computer_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L151" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> urls(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) :: <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>List the named public URLs for a computer (GET <code class="inline">/computers/:computer_id/urls</code>).</p>
+  </section>
+</section>
+<section class="detail" id="vnc_credentials/2">
+
+  <div class="detail-header">
+    <a href="#vnc_credentials/2" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">vnc_credentials(client, computer_id)</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L129" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> vnc_credentials(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>()) ::
+  :ok | {:error, <a href="Miosa.Error.html#t:t/0">Miosa.Error.t</a>()} | <a href="Miosa.Client.html#t:result/1">Miosa.Client.result</a>(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>())</pre>
+
+      </div>
+
+<p>Fetch the VNC/KasmVNC credentials for a computer
+(GET <code class="inline">/computers/:computer_id/vnc-credentials</code>).</p>
+  </section>
+</section>
+<section class="detail" id="wait_until_running/3">
+
+    <span id="wait_until_running/2"></span>
+
+  <div class="detail-header">
+    <a href="#wait_until_running/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">wait_until_running(client, computer_id, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L99" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> wait_until_running(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) ::
+  {:ok, <a href="Miosa.Types.Computer.html#t:t/0">Miosa.Types.Computer.t</a>()} | {:error, :timeout | <a href="Miosa.Error.html#t:t/0">Miosa.Error.t</a>()}</pre>
+
+      </div>
+
+<p>Blocks until the computer reaches <code class="inline">:running</code> status or times out.</p><p>Polls <a href="Miosa.Computers.html#get/2"><code class="inline">Miosa.Computers.get/2</code></a> every 2 seconds.</p><h2 id="wait_until_running/3-options" class="section-heading"><a href="#wait_until_running/3-options" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Options</span></h2><ul><li><code class="inline">:timeout</code> — Maximum wait time in milliseconds. Defaults to <code class="inline">300_000</code> (5 minutes).</li></ul><h2 id="wait_until_running/3-returns" class="section-heading"><a href="#wait_until_running/3-returns" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Returns</span></h2><ul><li><code class="inline">{:ok, computer}</code> — when the computer is running.</li><li><code class="inline">{:error, :timeout}</code> — if the computer did not reach <code class="inline">:running</code> within the timeout.</li><li><code class="inline">{:error, reason}</code> — if the computer reaches <code class="inline">:error</code> status or an API error occurs.</li></ul>
+  </section>
+</section>
+<section class="detail" id="wait_until_stopped/3">
+
+    <span id="wait_until_stopped/2"></span>
+
+  <div class="detail-header">
+    <a href="#wait_until_stopped/3" class="detail-link" data-no-tooltip="" aria-label="Link to this function">
+      <i class="ri-link-m" aria-hidden="true"></i>
+    </a>
+    <div class="heading-with-actions">
+      <h1 class="signature" translate="no">wait_until_stopped(client, computer_id, opts \\ [])</h1>
+
+
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L116" class="icon-action" rel="help" aria-label="View Source">
+          <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        </a>
+
+    </div>
+  </div>
+
+  <section class="docstring">
+
+      <div class="specs">
+
+          <pre translate="no"><span class="attribute">@spec</span> wait_until_stopped(<a href="Miosa.Client.html#t:t/0">Miosa.Client.t</a>(), <a href="https://hexdocs.pm/elixir/String.html#t:t/0">String.t</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()) ::
+  {:ok, <a href="Miosa.Types.Computer.html#t:t/0">Miosa.Types.Computer.t</a>()} | {:error, :timeout | <a href="Miosa.Error.html#t:t/0">Miosa.Error.t</a>()}</pre>
+
+      </div>
+
+<p>Blocks until the computer reaches <code class="inline">:stopped</code> status or times out.</p><h2 id="wait_until_stopped/3-options" class="section-heading"><a href="#wait_until_stopped/3-options" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Options</span></h2><ul><li><code class="inline">:timeout</code> — Maximum wait time in milliseconds. Defaults to <code class="inline">300_000</code> (5 minutes).</li></ul>
+  </section>
+</section>
+
+    </div>
+  </section>
+
+    <footer class="footer">
+
+        <p>
+
+            <span class="line">
+              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+
+              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+
+            </span>
+
+          <span class="line">
+            <button class="a-main footer-button display-quick-switch" title="Go to package docs">
+              Go to package docs
+            </button>
+
+              <a href="llms.txt" target="_blank">
+                View llms.txt
+              </a>
+
+
+              <a href="Miosa.epub">
+                Download ePub version
+              </a>
+
+          </span>
+        </p>
+
+        <p class="built-using">
+          Built using
+          <a href="https://github.com/elixir-lang/ex_doc" title="ExDoc" target="_blank" rel="help noopener" translate="no">ExDoc</a> (v0.40.1) for the
+
+            <a href="https://elixir-lang.org" title="Elixir" target="_blank" translate="no">Elixir programming language</a>
+
+        </p>
+
+
+    </footer>
+  </div>
+</main>
+</div>
+
+  </body>
+</html>
