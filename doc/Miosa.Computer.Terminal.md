@@ -1,5 +1,5 @@
 # `Miosa.Computer.Terminal`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer/terminal.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer/terminal.ex#L1)
 
 PTY session management for a computer.
 

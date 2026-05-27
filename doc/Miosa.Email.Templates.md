@@ -1,5 +1,5 @@
 # `Miosa.Email.Templates`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/email.ex#L114)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/email.ex#L114)
 
 Reusable email templates keyed by name (`/admin/email-templates`).
 

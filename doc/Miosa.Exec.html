@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.0.1">
 
 
-    <title>Miosa.Exec — Miosa v1.0.2</title>
+    <title>Miosa.Exec — Miosa v1.0.1</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-4E64116D.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.0.1
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>Exec</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.0.1)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/exec.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/exec.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -115,15 +115,15 @@ Miosa
 
     <section id="moduledoc">
 <p>Execute commands and scripts inside a running MIOSA computer.</p><p>Both Bash and Python execution are supported. Commands run with the default
-user's environment inside the VM.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="7930003310-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="7930003310-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec</span><span class="o">.</span><span class="n">bash</span><span class="p" data-group-id="7930003310-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ls -la /home/user&quot;</span><span class="p" data-group-id="7930003310-2">)</span><span class="w">
-</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="7930003310-3">(</span><span class="n">result</span><span class="o">.</span><span class="n">output</span><span class="p" data-group-id="7930003310-3">)</span><span class="w">
-</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="7930003310-4">(</span><span class="s">&quot;Exit code: </span><span class="si" data-group-id="7930003310-5">#{</span><span class="n">result</span><span class="o">.</span><span class="n">exit_code</span><span class="si" data-group-id="7930003310-5">}</span><span class="s">&quot;</span><span class="p" data-group-id="7930003310-4">)</span><span class="w">
+user's environment inside the VM.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="1177352155-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="1177352155-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec</span><span class="o">.</span><span class="n">bash</span><span class="p" data-group-id="1177352155-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ls -la /home/user&quot;</span><span class="p" data-group-id="1177352155-2">)</span><span class="w">
+</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="1177352155-3">(</span><span class="n">result</span><span class="o">.</span><span class="n">output</span><span class="p" data-group-id="1177352155-3">)</span><span class="w">
+</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="1177352155-4">(</span><span class="s">&quot;Exit code: </span><span class="si" data-group-id="1177352155-5">#{</span><span class="n">result</span><span class="o">.</span><span class="n">exit_code</span><span class="si" data-group-id="1177352155-5">}</span><span class="s">&quot;</span><span class="p" data-group-id="1177352155-4">)</span><span class="w">
 
-</span><span class="p" data-group-id="7930003310-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="7930003310-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec</span><span class="o">.</span><span class="n">python</span><span class="p" data-group-id="7930003310-7">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;&quot;
+</span><span class="p" data-group-id="1177352155-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="1177352155-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec</span><span class="o">.</span><span class="n">python</span><span class="p" data-group-id="1177352155-7">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;&quot;
   import json
   data = {&quot;hello&quot;: &quot;world&quot;}
   print(json.dumps(data))
-&quot;&quot;&quot;</span><span class="p" data-group-id="7930003310-7">)</span></code></pre>
+&quot;&quot;&quot;</span><span class="p" data-group-id="1177352155-7">)</span></code></pre>
     </section>
 
 </div>
@@ -217,7 +217,7 @@ user's environment inside the VM.</p><h2 id="module-example" class="section-head
       <h1 class="signature" translate="no">bash(client, computer_id, command, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/exec.ex#L40" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/exec.ex#L40" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -249,7 +249,7 @@ user's environment inside the VM.</p><h2 id="module-example" class="section-head
       <h1 class="signature" translate="no">bash!(client, computer_id, command, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/exec.ex#L80" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/exec.ex#L80" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -280,7 +280,7 @@ user's environment inside the VM.</p><h2 id="module-example" class="section-head
       <h1 class="signature" translate="no">python(client, computer_id, code, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/exec.ex#L65" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/exec.ex#L65" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -313,7 +313,7 @@ computer template.</p><h2 id="python/4-options" class="section-heading"><a href=
       <h1 class="signature" translate="no">python!(client, computer_id, code, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/exec.ex#L93" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/exec.ex#L93" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -344,7 +344,7 @@ computer template.</p><h2 id="python/4-options" class="section-heading"><a href=
       <h1 class="signature" translate="no">spawn(client, computer_id, command, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/exec.ex#L127" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/exec.ex#L127" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -366,10 +366,10 @@ Use <a href="Miosa.Exec.Command.html#send_stdin/2"><code class="inline">Miosa.Ex
 <code class="inline">await/2</code> to interact with the running process.</p><p>The GenServer owns the WebSocket connection and terminates it on shutdown.
 Callers should always call <a href="Miosa.Exec.Command.html#await/2"><code class="inline">Miosa.Exec.Command.await/2</code></a> to drain the session
 and ensure the underlying connection is cleaned up.</p><h2 id="spawn/4-options" class="section-heading"><a href="#spawn/4-options" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Options</span></h2><ul><li><code class="inline">:pty</code> — Allocate a pseudo-terminal. Required for interactive programs
-like shells. Defaults to <code class="inline">false</code>.</li></ul><h2 id="spawn/4-example" class="section-heading"><a href="#spawn/4-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="3606136422-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">cmd</span><span class="p" data-group-id="3606136422-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec</span><span class="o">.</span><span class="n">spawn</span><span class="p" data-group-id="3606136422-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bash&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">pty</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="3606136422-2">)</span><span class="w">
-</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec.Command</span><span class="o">.</span><span class="n">send_stdin</span><span class="p" data-group-id="3606136422-3">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;echo hello</span><span class="se">\n</span><span class="s">&quot;</span><span class="p" data-group-id="3606136422-3">)</span><span class="w">
-</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec.Command</span><span class="o">.</span><span class="n">send_stdin</span><span class="p" data-group-id="3606136422-4">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;exit</span><span class="se">\n</span><span class="s">&quot;</span><span class="p" data-group-id="3606136422-4">)</span><span class="w">
-</span><span class="p" data-group-id="3606136422-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="3606136422-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec.Command</span><span class="o">.</span><span class="n">await</span><span class="p" data-group-id="3606136422-6">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="mi">5_000</span><span class="p" data-group-id="3606136422-6">)</span></code></pre>
+like shells. Defaults to <code class="inline">false</code>.</li></ul><h2 id="spawn/4-example" class="section-heading"><a href="#spawn/4-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="3487053884-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">cmd</span><span class="p" data-group-id="3487053884-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec</span><span class="o">.</span><span class="n">spawn</span><span class="p" data-group-id="3487053884-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bash&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">pty</span><span class="p">:</span><span class="w"> </span><span class="no">true</span><span class="p" data-group-id="3487053884-2">)</span><span class="w">
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec.Command</span><span class="o">.</span><span class="n">send_stdin</span><span class="p" data-group-id="3487053884-3">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;echo hello</span><span class="se">\n</span><span class="s">&quot;</span><span class="p" data-group-id="3487053884-3">)</span><span class="w">
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec.Command</span><span class="o">.</span><span class="n">send_stdin</span><span class="p" data-group-id="3487053884-4">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;exit</span><span class="se">\n</span><span class="s">&quot;</span><span class="p" data-group-id="3487053884-4">)</span><span class="w">
+</span><span class="p" data-group-id="3487053884-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="3487053884-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec.Command</span><span class="o">.</span><span class="n">await</span><span class="p" data-group-id="3487053884-6">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="mi">5_000</span><span class="p" data-group-id="3487053884-6">)</span></code></pre>
   </section>
 </section>
 
@@ -381,9 +381,9 @@ like shells. Defaults to <code class="inline">false</code>.</li></ul><h2 id="spa
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.0.1">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.0.1">Hex Preview</a>
 
             </span>
 

@@ -1,5 +1,5 @@
 # `Miosa.Types.NetworkPolicyRule`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/types.ex#L509)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/types.ex#L509)
 
 A single network firewall rule (allow or deny).
 

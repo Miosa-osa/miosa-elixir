@@ -1,5 +1,5 @@
 # `Miosa.ProviderDefaults`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/provider_defaults.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/provider_defaults.ex#L1)
 
 Admin LLM provider routing config.
 

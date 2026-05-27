@@ -1,5 +1,5 @@
 # `Miosa.Credits`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/credits.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/credits.ex#L1)
 
 Query credit balance, transaction history, and usage for the authenticated tenant.
 

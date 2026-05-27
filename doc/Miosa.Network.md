@@ -1,5 +1,5 @@
 # `Miosa.Network`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/network.ex#L1)
 
 Tenant-wide egress network policy and allowlist management.
 

@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.0.1">
 
 
-    <title>Miosa.Events — Miosa v1.0.2</title>
+    <title>Miosa.Events — Miosa v1.0.1</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-4E64116D.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.0.1
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>Events</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.0.1)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/events.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/events.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -122,19 +122,19 @@ consumers: callers can <a href="https://hexdocs.pm/elixir/Enum.html#take/2"><cod
 is unnecessary unless the caller needs concurrent fan-out to multiple
 processes, which can be achieved by spawning a <a href="https://hexdocs.pm/elixir/Task.html"><code class="inline">Task</code></a> that runs the stream
 and uses <code class="inline">Process.send/2</code> to forward events — a pattern the caller controls
-without SDK coupling.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Events</span><span class="o">.</span><span class="n">subscribe</span><span class="p" data-group-id="9210661223-1">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p" data-group-id="9210661223-1">)</span><span class="w">
+without SDK coupling.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Events</span><span class="o">.</span><span class="n">subscribe</span><span class="p" data-group-id="2499680763-1">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p" data-group-id="2499680763-1">)</span><span class="w">
 
 </span><span class="c1"># Process events until the stream ends (server closes connection)</span><span class="w">
-</span><span class="nc">Enum</span><span class="o">.</span><span class="n">each</span><span class="p" data-group-id="9210661223-2">(</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="9210661223-3">fn</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
-  </span><span class="nc">IO</span><span class="o">.</span><span class="n">inspect</span><span class="p" data-group-id="9210661223-4">(</span><span class="n">event</span><span class="p" data-group-id="9210661223-4">)</span><span class="w">
-</span><span class="k" data-group-id="9210661223-3">end</span><span class="p" data-group-id="9210661223-2">)</span><span class="w">
+</span><span class="nc">Enum</span><span class="o">.</span><span class="n">each</span><span class="p" data-group-id="2499680763-2">(</span><span class="n">stream</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="2499680763-3">fn</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+  </span><span class="nc">IO</span><span class="o">.</span><span class="n">inspect</span><span class="p" data-group-id="2499680763-4">(</span><span class="n">event</span><span class="p" data-group-id="2499680763-4">)</span><span class="w">
+</span><span class="k" data-group-id="2499680763-3">end</span><span class="p" data-group-id="2499680763-2">)</span><span class="w">
 
 </span><span class="c1"># Async: spawn a Task and receive events as messages</span><span class="w">
-</span><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p" data-group-id="9210661223-5">(</span><span class="p" data-group-id="9210661223-5">)</span><span class="w">
-</span><span class="nc">Task</span><span class="o">.</span><span class="n">start</span><span class="p" data-group-id="9210661223-6">(</span><span class="k" data-group-id="9210661223-7">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
-  </span><span class="nc">Miosa.Events</span><span class="o">.</span><span class="n">subscribe</span><span class="p" data-group-id="9210661223-8">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p" data-group-id="9210661223-8">)</span><span class="w">
-  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">each</span><span class="p" data-group-id="9210661223-9">(</span><span class="k" data-group-id="9210661223-10">fn</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">send</span><span class="p" data-group-id="9210661223-11">(</span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9210661223-12">{</span><span class="ss">:computer_event</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="p" data-group-id="9210661223-12">}</span><span class="p" data-group-id="9210661223-11">)</span><span class="w"> </span><span class="k" data-group-id="9210661223-10">end</span><span class="p" data-group-id="9210661223-9">)</span><span class="w">
-</span><span class="k" data-group-id="9210661223-7">end</span><span class="p" data-group-id="9210661223-6">)</span></code></pre>
+</span><span class="n">parent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">self</span><span class="p" data-group-id="2499680763-5">(</span><span class="p" data-group-id="2499680763-5">)</span><span class="w">
+</span><span class="nc">Task</span><span class="o">.</span><span class="n">start</span><span class="p" data-group-id="2499680763-6">(</span><span class="k" data-group-id="2499680763-7">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w">
+  </span><span class="nc">Miosa.Events</span><span class="o">.</span><span class="n">subscribe</span><span class="p" data-group-id="2499680763-8">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p" data-group-id="2499680763-8">)</span><span class="w">
+  </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">each</span><span class="p" data-group-id="2499680763-9">(</span><span class="k" data-group-id="2499680763-10">fn</span><span class="w"> </span><span class="n">event</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">send</span><span class="p" data-group-id="2499680763-11">(</span><span class="n">parent</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2499680763-12">{</span><span class="ss">:computer_event</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="p" data-group-id="2499680763-12">}</span><span class="p" data-group-id="2499680763-11">)</span><span class="w"> </span><span class="k" data-group-id="2499680763-10">end</span><span class="p" data-group-id="2499680763-9">)</span><span class="w">
+</span><span class="k" data-group-id="2499680763-7">end</span><span class="p" data-group-id="2499680763-6">)</span></code></pre>
     </section>
 
 </div>
@@ -199,7 +199,7 @@ without SDK coupling.</p><h2 id="module-example" class="section-heading"><a href
       <h1 class="signature" translate="no">subscribe_opts()</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/events.ex#L37" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/events.ex#L37" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -242,7 +242,7 @@ without SDK coupling.</p><h2 id="module-example" class="section-heading"><a href
       <h1 class="signature" translate="no">subscribe(client, computer_id, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/events.ex#L54" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/events.ex#L54" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -271,9 +271,9 @@ yields events as they arrive. The stream ends when the SSE connection closes
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.0.1">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.0.1">Hex Preview</a>
 
             </span>
 

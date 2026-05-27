@@ -261,6 +261,84 @@ defmodule Miosa.Sandboxes do
   defp ready?(%{status: "ready"}), do: true
   defp ready?(_), do: false
 
+  @doc """
+  Fork a sandbox from an existing snapshot or a running sandbox.
+
+  POST `/api/v1/sandboxes/:id/fork`
+
+  ## Options
+    * `:snapshot_id`     — optional snapshot to fork from.
+    * `:name`            — name for the new sandbox.
+    * `:external_user_id` — attribution for the forked sandbox.
+
+  Returns the new sandbox object.
+  """
+  @spec fork(Client.t(), String.t(), keyword()) :: Client.result(map())
+  def fork(%Client{} = client, sandbox_id, opts \\ []) when is_binary(sandbox_id) do
+    body =
+      opts
+      |> Keyword.take([:snapshot_id, :name, :external_user_id])
+      |> Enum.reject(fn {_k, v} -> is_nil(v) end)
+      |> Map.new(fn {k, v} -> {Atom.to_string(k), v} end)
+
+    case Client.post(client, "/sandboxes/#{sandbox_id}/fork", body) do
+      {:ok, %{"data" => data}} -> {:ok, data}
+      {:ok, body} -> {:ok, body}
+      err -> err
+    end
+  end
+
+  @doc """
+  Update mutable sandbox fields.
+
+  Wraps `PATCH /api/v1/sandboxes/:id`. Accepted keys:
+  `:name`, `:slug`, `:tags`, `:metadata`, `:always_on`,
+  `:timeout_sec`, `:idle_timeout_sec`.
+
+  Returns the updated sandbox map on success.
+  """
+  @spec update(Client.t(), String.t(), map()) :: Client.result(map())
+  def update(client, sandbox_id, attrs) when is_binary(sandbox_id) and is_map(attrs) do
+    allowed = ~w(name slug tags metadata always_on timeout_sec idle_timeout_sec)a
+    body =
+      attrs
+      |> Map.take(allowed)
+      |> Enum.reject(fn {_k, v} -> is_nil(v) end)
+      |> Map.new(fn {k, v} -> {Atom.to_string(k), v} end)
+
+    case Client.patch(client, "/sandboxes/#{sandbox_id}", body) do
+      {:ok, %{"data" => data}} -> {:ok, data}
+      {:ok, body} -> {:ok, body}
+      err -> err
+    end
+  end
+
+  @doc """
+  Mint a short-lived preview token for a sandbox.
+
+  Wraps `POST /api/v1/sandboxes/:id/preview-token`.
+
+  ## Options
+
+    * `:expires_in` — token lifetime in seconds. Defaults to `3600`.
+    * `:scope`      — token scope string. Defaults to `"read"`.
+
+  Returns `{:ok, %{"token" => _, "url" => _, "expires_at" => _, "scope" => _}}`.
+  """
+  @spec preview_token(Client.t(), String.t(), keyword()) :: Client.result(map())
+  def preview_token(client, sandbox_id, opts \\ []) when is_binary(sandbox_id) do
+    body = %{
+      "expires_in" => Keyword.get(opts, :expires_in, 3600),
+      "scope" => Keyword.get(opts, :scope, "read")
+    }
+
+    case Client.post(client, "/sandboxes/#{sandbox_id}/preview-token", body) do
+      {:ok, %{"data" => data}} -> {:ok, data}
+      {:ok, body} -> {:ok, body}
+      err -> err
+    end
+  end
+
   # ── Internal sandbox? predicate (unchanged) ─────────────────────────
 
   defp sandbox?(%{template_type: template}), do: template == @sandbox_template

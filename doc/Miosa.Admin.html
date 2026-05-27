@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.0.1">
 
 
-    <title>Miosa.Admin — Miosa v1.0.2</title>
+    <title>Miosa.Admin — Miosa v1.0.1</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-4E64116D.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.0.1
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>Admin</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.0.1)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -116,11 +116,11 @@ Miosa
     <section id="moduledoc">
 <p>Admin surface — <code class="inline">/api/v1/admin/*</code>.</p><p>Requires an admin credential: a <code class="inline">msk_a_*</code> / <code class="inline">msk_p_*</code> API key or an admin
 JWT. Calls from a user-role credential return <code class="inline">{:error, %Miosa.Error{status: 403}}</code>.</p><p>For endpoints not covered by the typed helpers below, use <a href="#request/5"><code class="inline">request/5</code></a>
-which accepts an arbitrary method + path.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="1105658338-1">(</span><span class="s">&quot;msk_a_...&quot;</span><span class="p" data-group-id="1105658338-1">)</span><span class="w">
+which accepts an arbitrary method + path.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="1027346137-1">(</span><span class="s">&quot;msk_a_...&quot;</span><span class="p" data-group-id="1027346137-1">)</span><span class="w">
 
-</span><span class="p" data-group-id="1105658338-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="1105658338-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Admin</span><span class="o">.</span><span class="n">grant_credits</span><span class="p" data-group-id="1105658338-3">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;tenant-uuid&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;goodwill&quot;</span><span class="p" data-group-id="1105658338-3">)</span><span class="w">
-</span><span class="p" data-group-id="1105658338-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">users</span><span class="p" data-group-id="1105658338-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Admin</span><span class="o">.</span><span class="n">list_users</span><span class="p" data-group-id="1105658338-5">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="ss">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="ss">status</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;active&quot;</span><span class="p" data-group-id="1105658338-5">)</span><span class="w">
-</span><span class="p" data-group-id="1105658338-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="1105658338-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Admin</span><span class="o">.</span><span class="n">change_tenant_plan</span><span class="p" data-group-id="1105658338-7">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;tenant-uuid&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;pro&quot;</span><span class="p" data-group-id="1105658338-7">)</span></code></pre>
+</span><span class="p" data-group-id="1027346137-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="1027346137-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Admin</span><span class="o">.</span><span class="n">grant_credits</span><span class="p" data-group-id="1027346137-3">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;tenant-uuid&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;goodwill&quot;</span><span class="p" data-group-id="1027346137-3">)</span><span class="w">
+</span><span class="p" data-group-id="1027346137-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">users</span><span class="p" data-group-id="1027346137-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Admin</span><span class="o">.</span><span class="n">list_users</span><span class="p" data-group-id="1027346137-5">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="ss">limit</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="ss">status</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;active&quot;</span><span class="p" data-group-id="1027346137-5">)</span><span class="w">
+</span><span class="p" data-group-id="1027346137-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="1027346137-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Admin</span><span class="o">.</span><span class="n">change_tenant_plan</span><span class="p" data-group-id="1027346137-7">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;tenant-uuid&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;pro&quot;</span><span class="p" data-group-id="1027346137-7">)</span></code></pre>
     </section>
 
 </div>
@@ -523,7 +523,7 @@ which accepts an arbitrary method + path.</p><h2 id="module-example" class="sect
       <h1 class="signature" translate="no">result()</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L23" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L23" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -564,7 +564,7 @@ which accepts an arbitrary method + path.</p><h2 id="module-example" class="sect
       <h1 class="signature" translate="no">api_key_stats(client)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L292" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L292" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -594,7 +594,7 @@ which accepts an arbitrary method + path.</p><h2 id="module-example" class="sect
       <h1 class="signature" translate="no">audit_log(client, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L56" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L56" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -627,7 +627,7 @@ which accepts an arbitrary method + path.</p><h2 id="module-example" class="sect
       <h1 class="signature" translate="no">ban_user(client, user_id, reason, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L154" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L154" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -655,7 +655,7 @@ which accepts an arbitrary method + path.</p><h2 id="module-example" class="sect
       <h1 class="signature" translate="no">billing_summary(client)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L61" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L61" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -683,7 +683,7 @@ which accepts an arbitrary method + path.</p><h2 id="module-example" class="sect
       <h1 class="signature" translate="no">bulk_revoke_api_keys(client, key_ids)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L295" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L295" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -713,7 +713,7 @@ which accepts an arbitrary method + path.</p><h2 id="module-example" class="sect
       <h1 class="signature" translate="no">bulk_user_action(client, user_ids, action, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L165" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L165" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -744,7 +744,7 @@ which accepts an arbitrary method + path.</p><h2 id="module-example" class="sect
       <h1 class="signature" translate="no">change_tenant_plan(client, tenant_id, plan, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L203" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L203" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -773,7 +773,7 @@ which accepts an arbitrary method + path.</p><h2 id="module-example" class="sect
       <h1 class="signature" translate="no">change_user_role(client, user_id, role)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L133" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L133" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -801,7 +801,7 @@ which accepts an arbitrary method + path.</p><h2 id="module-example" class="sect
       <h1 class="signature" translate="no">create_api_key(client, opts)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L275" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L275" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -834,7 +834,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">dashboard(client)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L45" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L45" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -862,7 +862,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">deduct_credits(client, tenant_id, amount, description)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L79" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L79" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -890,7 +890,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">delete_computer(client, computer_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L229" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L229" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -918,7 +918,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">delete_tenant(client, tenant_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L210" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L210" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -946,7 +946,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">delete_user(client, user_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L130" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L130" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -974,7 +974,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">detailed_health(client)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L64" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L64" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1002,7 +1002,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">force_logout(client, user_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L138" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L138" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1030,7 +1030,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">get_user(client, user_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L122" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L122" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1060,7 +1060,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">grant_credits(client, tenant_id, amount, description, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L69" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L69" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1091,7 +1091,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">list_api_keys(client, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L261" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L261" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1124,7 +1124,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">list_computers(client, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L222" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L222" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1155,7 +1155,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">list_optimal_models(client)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L310" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L310" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1185,7 +1185,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">list_tenants(client, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L177" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L177" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1218,7 +1218,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">list_users(client, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L117" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L117" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1249,7 +1249,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">optimal_status(client)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L307" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L307" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1277,7 +1277,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">purge_stale_computers(client)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L249" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L249" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1307,7 +1307,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">refund_credits(client, tenant_id, amount, description, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L89" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L89" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1340,7 +1340,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">request(client, method, path, body \\ nil, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L34" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L34" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1370,7 +1370,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">restart_computer(client, computer_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L244" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L244" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1398,7 +1398,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">resume_computer(client, computer_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L239" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L239" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1426,7 +1426,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">revoke_api_key(client, key_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L300" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L300" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1454,7 +1454,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">stats(client)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L48" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L48" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1482,7 +1482,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">suspend_computer(client, computer_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L234" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L234" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1512,7 +1512,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">suspend_tenant(client, tenant_id, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L187" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L187" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1542,7 +1542,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">suspend_user(client, user_id, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L143" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L143" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1570,7 +1570,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">switch_optimal_model(client, model_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L313" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L313" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1598,7 +1598,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">tenant_balance(client, tenant_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L98" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L98" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1628,7 +1628,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">tenant_credit_history(client, tenant_id, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L103" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L103" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1656,7 +1656,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">tenant_detail(client, tenant_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L182" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L182" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1684,7 +1684,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">unban_user(client, user_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L160" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L160" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1712,7 +1712,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">unsuspend_tenant(client, tenant_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L198" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L198" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1740,7 +1740,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">unsuspend_user(client, user_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L149" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L149" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1768,7 +1768,7 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
       <h1 class="signature" translate="no">update_user(client, user_id, attrs)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L125" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L125" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -1795,9 +1795,9 @@ Optional: <code class="inline">:key_type</code> (default <code class="inline">&q
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.0.1">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.0.1">Hex Preview</a>
 
             </span>
 

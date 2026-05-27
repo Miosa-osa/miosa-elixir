@@ -1,5 +1,5 @@
 # `Miosa.Integrations`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/integrations.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/integrations.ex#L1)
 
 OAuth account-level integrations — GitHub, Slack, Linear, Discord.
 

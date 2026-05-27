@@ -1,5 +1,5 @@
 # `Miosa.Services`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/services.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/services.ex#L1)
 
 Manage long-running background services inside a MIOSA computer.
 

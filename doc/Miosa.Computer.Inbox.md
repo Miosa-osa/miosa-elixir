@@ -1,5 +1,5 @@
 # `Miosa.Computer.Inbox`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer/inbox.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer/inbox.ex#L1)
 
 Per-computer inbox configuration for Optimal inbound-email routing.
 

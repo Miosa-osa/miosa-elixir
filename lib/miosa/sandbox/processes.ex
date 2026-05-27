@@ -47,14 +47,45 @@ defmodule Miosa.Sandbox.Processes do
   end
 
   @doc """
-  Kill a background process by its PID
+  Get a single process by PID
+  (GET `/sandboxes/:sandbox_id/processes/:pid`).
+  """
+  @spec get(Client.t(), String.t(), String.t()) :: Client.result(map())
+  def get(%Client{} = client, sandbox_id, pid)
+      when is_binary(sandbox_id) and is_binary(pid) do
+    client
+    |> Client.get("/sandboxes/#{sandbox_id}/processes/#{pid}")
+    |> unwrap()
+  end
+
+  @doc """
+  Stop (SIGTERM → SIGKILL after 5 s) a background process by its PID
   (DELETE `/sandboxes/:sandbox_id/processes/:pid`).
   """
-  @spec kill(Client.t(), String.t(), String.t()) :: :ok | {:error, Miosa.Error.t()}
-  def kill(%Client{} = client, sandbox_id, pid)
+  @spec stop(Client.t(), String.t(), String.t()) :: :ok | {:error, Miosa.Error.t()}
+  def stop(%Client{} = client, sandbox_id, pid)
       when is_binary(sandbox_id) and is_binary(pid) do
     case Client.delete(client, "/sandboxes/#{sandbox_id}/processes/#{pid}") do
       {:ok, _} -> :ok
+      err -> err
+    end
+  end
+
+  @doc "Alias for `stop/3` (kept for backwards-compat)."
+  @spec kill(Client.t(), String.t(), String.t()) :: :ok | {:error, Miosa.Error.t()}
+  def kill(client, sandbox_id, pid), do: stop(client, sandbox_id, pid)
+
+  @doc """
+  Fetch the last `tail` lines of logs for a process
+  (GET `/sandboxes/:sandbox_id/processes/:pid/logs?tail=N`).
+  """
+  @spec logs(Client.t(), String.t(), String.t(), pos_integer()) ::
+          Client.result(String.t())
+  def logs(%Client{} = client, sandbox_id, pid, tail \\ 200)
+      when is_binary(sandbox_id) and is_binary(pid) do
+    case Client.get(client, "/sandboxes/#{sandbox_id}/processes/#{pid}/logs?tail=#{tail}") do
+      {:ok, %{"data" => data}} -> {:ok, data}
+      {:ok, body} -> {:ok, body}
       err -> err
     end
   end

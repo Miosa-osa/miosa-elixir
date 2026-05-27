@@ -1,5 +1,5 @@
 # `Miosa.Email.Inbox`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/email.ex#L190)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/email.ex#L190)
 
 Inbound and outbound direct messages (`/admin/email-inbox`).
 

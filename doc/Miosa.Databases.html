@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.0.1">
 
 
-    <title>Miosa.Databases — Miosa v1.0.2</title>
+    <title>Miosa.Databases — Miosa v1.0.1</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-4E64116D.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.0.1
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>Databases</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.0.1)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/databases.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/databases.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -115,11 +115,11 @@ Miosa
 
     <section id="moduledoc">
 <p>Managed Postgres databases — CRUD, lifecycle, credentials, logs.</p><p>All mutating calls send an <code class="inline">Idempotency-Key</code> header automatically.
-Supply <code class="inline">:idempotency_key</code> in <code class="inline">attrs</code> to use your own.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="2193134852-1">(</span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="2193134852-2">(</span><span class="s">&quot;MIOSA_API_KEY&quot;</span><span class="p" data-group-id="2193134852-2">)</span><span class="p" data-group-id="2193134852-1">)</span><span class="w">
+Supply <code class="inline">:idempotency_key</code> in <code class="inline">attrs</code> to use your own.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="6307465788-1">(</span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="6307465788-2">(</span><span class="s">&quot;MIOSA_API_KEY&quot;</span><span class="p" data-group-id="6307465788-2">)</span><span class="p" data-group-id="6307465788-1">)</span><span class="w">
 
-</span><span class="p" data-group-id="2193134852-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">db</span><span class="p" data-group-id="2193134852-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Databases</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="2193134852-4">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2193134852-5">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-db&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">plan</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;starter&quot;</span><span class="p" data-group-id="2193134852-5">}</span><span class="p" data-group-id="2193134852-4">)</span><span class="w">
-</span><span class="p" data-group-id="2193134852-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">creds</span><span class="p" data-group-id="2193134852-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Databases</span><span class="o">.</span><span class="n">credentials</span><span class="p" data-group-id="2193134852-7">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">db</span><span class="p" data-group-id="2193134852-8">[</span><span class="s">&quot;id&quot;</span><span class="p" data-group-id="2193134852-8">]</span><span class="p" data-group-id="2193134852-7">)</span><span class="w">
-</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="2193134852-9">(</span><span class="n">creds</span><span class="p" data-group-id="2193134852-10">[</span><span class="s">&quot;url&quot;</span><span class="p" data-group-id="2193134852-10">]</span><span class="p" data-group-id="2193134852-9">)</span></code></pre>
+</span><span class="p" data-group-id="6307465788-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">db</span><span class="p" data-group-id="6307465788-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Databases</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="6307465788-4">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6307465788-5">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-db&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">plan</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;starter&quot;</span><span class="p" data-group-id="6307465788-5">}</span><span class="p" data-group-id="6307465788-4">)</span><span class="w">
+</span><span class="p" data-group-id="6307465788-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">creds</span><span class="p" data-group-id="6307465788-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Databases</span><span class="o">.</span><span class="n">credentials</span><span class="p" data-group-id="6307465788-7">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">db</span><span class="p" data-group-id="6307465788-8">[</span><span class="s">&quot;id&quot;</span><span class="p" data-group-id="6307465788-8">]</span><span class="p" data-group-id="6307465788-7">)</span><span class="w">
+</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="6307465788-9">(</span><span class="n">creds</span><span class="p" data-group-id="6307465788-10">[</span><span class="s">&quot;url&quot;</span><span class="p" data-group-id="6307465788-10">]</span><span class="p" data-group-id="6307465788-9">)</span></code></pre>
     </section>
 
 </div>
@@ -250,7 +250,7 @@ Supply <code class="inline">:idempotency_key</code> in <code class="inline">attr
       <h1 class="signature" translate="no">create(client, attrs)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/databases.ex#L45" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/databases.ex#L45" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -279,7 +279,7 @@ by the API. Pass <code class="inline">:idempotency_key</code> to supply your own
       <h1 class="signature" translate="no">credentials(client, database_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/databases.ex#L92" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/databases.ex#L92" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -307,7 +307,7 @@ by the API. Pass <code class="inline">:idempotency_key</code> to supply your own
       <h1 class="signature" translate="no">delete(client, database_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/databases.ex#L52" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/databases.ex#L52" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -335,7 +335,7 @@ by the API. Pass <code class="inline">:idempotency_key</code> to supply your own
       <h1 class="signature" translate="no">get(client, database_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/databases.ex#L34" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/databases.ex#L34" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -365,7 +365,7 @@ by the API. Pass <code class="inline">:idempotency_key</code> to supply your own
       <h1 class="signature" translate="no">list(client, filters \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/databases.ex#L27" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/databases.ex#L27" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -395,7 +395,7 @@ by the API. Pass <code class="inline">:idempotency_key</code> to supply your own
       <h1 class="signature" translate="no">logs(client, database_id, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/databases.ex#L104" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/databases.ex#L104" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -424,7 +424,7 @@ by the API. Pass <code class="inline">:idempotency_key</code> to supply your own
       <h1 class="signature" translate="no">restart(client, database_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/databases.ex#L80" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/databases.ex#L80" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -452,7 +452,7 @@ by the API. Pass <code class="inline">:idempotency_key</code> to supply your own
       <h1 class="signature" translate="no">start(client, database_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/databases.ex#L60" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/databases.ex#L60" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -480,7 +480,7 @@ by the API. Pass <code class="inline">:idempotency_key</code> to supply your own
       <h1 class="signature" translate="no">stop(client, database_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/databases.ex#L70" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/databases.ex#L70" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -507,9 +507,9 @@ by the API. Pass <code class="inline">:idempotency_key</code> to supply your own
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.0.1">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.0.1">Hex Preview</a>
 
             </span>
 

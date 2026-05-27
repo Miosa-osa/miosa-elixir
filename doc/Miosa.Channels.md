@@ -1,5 +1,5 @@
 # `Miosa.Channels`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/channels.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/channels.ex#L1)
 
 Notification channels — Slack, Discord, email, and per-channel enable/disable.
 

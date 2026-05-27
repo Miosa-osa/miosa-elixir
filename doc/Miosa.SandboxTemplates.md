@@ -1,5 +1,5 @@
 # `Miosa.SandboxTemplates`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandbox_templates.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandbox_templates.ex#L1)
 
 Sandbox template management — define reusable base images for sandboxes.
 

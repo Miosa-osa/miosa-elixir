@@ -1,5 +1,5 @@
 # `Miosa.OpenComputers.Secrets`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/open_computers.ex#L397)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/open_computers.ex#L397)
 
 Encrypted secret management for OpenComputers.
 

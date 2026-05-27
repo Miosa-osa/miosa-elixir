@@ -1,5 +1,5 @@
 # `Miosa.OpenComputers.DesktopVnc`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/open_computers.ex#L228)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/open_computers.ex#L228)
 
 Issue WebSocket tickets for desktop (VNC/KasmVNC) sessions on registered hosts.
 

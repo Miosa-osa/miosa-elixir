@@ -1,5 +1,5 @@
 # `Miosa.Computer.Metrics`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer/metrics.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer/metrics.ex#L1)
 
 Time-series RAM/CPU/credit metrics for a computer.
 

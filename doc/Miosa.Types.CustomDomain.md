@@ -1,5 +1,5 @@
 # `Miosa.Types.CustomDomain`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/types.ex#L456)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/types.ex#L456)
 
 Represents a custom domain registered for a MIOSA computer.
 

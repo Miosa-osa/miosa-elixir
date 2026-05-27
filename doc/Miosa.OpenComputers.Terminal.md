@@ -1,5 +1,5 @@
 # `Miosa.OpenComputers.Terminal`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/open_computers.ex#L207)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/open_computers.ex#L207)
 
 Issue WebSocket tickets for terminal sessions on registered hosts.
 

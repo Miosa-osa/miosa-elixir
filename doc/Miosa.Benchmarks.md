@@ -1,5 +1,5 @@
 # `Miosa.Benchmarks`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/benchmarks.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/benchmarks.ex#L1)
 
 Admin-triggered platform benchmark runs.
 

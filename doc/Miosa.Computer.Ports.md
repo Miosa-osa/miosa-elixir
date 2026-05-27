@@ -1,5 +1,5 @@
 # `Miosa.Computer.Ports`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer/ports.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer/ports.ex#L1)
 
 Per-port visibility control for a computer.
 

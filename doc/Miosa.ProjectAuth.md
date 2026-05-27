@@ -1,5 +1,5 @@
 # `Miosa.ProjectAuth`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/project_auth.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/project_auth.ex#L1)
 
 Project Auth — built-in authentication for generated apps inside
 sandboxes and deployments.

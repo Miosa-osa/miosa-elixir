@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.0.1">
 
 
-    <title>Miosa.Computers — Miosa v1.0.2</title>
+    <title>Miosa.Computers — Miosa v1.0.1</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-4E64116D.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.0.1
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>Computers</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.0.1)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computers.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computers.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -115,17 +115,17 @@ Miosa
 
     <section id="moduledoc">
 <p>Manage MIOSA computers (VM workspaces).</p><p>Computers are the core resource: isolated Linux VMs with a full desktop
-environment, terminal access, and an OSA agent running inside each one.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="3377202083-1">(</span><span class="s">&quot;msk_u_...&quot;</span><span class="p" data-group-id="3377202083-1">)</span><span class="w">
+environment, terminal access, and an OSA agent running inside each one.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="4486639303-1">(</span><span class="s">&quot;msk_u_...&quot;</span><span class="p" data-group-id="4486639303-1">)</span><span class="w">
 
-</span><span class="p" data-group-id="3377202083-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">computer</span><span class="p" data-group-id="3377202083-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computers</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="3377202083-3">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3377202083-4">%{</span><span class="w">
+</span><span class="p" data-group-id="4486639303-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">computer</span><span class="p" data-group-id="4486639303-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computers</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="4486639303-3">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4486639303-4">%{</span><span class="w">
   </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-agent-workspace&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">template_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;miosa-desktop&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">size</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;small&quot;</span><span class="w">
-</span><span class="p" data-group-id="3377202083-4">}</span><span class="p" data-group-id="3377202083-3">)</span><span class="w">
+</span><span class="p" data-group-id="4486639303-4">}</span><span class="p" data-group-id="4486639303-3">)</span><span class="w">
 
-</span><span class="p" data-group-id="3377202083-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">computers</span><span class="p" data-group-id="3377202083-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computers</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="3377202083-6">(</span><span class="n">client</span><span class="p" data-group-id="3377202083-6">)</span><span class="w">
-</span><span class="p" data-group-id="3377202083-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">computer</span><span class="p" data-group-id="3377202083-7">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computers</span><span class="o">.</span><span class="n">get</span><span class="p" data-group-id="3377202083-8">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="3377202083-8">)</span><span class="w">
-</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computers</span><span class="o">.</span><span class="n">delete</span><span class="p" data-group-id="3377202083-9">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="3377202083-9">)</span></code></pre>
+</span><span class="p" data-group-id="4486639303-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">computers</span><span class="p" data-group-id="4486639303-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computers</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="4486639303-6">(</span><span class="n">client</span><span class="p" data-group-id="4486639303-6">)</span><span class="w">
+</span><span class="p" data-group-id="4486639303-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">computer</span><span class="p" data-group-id="4486639303-7">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computers</span><span class="o">.</span><span class="n">get</span><span class="p" data-group-id="4486639303-8">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="4486639303-8">)</span><span class="w">
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computers</span><span class="o">.</span><span class="n">delete</span><span class="p" data-group-id="4486639303-9">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="4486639303-9">)</span></code></pre>
     </section>
 
 </div>
@@ -220,7 +220,7 @@ environment, terminal access, and an OSA agent running inside each one.</p><h2 i
       <h1 class="signature" translate="no">create_params()</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computers.ex#L26" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computers.ex#L26" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -268,7 +268,7 @@ environment, terminal access, and an OSA agent running inside each one.</p><h2 i
       <h1 class="signature" translate="no">create(client, params \\ %{})</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computers.ex#L48" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computers.ex#L48" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -300,7 +300,7 @@ boot it, or poll <a href="#get/2"><code class="inline">get/2</code></a> until th
       <h1 class="signature" translate="no">delete(client, id, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computers.ex#L93" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computers.ex#L93" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -330,7 +330,7 @@ force destroy a running computer (data will be lost).</p>
       <h1 class="signature" translate="no">get(client, id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computers.ex#L80" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computers.ex#L80" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -359,7 +359,7 @@ force destroy a running computer (data will be lost).</p>
       <h1 class="signature" translate="no">list(client)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computers.ex#L61" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computers.ex#L61" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -387,9 +387,9 @@ force destroy a running computer (data will be lost).</p>
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.0.1">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.0.1">Hex Preview</a>
 
             </span>
 

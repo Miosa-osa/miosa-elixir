@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.0.1">
 
 
-    <title>Miosa.ProjectAuth — Miosa v1.0.2</title>
+    <title>Miosa.ProjectAuth — Miosa v1.0.1</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-4E64116D.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.0.1
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>ProjectAuth</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.0.1)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/project_auth.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/project_auth.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -115,10 +115,10 @@ Miosa
 
     <section id="moduledoc">
 <p>Project Auth — built-in authentication for generated apps inside
-sandboxes and deployments.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="3308517631-1">(</span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="3308517631-2">(</span><span class="s">&quot;MIOSA_API_KEY&quot;</span><span class="p" data-group-id="3308517631-2">)</span><span class="p" data-group-id="3308517631-1">)</span><span class="w">
+sandboxes and deployments.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="4599597494-1">(</span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="4599597494-2">(</span><span class="s">&quot;MIOSA_API_KEY&quot;</span><span class="p" data-group-id="4599597494-2">)</span><span class="p" data-group-id="4599597494-1">)</span><span class="w">
 
-</span><span class="p" data-group-id="3308517631-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p" data-group-id="3308517631-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.ProjectAuth</span><span class="o">.</span><span class="n">status</span><span class="p" data-group-id="3308517631-4">(</span><span class="n">client</span><span class="p" data-group-id="3308517631-4">)</span><span class="w">
-</span><span class="p" data-group-id="3308517631-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="3308517631-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.ProjectAuth</span><span class="o">.</span><span class="n">enable</span><span class="p" data-group-id="3308517631-6">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3308517631-7">%{</span><span class="ss">provider</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;email&quot;</span><span class="p" data-group-id="3308517631-7">}</span><span class="p" data-group-id="3308517631-6">)</span></code></pre>
+</span><span class="p" data-group-id="4599597494-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p" data-group-id="4599597494-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.ProjectAuth</span><span class="o">.</span><span class="n">status</span><span class="p" data-group-id="4599597494-4">(</span><span class="n">client</span><span class="p" data-group-id="4599597494-4">)</span><span class="w">
+</span><span class="p" data-group-id="4599597494-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="4599597494-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.ProjectAuth</span><span class="o">.</span><span class="n">enable</span><span class="p" data-group-id="4599597494-6">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4599597494-7">%{</span><span class="ss">provider</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;email&quot;</span><span class="p" data-group-id="4599597494-7">}</span><span class="p" data-group-id="4599597494-6">)</span></code></pre>
     </section>
 
 </div>
@@ -199,7 +199,7 @@ sandboxes and deployments.</p><h2 id="module-example" class="section-heading"><a
       <h1 class="signature" translate="no">disable(client)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/project_auth.ex#L35" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/project_auth.ex#L35" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -229,7 +229,7 @@ sandboxes and deployments.</p><h2 id="module-example" class="section-heading"><a
       <h1 class="signature" translate="no">enable(client, config \\ %{})</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/project_auth.ex#L28" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/project_auth.ex#L28" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -257,7 +257,7 @@ sandboxes and deployments.</p><h2 id="module-example" class="section-heading"><a
       <h1 class="signature" translate="no">status(client)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/project_auth.ex#L18" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/project_auth.ex#L18" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -285,7 +285,7 @@ sandboxes and deployments.</p><h2 id="module-example" class="section-heading"><a
       <h1 class="signature" translate="no">update(client, config)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/project_auth.ex#L41" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/project_auth.ex#L41" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -312,9 +312,9 @@ sandboxes and deployments.</p><h2 id="module-example" class="section-heading"><a
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.0.1">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.0.1">Hex Preview</a>
 
             </span>
 

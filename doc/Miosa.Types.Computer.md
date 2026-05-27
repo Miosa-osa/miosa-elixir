@@ -1,5 +1,5 @@
 # `Miosa.Types.Computer`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/types.ex#L13)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/types.ex#L13)
 
 Represents a MIOSA computer (VM workspace).
 

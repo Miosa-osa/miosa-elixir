@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.0.1">
 
 
-    <title>Miosa.Services — Miosa v1.0.2</title>
+    <title>Miosa.Services — Miosa v1.0.1</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-4E64116D.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.0.1
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>Services</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.0.1)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/services.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/services.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -116,21 +116,21 @@ Miosa
     <section id="moduledoc">
 <p>Manage long-running background services inside a MIOSA computer.</p><p>A service is a supervised process (e.g. a web server, a database, a worker)
 that runs inside the VM and can be started, stopped, restarted, and observed
-via a log stream.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="8777827172-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">svc</span><span class="p" data-group-id="8777827172-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Services</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="8777827172-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8777827172-3">%{</span><span class="w">
+via a log stream.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="6378043754-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">svc</span><span class="p" data-group-id="6378043754-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Services</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="6378043754-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6378043754-3">%{</span><span class="w">
   </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;web&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">command</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;python -m http.server 8080&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">working_dir</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/home/user/app&quot;</span><span class="w">
-</span><span class="p" data-group-id="8777827172-3">}</span><span class="p" data-group-id="8777827172-2">)</span><span class="w">
+</span><span class="p" data-group-id="6378043754-3">}</span><span class="p" data-group-id="6378043754-2">)</span><span class="w">
 
-</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Services</span><span class="o">.</span><span class="n">start</span><span class="p" data-group-id="8777827172-4">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="n">svc</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="8777827172-4">)</span><span class="w">
-</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Services</span><span class="o">.</span><span class="n">stop</span><span class="p" data-group-id="8777827172-5">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="n">svc</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="8777827172-5">)</span><span class="w">
-</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Services</span><span class="o">.</span><span class="n">restart</span><span class="p" data-group-id="8777827172-6">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="n">svc</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="8777827172-6">)</span><span class="w">
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Services</span><span class="o">.</span><span class="n">start</span><span class="p" data-group-id="6378043754-4">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="n">svc</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="6378043754-4">)</span><span class="w">
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Services</span><span class="o">.</span><span class="n">stop</span><span class="p" data-group-id="6378043754-5">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="n">svc</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="6378043754-5">)</span><span class="w">
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Services</span><span class="o">.</span><span class="n">restart</span><span class="p" data-group-id="6378043754-6">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="n">svc</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="6378043754-6">)</span><span class="w">
 
 </span><span class="c1"># Tail logs as a Stream</span><span class="w">
-</span><span class="n">log_stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Services</span><span class="o">.</span><span class="n">logs</span><span class="p" data-group-id="8777827172-7">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="n">svc</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="8777827172-7">)</span><span class="w">
-</span><span class="nc">Enum</span><span class="o">.</span><span class="n">each</span><span class="p" data-group-id="8777827172-8">(</span><span class="n">log_stream</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="8777827172-9">fn</span><span class="w"> </span><span class="p" data-group-id="8777827172-10">%</span><span class="nc" data-group-id="8777827172-10">Miosa.Types.ServiceLogEvent</span><span class="p" data-group-id="8777827172-10">{</span><span class="ss">line</span><span class="p">:</span><span class="w"> </span><span class="n">l</span><span class="p" data-group-id="8777827172-10">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="8777827172-11">(</span><span class="n">l</span><span class="p" data-group-id="8777827172-11">)</span><span class="w"> </span><span class="k" data-group-id="8777827172-9">end</span><span class="p" data-group-id="8777827172-8">)</span><span class="w">
+</span><span class="n">log_stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Services</span><span class="o">.</span><span class="n">logs</span><span class="p" data-group-id="6378043754-7">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="n">svc</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="6378043754-7">)</span><span class="w">
+</span><span class="nc">Enum</span><span class="o">.</span><span class="n">each</span><span class="p" data-group-id="6378043754-8">(</span><span class="n">log_stream</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="6378043754-9">fn</span><span class="w"> </span><span class="p" data-group-id="6378043754-10">%</span><span class="nc" data-group-id="6378043754-10">Miosa.Types.ServiceLogEvent</span><span class="p" data-group-id="6378043754-10">{</span><span class="ss">line</span><span class="p">:</span><span class="w"> </span><span class="n">l</span><span class="p" data-group-id="6378043754-10">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="6378043754-11">(</span><span class="n">l</span><span class="p" data-group-id="6378043754-11">)</span><span class="w"> </span><span class="k" data-group-id="6378043754-9">end</span><span class="p" data-group-id="6378043754-8">)</span><span class="w">
 
-</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Services</span><span class="o">.</span><span class="n">delete</span><span class="p" data-group-id="8777827172-12">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="n">svc</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="8777827172-12">)</span></code></pre>
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Services</span><span class="o">.</span><span class="n">delete</span><span class="p" data-group-id="6378043754-12">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="n">svc</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="6378043754-12">)</span></code></pre>
     </section>
 
 </div>
@@ -265,7 +265,7 @@ via a log stream.</p><h2 id="module-example" class="section-heading"><a href="#m
       <h1 class="signature" translate="no">create_params()</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/services.ex#L31" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/services.ex#L31" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -312,7 +312,7 @@ via a log stream.</p><h2 id="module-example" class="section-heading"><a href="#m
       <h1 class="signature" translate="no">create(client, computer_id, params)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/services.ex#L52" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/services.ex#L52" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -341,7 +341,7 @@ via a log stream.</p><h2 id="module-example" class="section-heading"><a href="#m
       <h1 class="signature" translate="no">delete(client, computer_id, service_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/services.ex#L128" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/services.ex#L128" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -370,7 +370,7 @@ via a log stream.</p><h2 id="module-example" class="section-heading"><a href="#m
       <h1 class="signature" translate="no">get(client, computer_id, service_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/services.ex#L82" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/services.ex#L82" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -399,7 +399,7 @@ via a log stream.</p><h2 id="module-example" class="section-heading"><a href="#m
       <h1 class="signature" translate="no">list(client, computer_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/services.ex#L63" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/services.ex#L63" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -430,7 +430,7 @@ via a log stream.</p><h2 id="module-example" class="section-heading"><a href="#m
       <h1 class="signature" translate="no">logs(client, computer_id, service_id, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/services.ex#L157" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/services.ex#L157" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -448,9 +448,9 @@ via a log stream.</p><h2 id="module-example" class="section-heading"><a href="#m
 <p>Returns a <a href="https://hexdocs.pm/elixir/Stream.html"><code class="inline">Stream</code></a> of <a href="Miosa.Types.ServiceLogEvent.html"><code class="inline">Miosa.Types.ServiceLogEvent</code></a> structs for a service.</p><p>The stream tails the service's stdout/stderr in real time via SSE. It
 completes when the server closes the connection or the service exits.</p><h2 id="logs/4-options" class="section-heading"><a href="#logs/4-options" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Options</span></h2><ul><li><code class="inline">:follow</code> — Continue streaming after the service exits until the
 connection is closed. Defaults to <code class="inline">true</code>.</li><li><code class="inline">:tail</code> — Number of historical lines to include before live output.
-Defaults to <code class="inline">0</code> (live only).</li></ul><h2 id="logs/4-example" class="section-heading"><a href="#logs/4-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="nc">Miosa.Services</span><span class="o">.</span><span class="n">logs</span><span class="p" data-group-id="3913941939-1">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="n">service_id</span><span class="p" data-group-id="3913941939-1">)</span><span class="w">
-</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Stream</span><span class="o">.</span><span class="n">each</span><span class="p" data-group-id="3913941939-2">(</span><span class="k" data-group-id="3913941939-3">fn</span><span class="w"> </span><span class="p" data-group-id="3913941939-4">%{</span><span class="ss">line</span><span class="p">:</span><span class="w"> </span><span class="n">l</span><span class="p" data-group-id="3913941939-4">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="3913941939-5">(</span><span class="n">l</span><span class="p" data-group-id="3913941939-5">)</span><span class="w"> </span><span class="k" data-group-id="3913941939-3">end</span><span class="p" data-group-id="3913941939-2">)</span><span class="w">
-</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Stream</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="3913941939-6">(</span><span class="p" data-group-id="3913941939-6">)</span></code></pre>
+Defaults to <code class="inline">0</code> (live only).</li></ul><h2 id="logs/4-example" class="section-heading"><a href="#logs/4-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="nc">Miosa.Services</span><span class="o">.</span><span class="n">logs</span><span class="p" data-group-id="5673786686-1">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="n">service_id</span><span class="p" data-group-id="5673786686-1">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Stream</span><span class="o">.</span><span class="n">each</span><span class="p" data-group-id="5673786686-2">(</span><span class="k" data-group-id="5673786686-3">fn</span><span class="w"> </span><span class="p" data-group-id="5673786686-4">%{</span><span class="ss">line</span><span class="p">:</span><span class="w"> </span><span class="n">l</span><span class="p" data-group-id="5673786686-4">}</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="5673786686-5">(</span><span class="n">l</span><span class="p" data-group-id="5673786686-5">)</span><span class="w"> </span><span class="k" data-group-id="5673786686-3">end</span><span class="p" data-group-id="5673786686-2">)</span><span class="w">
+</span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Stream</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="5673786686-6">(</span><span class="p" data-group-id="5673786686-6">)</span></code></pre>
   </section>
 </section>
 <section class="detail" id="restart/3">
@@ -463,7 +463,7 @@ Defaults to <code class="inline">0</code> (live only).</li></ul><h2 id="logs/4-e
       <h1 class="signature" translate="no">restart(client, computer_id, service_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/services.ex#L115" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/services.ex#L115" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -492,7 +492,7 @@ Defaults to <code class="inline">0</code> (live only).</li></ul><h2 id="logs/4-e
       <h1 class="signature" translate="no">start(client, computer_id, service_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/services.ex#L93" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/services.ex#L93" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -521,7 +521,7 @@ Defaults to <code class="inline">0</code> (live only).</li></ul><h2 id="logs/4-e
       <h1 class="signature" translate="no">stop(client, computer_id, service_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/services.ex#L104" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/services.ex#L104" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -549,9 +549,9 @@ Defaults to <code class="inline">0</code> (live only).</li></ul><h2 id="logs/4-e
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.0.1">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.0.1">Hex Preview</a>
 
             </span>
 

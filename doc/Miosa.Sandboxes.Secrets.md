@@ -1,5 +1,5 @@
 # `Miosa.Sandboxes.Secrets`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes/secrets.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/sandboxes/secrets.ex#L1)
 
 Sandbox-bound view of `Miosa.Secrets`.
 

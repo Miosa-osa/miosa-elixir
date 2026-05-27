@@ -95,4 +95,76 @@ defmodule Miosa.Events do
       fn _state -> :ok end
     )
   end
+
+  @doc """
+  Stream tenant-wide events over SSE.
+
+  GET `/api/v1/events/stream?types=<comma-separated>`
+
+  Returns a `Stream` of raw SSE event maps `%{type: _, data: _}`.
+
+  ## Options
+
+    * `:types`   — list of event type globs, e.g. `["sandbox.*", "webhook.delivered"]`.
+      Defaults to all events.
+    * `:timeout` — per-event receive timeout in milliseconds. Defaults to `300_000`.
+
+  ## Example
+
+      Miosa.Events.stream(client, types: ["sandbox.*"])
+      |> Enum.each(&IO.inspect/1)
+  """
+  @spec stream(Client.t(), keyword()) :: Enumerable.t()
+  def stream(%Client{} = client, opts \\ []) do
+    timeout = Keyword.get(opts, :timeout, 300_000)
+    types = Keyword.get(opts, :types, [])
+
+    qs =
+      if types == [] do
+        ""
+      else
+        "?types=#{URI.encode_www_form(Enum.join(types, ","))}"
+      end
+
+    path = "/events/stream#{qs}"
+    parent = self()
+
+    Stream.resource(
+      fn ->
+        Task.start(fn ->
+          result =
+            Client.stream_sse(client, path, fn event ->
+              send(parent, {:tenant_event, event})
+            end)
+
+          send(parent, {:events_done, result})
+        end)
+
+        :streaming
+      end,
+      fn state ->
+        case state do
+          :streaming ->
+            receive do
+              {:tenant_event, event} ->
+                {[event], :streaming}
+
+              {:events_done, :ok} ->
+                {:halt, :done}
+
+              {:events_done, {:error, reason}} ->
+                {:halt, {:error, reason}}
+            after
+              timeout ->
+                {:halt, {:error, :timeout}}
+            end
+
+          _ ->
+            {:halt, state}
+        end
+      end,
+      fn _state -> :ok end
+    )
+  end
+
 end

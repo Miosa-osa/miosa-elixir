@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.0.1">
 
 
-    <title>Miosa.CronJobs — Miosa v1.0.2</title>
+    <title>Miosa.CronJobs — Miosa v1.0.1</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-4E64116D.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.0.1
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>CronJobs</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.0.1)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/cron_jobs.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/cron_jobs.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -116,16 +116,16 @@ Miosa
     <section id="moduledoc">
 <p>Cron jobs — scheduled work with full CRUD, pause/resume, run-now, and
 execution history.</p><p>Mutating calls (create, update, pause, resume, run_now) send an
-<code class="inline">Idempotency-Key</code> header automatically.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="4209029743-1">(</span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="4209029743-2">(</span><span class="s">&quot;MIOSA_API_KEY&quot;</span><span class="p" data-group-id="4209029743-2">)</span><span class="p" data-group-id="4209029743-1">)</span><span class="w">
+<code class="inline">Idempotency-Key</code> header automatically.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="2627636562-1">(</span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="2627636562-2">(</span><span class="s">&quot;MIOSA_API_KEY&quot;</span><span class="p" data-group-id="2627636562-2">)</span><span class="p" data-group-id="2627636562-1">)</span><span class="w">
 
-</span><span class="p" data-group-id="4209029743-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p" data-group-id="4209029743-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.CronJobs</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="4209029743-4">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4209029743-5">%{</span><span class="w">
+</span><span class="p" data-group-id="2627636562-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p" data-group-id="2627636562-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.CronJobs</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="2627636562-4">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2627636562-5">%{</span><span class="w">
   </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nightly-report&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">schedule</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;0 4 * * *&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://api.example.com/reports&quot;</span><span class="w">
-</span><span class="p" data-group-id="4209029743-5">}</span><span class="p" data-group-id="4209029743-4">)</span><span class="w">
+</span><span class="p" data-group-id="2627636562-5">}</span><span class="p" data-group-id="2627636562-4">)</span><span class="w">
 
-</span><span class="p" data-group-id="4209029743-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="4209029743-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.CronJobs</span><span class="o">.</span><span class="n">run_now</span><span class="p" data-group-id="4209029743-7">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p" data-group-id="4209029743-8">[</span><span class="s">&quot;id&quot;</span><span class="p" data-group-id="4209029743-8">]</span><span class="p" data-group-id="4209029743-7">)</span><span class="w">
-</span><span class="p" data-group-id="4209029743-9">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">history</span><span class="p" data-group-id="4209029743-9">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.CronJobs</span><span class="o">.</span><span class="n">list_executions</span><span class="p" data-group-id="4209029743-10">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p" data-group-id="4209029743-11">[</span><span class="s">&quot;id&quot;</span><span class="p" data-group-id="4209029743-11">]</span><span class="p" data-group-id="4209029743-10">)</span></code></pre>
+</span><span class="p" data-group-id="2627636562-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="2627636562-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.CronJobs</span><span class="o">.</span><span class="n">run_now</span><span class="p" data-group-id="2627636562-7">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p" data-group-id="2627636562-8">[</span><span class="s">&quot;id&quot;</span><span class="p" data-group-id="2627636562-8">]</span><span class="p" data-group-id="2627636562-7">)</span><span class="w">
+</span><span class="p" data-group-id="2627636562-9">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">history</span><span class="p" data-group-id="2627636562-9">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.CronJobs</span><span class="o">.</span><span class="n">list_executions</span><span class="p" data-group-id="2627636562-10">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p" data-group-id="2627636562-11">[</span><span class="s">&quot;id&quot;</span><span class="p" data-group-id="2627636562-11">]</span><span class="p" data-group-id="2627636562-10">)</span></code></pre>
     </section>
 
 </div>
@@ -266,7 +266,7 @@ execution history.</p><p>Mutating calls (create, update, pause, resume, run_now)
       <h1 class="signature" translate="no">create(client, attrs)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/cron_jobs.ex#L51" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/cron_jobs.ex#L51" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -295,7 +295,7 @@ Optional: <code class="inline">:url</code>, <code class="inline">:payload</code>
       <h1 class="signature" translate="no">delete(client, job_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/cron_jobs.ex#L68" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/cron_jobs.ex#L68" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -323,7 +323,7 @@ Optional: <code class="inline">:url</code>, <code class="inline">:payload</code>
       <h1 class="signature" translate="no">get(client, job_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/cron_jobs.ex#L40" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/cron_jobs.ex#L40" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -351,7 +351,7 @@ Optional: <code class="inline">:url</code>, <code class="inline">:payload</code>
       <h1 class="signature" translate="no">get_execution(client, job_id, execution_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/cron_jobs.ex#L106" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/cron_jobs.ex#L106" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -382,7 +382,7 @@ Optional: <code class="inline">:url</code>, <code class="inline">:payload</code>
       <h1 class="signature" translate="no">list(client, filters \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/cron_jobs.ex#L33" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/cron_jobs.ex#L33" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -412,7 +412,7 @@ Optional: <code class="inline">:url</code>, <code class="inline">:payload</code>
       <h1 class="signature" translate="no">list_executions(client, job_id, filters \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/cron_jobs.ex#L99" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/cron_jobs.ex#L99" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -441,7 +441,7 @@ Optional: <code class="inline">:url</code>, <code class="inline">:payload</code>
       <h1 class="signature" translate="no">pause(client, job_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/cron_jobs.ex#L76" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/cron_jobs.ex#L76" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -469,7 +469,7 @@ Optional: <code class="inline">:url</code>, <code class="inline">:payload</code>
       <h1 class="signature" translate="no">resume(client, job_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/cron_jobs.ex#L83" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/cron_jobs.ex#L83" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -497,7 +497,7 @@ Optional: <code class="inline">:url</code>, <code class="inline">:payload</code>
       <h1 class="signature" translate="no">run_now(client, job_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/cron_jobs.ex#L90" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/cron_jobs.ex#L90" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -525,7 +525,7 @@ Optional: <code class="inline">:url</code>, <code class="inline">:payload</code>
       <h1 class="signature" translate="no">update(client, job_id, attrs)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/cron_jobs.ex#L62" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/cron_jobs.ex#L62" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -552,9 +552,9 @@ Optional: <code class="inline">:url</code>, <code class="inline">:payload</code>
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.0.1">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.0.1">Hex Preview</a>
 
             </span>
 

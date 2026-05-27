@@ -1,5 +1,5 @@
 # `Miosa.Sandboxes`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandboxes.ex#L1)
 
 Sandboxes — a thin helper over `Miosa.Computers` that defaults
 `template_type` to `"miosa-sandbox"` (ephemeral code-exec rootfs, no

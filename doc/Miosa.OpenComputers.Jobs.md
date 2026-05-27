@@ -1,5 +1,5 @@
 # `Miosa.OpenComputers.Jobs`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/open_computers.ex#L100)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/open_computers.ex#L100)
 
 Remote job execution on registered hosts.
 

@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.0.1">
 
 
-    <title>Miosa.OpenComputers — Miosa v1.0.2</title>
+    <title>Miosa.OpenComputers — Miosa v1.0.1</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-4E64116D.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.0.1
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>OpenComputers</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.0.1)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/open_computers.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/open_computers.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -116,21 +116,21 @@ Miosa
     <section id="moduledoc">
 <p>OpenComputers API surface — register and control your own machines via MIOSA.</p><p>OpenComputers lets you bring your own Mac, Linux, or Windows machine and
 control it through the MIOSA API: run commands, manage files, expose HTTP
-tunnels, dispatch AI agents, build inference clusters, and manage secrets.</p><h2 id="module-entry-points" class="section-heading"><a href="#module-entry-points" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Entry points</span></h2><p>All functions accept a <code class="inline">Miosa.Client.t()</code> as the first argument:</p><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="3318972643-1">(</span><span class="s">&quot;msk_u_...&quot;</span><span class="p" data-group-id="3318972643-1">)</span><span class="w">
+tunnels, dispatch AI agents, build inference clusters, and manage secrets.</p><h2 id="module-entry-points" class="section-heading"><a href="#module-entry-points" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Entry points</span></h2><p>All functions accept a <code class="inline">Miosa.Client.t()</code> as the first argument:</p><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="8158713416-1">(</span><span class="s">&quot;msk_u_...&quot;</span><span class="p" data-group-id="8158713416-1">)</span><span class="w">
 
 </span><span class="c1"># Hosts</span><span class="w">
-</span><span class="p" data-group-id="3318972643-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">resp</span><span class="p" data-group-id="3318972643-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.OpenComputers.Hosts</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="3318972643-3">(</span><span class="n">client</span><span class="p" data-group-id="3318972643-3">)</span><span class="w">
-</span><span class="p" data-group-id="3318972643-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="p" data-group-id="3318972643-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.OpenComputers.Hosts</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="3318972643-5">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3318972643-6">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-mac&quot;</span><span class="p" data-group-id="3318972643-6">}</span><span class="p" data-group-id="3318972643-5">)</span><span class="w">
+</span><span class="p" data-group-id="8158713416-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">resp</span><span class="p" data-group-id="8158713416-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.OpenComputers.Hosts</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="8158713416-3">(</span><span class="n">client</span><span class="p" data-group-id="8158713416-3">)</span><span class="w">
+</span><span class="p" data-group-id="8158713416-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="p" data-group-id="8158713416-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.OpenComputers.Hosts</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="8158713416-5">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8158713416-6">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-mac&quot;</span><span class="p" data-group-id="8158713416-6">}</span><span class="p" data-group-id="8158713416-5">)</span><span class="w">
 
 </span><span class="c1"># Jobs</span><span class="w">
-</span><span class="p" data-group-id="3318972643-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p" data-group-id="3318972643-7">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.OpenComputers.Jobs</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="3318972643-8">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="p" data-group-id="3318972643-9">[</span><span class="s">&quot;id&quot;</span><span class="p" data-group-id="3318972643-9">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3318972643-10">%{</span><span class="ss">command</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;npm test&quot;</span><span class="p" data-group-id="3318972643-10">}</span><span class="p" data-group-id="3318972643-8">)</span><span class="w">
+</span><span class="p" data-group-id="8158713416-7">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">job</span><span class="p" data-group-id="8158713416-7">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.OpenComputers.Jobs</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="8158713416-8">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="p" data-group-id="8158713416-9">[</span><span class="s">&quot;id&quot;</span><span class="p" data-group-id="8158713416-9">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8158713416-10">%{</span><span class="ss">command</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;npm test&quot;</span><span class="p" data-group-id="8158713416-10">}</span><span class="p" data-group-id="8158713416-8">)</span><span class="w">
 
 </span><span class="c1"># Tunnels</span><span class="w">
-</span><span class="p" data-group-id="3318972643-11">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">tunnel</span><span class="p" data-group-id="3318972643-11">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.OpenComputers.Tunnels</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="3318972643-12">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="p" data-group-id="3318972643-13">[</span><span class="s">&quot;id&quot;</span><span class="p" data-group-id="3318972643-13">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3318972643-14">%{</span><span class="ss">target_port</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p" data-group-id="3318972643-14">}</span><span class="p" data-group-id="3318972643-12">)</span><span class="w">
-</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="3318972643-15">(</span><span class="n">tunnel</span><span class="p" data-group-id="3318972643-16">[</span><span class="s">&quot;public_url&quot;</span><span class="p" data-group-id="3318972643-16">]</span><span class="p" data-group-id="3318972643-15">)</span><span class="w">
+</span><span class="p" data-group-id="8158713416-11">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">tunnel</span><span class="p" data-group-id="8158713416-11">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.OpenComputers.Tunnels</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="8158713416-12">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="p" data-group-id="8158713416-13">[</span><span class="s">&quot;id&quot;</span><span class="p" data-group-id="8158713416-13">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8158713416-14">%{</span><span class="ss">target_port</span><span class="p">:</span><span class="w"> </span><span class="mi">3000</span><span class="p" data-group-id="8158713416-14">}</span><span class="p" data-group-id="8158713416-12">)</span><span class="w">
+</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="8158713416-15">(</span><span class="n">tunnel</span><span class="p" data-group-id="8158713416-16">[</span><span class="s">&quot;public_url&quot;</span><span class="p" data-group-id="8158713416-16">]</span><span class="p" data-group-id="8158713416-15">)</span><span class="w">
 
 </span><span class="c1"># Agents</span><span class="w">
-</span><span class="p" data-group-id="3318972643-17">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">session</span><span class="p" data-group-id="3318972643-17">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.OpenComputers.Agents</span><span class="o">.</span><span class="n">dispatch</span><span class="p" data-group-id="3318972643-18">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="p" data-group-id="3318972643-19">[</span><span class="s">&quot;id&quot;</span><span class="p" data-group-id="3318972643-19">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3318972643-20">%{</span><span class="ss">task</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;run tests&quot;</span><span class="p" data-group-id="3318972643-20">}</span><span class="p" data-group-id="3318972643-18">)</span></code></pre>
+</span><span class="p" data-group-id="8158713416-17">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">session</span><span class="p" data-group-id="8158713416-17">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.OpenComputers.Agents</span><span class="o">.</span><span class="n">dispatch</span><span class="p" data-group-id="8158713416-18">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="p" data-group-id="8158713416-19">[</span><span class="s">&quot;id&quot;</span><span class="p" data-group-id="8158713416-19">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8158713416-20">%{</span><span class="ss">task</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;run tests&quot;</span><span class="p" data-group-id="8158713416-20">}</span><span class="p" data-group-id="8158713416-18">)</span></code></pre>
     </section>
 
 </div>
@@ -141,9 +141,9 @@ tunnels, dispatch AI agents, build inference clusters, and manage secrets.</p><h
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.0.1">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.0.1">Hex Preview</a>
 
             </span>
 

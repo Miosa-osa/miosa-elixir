@@ -1,5 +1,5 @@
 # `Miosa.Sandbox.Terminal`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandbox/terminal.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandbox/terminal.ex#L1)
 
 PTY session control for a sandbox.
 

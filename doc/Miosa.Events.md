@@ -1,5 +1,5 @@
 # `Miosa.Events`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/events.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/events.ex#L1)
 
 Subscribe to real-time computer lifecycle events via SSE.
 

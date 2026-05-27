@@ -1,5 +1,5 @@
 # `Miosa.Regions`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/regions.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/regions.ex#L1)
 
 Datacenter regions, compute sizes, pricing, and community templates — read-only catalog.
 

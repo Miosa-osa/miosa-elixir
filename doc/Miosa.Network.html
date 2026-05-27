@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.1.0">
 
 
-    <title>Miosa.Network — Miosa v1.0.2</title>
+    <title>Miosa.Network — Miosa v1.1.0</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-EE8A32CE.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.1.0
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>Network</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.1.0)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/network.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -116,15 +116,15 @@ Miosa
     <section id="moduledoc">
 <p>Tenant-wide egress network policy and allowlist management.</p><p>Backed by <code class="inline">/api/v1/egress/policies</code>, <code class="inline">/api/v1/egress/allowlist</code>, and
 <code class="inline">/api/v1/egress/audit/suggestions</code>.</p><p>The egress firewall operates in two modes:</p><ul><li><strong><code class="inline">enforce</code></strong> — denied requests are actively blocked.</li><li><strong><code class="inline">audit_only</code></strong> — requests are logged but never blocked (observe mode).</li></ul><p>Use <a href="#observe/2"><code class="inline">observe/2</code></a> to run in shadow mode during rollout, then <a href="#lockdown/2"><code class="inline">lockdown/2</code></a>
-when you are ready to enforce.</p><h2 id="module-client-level-usage" class="section-heading"><a href="#module-client-level-usage" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Client-level usage</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="1720787681-1">(</span><span class="s">&quot;msk_u_...&quot;</span><span class="p" data-group-id="1720787681-1">)</span><span class="w">
+when you are ready to enforce.</p><h2 id="module-client-level-usage" class="section-heading"><a href="#module-client-level-usage" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Client-level usage</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="2744946757-1">(</span><span class="s">&quot;msk_u_...&quot;</span><span class="p" data-group-id="2744946757-1">)</span><span class="w">
 
-</span><span class="p" data-group-id="1720787681-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">rule</span><span class="p" data-group-id="1720787681-2">}</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">allow</span><span class="p" data-group-id="1720787681-3">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;api.github.com&quot;</span><span class="p" data-group-id="1720787681-3">)</span><span class="w">
-</span><span class="p" data-group-id="1720787681-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">rule</span><span class="p" data-group-id="1720787681-4">}</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">deny</span><span class="p" data-group-id="1720787681-5">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;suspicious.host.io&quot;</span><span class="p" data-group-id="1720787681-5">)</span><span class="w">
-</span><span class="p" data-group-id="1720787681-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">policy</span><span class="p" data-group-id="1720787681-6">}</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">lockdown</span><span class="p" data-group-id="1720787681-7">(</span><span class="n">client</span><span class="p" data-group-id="1720787681-7">)</span><span class="w">
-</span><span class="p" data-group-id="1720787681-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">policy</span><span class="p" data-group-id="1720787681-8">}</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">observe</span><span class="p" data-group-id="1720787681-9">(</span><span class="n">client</span><span class="p" data-group-id="1720787681-9">)</span><span class="w">
-</span><span class="p" data-group-id="1720787681-10">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">items</span><span class="p" data-group-id="1720787681-10">}</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">suggestions</span><span class="p" data-group-id="1720787681-11">(</span><span class="n">client</span><span class="p" data-group-id="1720787681-11">)</span><span class="w">
-</span><span class="p" data-group-id="1720787681-12">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">policies</span><span class="p" data-group-id="1720787681-12">}</span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">policies</span><span class="p" data-group-id="1720787681-13">(</span><span class="n">client</span><span class="p" data-group-id="1720787681-13">)</span><span class="w">
-</span><span class="p" data-group-id="1720787681-14">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">rules</span><span class="p" data-group-id="1720787681-14">}</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">rules</span><span class="p" data-group-id="1720787681-15">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">policy_id</span><span class="p" data-group-id="1720787681-15">)</span></code></pre><h2 id="module-sandbox-bound-usage" class="section-heading"><a href="#module-sandbox-bound-usage" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Sandbox-bound usage</span></h2><p>See <a href="Miosa.Sandboxes.Network.html"><code class="inline">Miosa.Sandboxes.Network</code></a> for the resource-scoped variant.</p>
+</span><span class="p" data-group-id="2744946757-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">rule</span><span class="p" data-group-id="2744946757-2">}</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">allow</span><span class="p" data-group-id="2744946757-3">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;api.github.com&quot;</span><span class="p" data-group-id="2744946757-3">)</span><span class="w">
+</span><span class="p" data-group-id="2744946757-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">rule</span><span class="p" data-group-id="2744946757-4">}</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">deny</span><span class="p" data-group-id="2744946757-5">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;suspicious.host.io&quot;</span><span class="p" data-group-id="2744946757-5">)</span><span class="w">
+</span><span class="p" data-group-id="2744946757-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">policy</span><span class="p" data-group-id="2744946757-6">}</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">lockdown</span><span class="p" data-group-id="2744946757-7">(</span><span class="n">client</span><span class="p" data-group-id="2744946757-7">)</span><span class="w">
+</span><span class="p" data-group-id="2744946757-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">policy</span><span class="p" data-group-id="2744946757-8">}</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">observe</span><span class="p" data-group-id="2744946757-9">(</span><span class="n">client</span><span class="p" data-group-id="2744946757-9">)</span><span class="w">
+</span><span class="p" data-group-id="2744946757-10">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">items</span><span class="p" data-group-id="2744946757-10">}</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">suggestions</span><span class="p" data-group-id="2744946757-11">(</span><span class="n">client</span><span class="p" data-group-id="2744946757-11">)</span><span class="w">
+</span><span class="p" data-group-id="2744946757-12">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">policies</span><span class="p" data-group-id="2744946757-12">}</span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">policies</span><span class="p" data-group-id="2744946757-13">(</span><span class="n">client</span><span class="p" data-group-id="2744946757-13">)</span><span class="w">
+</span><span class="p" data-group-id="2744946757-14">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">rules</span><span class="p" data-group-id="2744946757-14">}</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Network</span><span class="o">.</span><span class="n">rules</span><span class="p" data-group-id="2744946757-15">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">policy_id</span><span class="p" data-group-id="2744946757-15">)</span></code></pre><h2 id="module-sandbox-bound-usage" class="section-heading"><a href="#module-sandbox-bound-usage" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Sandbox-bound usage</span></h2><p>See <a href="Miosa.Sandboxes.Network.html"><code class="inline">Miosa.Sandboxes.Network</code></a> for the resource-scoped variant.</p>
     </section>
 
 </div>
@@ -267,7 +267,7 @@ when you are ready to enforce.</p><h2 id="module-client-level-usage" class="sect
       <h1 class="signature" translate="no">allow(client, host, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L55" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/network.ex#L55" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -295,7 +295,7 @@ when you are ready to enforce.</p><h2 id="module-client-level-usage" class="sect
       <h1 class="signature" translate="no">create_policy(client, attrs)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L133" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/network.ex#L133" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -325,7 +325,7 @@ when you are ready to enforce.</p><h2 id="module-client-level-usage" class="sect
       <h1 class="signature" translate="no">deny(client, host, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L65" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/network.ex#L65" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -355,7 +355,7 @@ when you are ready to enforce.</p><h2 id="module-client-level-usage" class="sect
       <h1 class="signature" translate="no">lockdown(client, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L172" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/network.ex#L172" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -389,7 +389,7 @@ default policy is patched.</li><li><code class="inline">:resource_id</code>, <co
       <h1 class="signature" translate="no">observe(client, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L182" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/network.ex#L182" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -422,7 +422,7 @@ default policy is patched.</li><li><code class="inline">:resource_id</code>, <co
       <h1 class="signature" translate="no">policies(client, filters \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L109" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/network.ex#L109" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -453,7 +453,7 @@ default policy is patched.</li><li><code class="inline">:resource_id</code>, <co
       <h1 class="signature" translate="no">remove_rule(client, rule_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L92" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/network.ex#L92" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -485,7 +485,7 @@ default policy is patched.</li><li><code class="inline">:resource_id</code>, <co
       <h1 class="signature" translate="no">rules(client, policy_id \\ nil, filters \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L76" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/network.ex#L76" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -517,7 +517,7 @@ default policy is patched.</li><li><code class="inline">:resource_id</code>, <co
       <h1 class="signature" translate="no">suggestions(client, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L199" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/network.ex#L199" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -548,7 +548,7 @@ default policy is patched.</li><li><code class="inline">:resource_id</code>, <co
       <h1 class="signature" translate="no">update_policy(client, policy_id, attrs)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network.ex#L148" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/network.ex#L148" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -575,9 +575,9 @@ default policy is patched.</li><li><code class="inline">:resource_id</code>, <co
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.1.0">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.1.0">Hex Preview</a>
 
             </span>
 

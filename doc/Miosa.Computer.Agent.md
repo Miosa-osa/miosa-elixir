@@ -1,5 +1,5 @@
 # `Miosa.Computer.Agent`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer/agent.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer/agent.ex#L1)
 
 Computer-Use Agent (CUA) session management for a computer.
 

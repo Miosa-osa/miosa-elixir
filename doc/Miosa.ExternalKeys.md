@@ -1,5 +1,5 @@
 # `Miosa.ExternalKeys`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/external_keys.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/external_keys.ex#L1)
 
 External BYOK keys — Anthropic, OpenAI, Google, Groq, and similar.
 

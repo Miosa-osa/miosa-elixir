@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.0.1">
 
 
-    <title>Miosa.Computer — Miosa v1.0.2</title>
+    <title>Miosa.Computer — Miosa v1.0.1</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-4E64116D.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.0.1
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>Computer</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.0.1)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -115,15 +115,15 @@ Miosa
 
     <section id="moduledoc">
 <p>Lifecycle actions for a specific MIOSA computer.</p><p>This module covers power operations: start, stop, restart, and destroy.
-All functions require a <a href="Miosa.Client.html"><code class="inline">Miosa.Client</code></a> and a computer ID string.</p><p>For creating and listing computers, see <a href="Miosa.Computers.html"><code class="inline">Miosa.Computers</code></a>.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="3549218923-1">(</span><span class="s">&quot;msk_u_...&quot;</span><span class="p" data-group-id="3549218923-1">)</span><span class="w">
+All functions require a <a href="Miosa.Client.html"><code class="inline">Miosa.Client</code></a> and a computer ID string.</p><p>For creating and listing computers, see <a href="Miosa.Computers.html"><code class="inline">Miosa.Computers</code></a>.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="2069681557-1">(</span><span class="s">&quot;msk_u_...&quot;</span><span class="p" data-group-id="2069681557-1">)</span><span class="w">
 
-</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">start</span><span class="p" data-group-id="3549218923-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;comp_abc123&quot;</span><span class="p" data-group-id="3549218923-2">)</span><span class="w">
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">start</span><span class="p" data-group-id="2069681557-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;comp_abc123&quot;</span><span class="p" data-group-id="2069681557-2">)</span><span class="w">
 
 </span><span class="c1"># Poll until running</span><span class="w">
-</span><span class="p" data-group-id="3549218923-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">computer</span><span class="p" data-group-id="3549218923-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">wait_until_running</span><span class="p" data-group-id="3549218923-4">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;comp_abc123&quot;</span><span class="p" data-group-id="3549218923-4">)</span><span class="w">
+</span><span class="p" data-group-id="2069681557-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">computer</span><span class="p" data-group-id="2069681557-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">wait_until_running</span><span class="p" data-group-id="2069681557-4">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;comp_abc123&quot;</span><span class="p" data-group-id="2069681557-4">)</span><span class="w">
 
-</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">stop</span><span class="p" data-group-id="3549218923-5">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;comp_abc123&quot;</span><span class="p" data-group-id="3549218923-5">)</span><span class="w">
-</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">destroy</span><span class="p" data-group-id="3549218923-6">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;comp_abc123&quot;</span><span class="p" data-group-id="3549218923-6">)</span></code></pre>
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">stop</span><span class="p" data-group-id="2069681557-5">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;comp_abc123&quot;</span><span class="p" data-group-id="2069681557-5">)</span><span class="w">
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">destroy</span><span class="p" data-group-id="2069681557-6">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;comp_abc123&quot;</span><span class="p" data-group-id="2069681557-6">)</span></code></pre>
     </section>
 
 </div>
@@ -328,7 +328,7 @@ All functions require a <a href="Miosa.Client.html"><code class="inline">Miosa.C
       <h1 class="signature" translate="no">apps(client, computer_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L137" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer.ex#L137" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -358,7 +358,7 @@ All functions require a <a href="Miosa.Client.html"><code class="inline">Miosa.C
       <h1 class="signature" translate="no">clone(client, computer_id, attrs \\ %{})</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L170" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer.ex#L170" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -386,7 +386,7 @@ All functions require a <a href="Miosa.Client.html"><code class="inline">Miosa.C
       <h1 class="signature" translate="no">destroy(client, computer_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L75" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer.ex#L75" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -415,7 +415,7 @@ All data is lost. This action cannot be undone.</p>
       <h1 class="signature" translate="no">move(client, computer_id, attrs)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L191" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer.ex#L191" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -446,7 +446,7 @@ All data is lost. This action cannot be undone.</p>
       <h1 class="signature" translate="no">preview_url(client, computer_id, port, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L232" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer.ex#L232" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -463,7 +463,7 @@ All data is lost. This action cannot be undone.</p>
       </div>
 
 <p>Returns the preview URL for a specific port on the computer.</p><p>The preview URL provides authenticated HTTP access to a service running inside
-the computer. Append a path after the returned URL as needed.</p><h2 id="preview_url/4-parameters" class="section-heading"><a href="#preview_url/4-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">computer_id</code> — Computer ID string.</li><li><code class="inline">port</code> — Port number the service is listening on inside the VM.</li><li><code class="inline">opts</code>:<ul><li><code class="inline">:base_url</code> — Override the base domain. Defaults to <code class="inline">&quot;https://preview.miosa.ai&quot;</code>.</li></ul></li></ul><h2 id="preview_url/4-example" class="section-heading"><a href="#preview_url/4-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">preview_url</span><span class="p" data-group-id="1094095208-1">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;comp_abc&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3000</span><span class="p" data-group-id="1094095208-1">)</span><span class="w">
+the computer. Append a path after the returned URL as needed.</p><h2 id="preview_url/4-parameters" class="section-heading"><a href="#preview_url/4-parameters" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Parameters</span></h2><ul><li><code class="inline">computer_id</code> — Computer ID string.</li><li><code class="inline">port</code> — Port number the service is listening on inside the VM.</li><li><code class="inline">opts</code>:<ul><li><code class="inline">:base_url</code> — Override the base domain. Defaults to <code class="inline">&quot;https://preview.miosa.ai&quot;</code>.</li></ul></li></ul><h2 id="preview_url/4-example" class="section-heading"><a href="#preview_url/4-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">preview_url</span><span class="p" data-group-id="4516057447-1">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;comp_abc&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">3000</span><span class="p" data-group-id="4516057447-1">)</span><span class="w">
 </span><span class="c1"># =&gt; &quot;https://preview.miosa.ai/comp_abc/3000&quot;</span></code></pre>
   </section>
 </section>
@@ -479,7 +479,7 @@ the computer. Append a path after the returned URL as needed.</p><h2 id="preview
       <h1 class="signature" translate="no">public_url(client, computer_id, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L253" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer.ex#L253" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -496,7 +496,7 @@ the computer. Append a path after the returned URL as needed.</p><h2 id="preview
 
 <p>Returns the public URL for the computer desktop stream.</p><p>This URL is the root access point for the computer's web interface
 (VNC/KasmVNC). Requires the computer to be running and <code class="inline">:visibility</code>
-set to <code class="inline">:public</code> or authenticated with an API key.</p><h2 id="public_url/3-example" class="section-heading"><a href="#public_url/3-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">public_url</span><span class="p" data-group-id="3093699465-1">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;comp_abc&quot;</span><span class="p" data-group-id="3093699465-1">)</span><span class="w">
+set to <code class="inline">:public</code> or authenticated with an API key.</p><h2 id="public_url/3-example" class="section-heading"><a href="#public_url/3-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">public_url</span><span class="p" data-group-id="5881588539-1">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;comp_abc&quot;</span><span class="p" data-group-id="5881588539-1">)</span><span class="w">
 </span><span class="c1"># =&gt; &quot;https://desktop.miosa.ai/comp_abc&quot;</span></code></pre>
   </section>
 </section>
@@ -510,7 +510,7 @@ set to <code class="inline">:public</code> or authenticated with an API key.</p>
       <h1 class="signature" translate="no">resize(client, computer_id, attrs)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L181" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer.ex#L181" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -538,7 +538,7 @@ set to <code class="inline">:public</code> or authenticated with an API key.</p>
       <h1 class="signature" translate="no">restart(client, computer_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L62" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer.ex#L62" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -567,7 +567,7 @@ during the restart.</p>
       <h1 class="signature" translate="no">screenshot_region(client, computer_id, x, y, width, height)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L205" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer.ex#L205" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -605,7 +605,7 @@ Returns raw PNG binary.</p>
       <h1 class="signature" translate="no">start(client, computer_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L37" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer.ex#L37" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -635,7 +635,7 @@ ready.</p>
       <h1 class="signature" translate="no">stop(client, computer_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L49" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer.ex#L49" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -663,7 +663,7 @@ ready.</p>
       <h1 class="signature" translate="no">stream_token(client, computer_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L160" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer.ex#L160" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -692,7 +692,7 @@ ready.</p>
       <h1 class="signature" translate="no">urls(client, computer_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L151" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer.ex#L151" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -720,7 +720,7 @@ ready.</p>
       <h1 class="signature" translate="no">vnc_credentials(client, computer_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L129" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer.ex#L129" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -752,7 +752,7 @@ ready.</p>
       <h1 class="signature" translate="no">wait_until_running(client, computer_id, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L99" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer.ex#L99" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -783,7 +783,7 @@ ready.</p>
       <h1 class="signature" translate="no">wait_until_stopped(client, computer_id, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L116" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer.ex#L116" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -811,9 +811,9 @@ ready.</p>
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.0.1">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.0.1">Hex Preview</a>
 
             </span>
 

@@ -1,5 +1,5 @@
 # `Miosa.Settings`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/settings.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/settings.ex#L1)
 
 Tenant settings — workspace config, branding, and BYOK provider keys.
 

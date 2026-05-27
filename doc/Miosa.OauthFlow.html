@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.1.0">
 
 
-    <title>Miosa.OauthFlow — Miosa v1.0.2</title>
+    <title>Miosa.OauthFlow — Miosa v1.1.0</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-EE8A32CE.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.1.0
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>OauthFlow</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.1.0)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/oauth_flow.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/oauth_flow.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -119,9 +119,9 @@ surfacing <code class="inline">authorize_url</code> to the end user's browser �
 opens a browser tab automatically.</p><p>Once the user completes the OAuth grant, call
 <a href="#wait_for_completion/2"><code class="inline">wait_for_completion/2</code></a> to poll the server until the flow either
 completes (returning the resulting secret payload) or fails.</p><h2 id="module-fields" class="section-heading"><a href="#module-fields" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Fields</span></h2><ul><li><code class="inline">:authorize_url</code> — URL the end user must visit to grant OAuth consent.</li><li><code class="inline">:state</code> — Opaque server-issued token that identifies this flow.</li><li><code class="inline">:provider</code> — Provider slug, e.g. <code class="inline">&quot;github&quot;</code> or <code class="inline">&quot;slack&quot;</code>.</li><li><code class="inline">:client</code> — The <a href="Miosa.Client.html"><code class="inline">Miosa.Client</code></a> used to start the flow (retained for
-polling).</li><li><code class="inline">:data</code> — Raw response payload from <code class="inline">POST /egress/oauth/start</code>.</li></ul><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="0569663280-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">flow</span><span class="p" data-group-id="0569663280-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Secrets</span><span class="o">.</span><span class="n">connect</span><span class="p" data-group-id="0569663280-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;github&quot;</span><span class="p" data-group-id="0569663280-2">)</span><span class="w">
-</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="0569663280-3">(</span><span class="s">&quot;Visit: &quot;</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="n">flow</span><span class="o">.</span><span class="n">authorize_url</span><span class="p" data-group-id="0569663280-3">)</span><span class="w">
-</span><span class="p" data-group-id="0569663280-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">secret</span><span class="p" data-group-id="0569663280-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.OauthFlow</span><span class="o">.</span><span class="n">wait_for_completion</span><span class="p" data-group-id="0569663280-5">(</span><span class="n">flow</span><span class="p" data-group-id="0569663280-5">)</span></code></pre>
+polling).</li><li><code class="inline">:data</code> — Raw response payload from <code class="inline">POST /egress/oauth/start</code>.</li></ul><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="5409374071-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">flow</span><span class="p" data-group-id="5409374071-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Secrets</span><span class="o">.</span><span class="n">connect</span><span class="p" data-group-id="5409374071-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;github&quot;</span><span class="p" data-group-id="5409374071-2">)</span><span class="w">
+</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="5409374071-3">(</span><span class="s">&quot;Visit: &quot;</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="n">flow</span><span class="o">.</span><span class="n">authorize_url</span><span class="p" data-group-id="5409374071-3">)</span><span class="w">
+</span><span class="p" data-group-id="5409374071-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">secret</span><span class="p" data-group-id="5409374071-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.OauthFlow</span><span class="o">.</span><span class="n">wait_for_completion</span><span class="p" data-group-id="5409374071-5">(</span><span class="n">flow</span><span class="p" data-group-id="5409374071-5">)</span></code></pre>
     </section>
 
 </div>
@@ -187,7 +187,7 @@ completes.</p></div>
       <h1 class="signature" translate="no">t()</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/oauth_flow.ex#L35" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/oauth_flow.ex#L35" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -236,7 +236,7 @@ completes.</p></div>
       <h1 class="signature" translate="no">wait_for_completion(flow, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/oauth_flow.ex#L65" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/oauth_flow.ex#L65" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -271,9 +271,9 @@ typically includes <code class="inline">secret_id</code> and <code class="inline
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.1.0">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.1.0">Hex Preview</a>
 
             </span>
 

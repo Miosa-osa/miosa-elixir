@@ -1,5 +1,5 @@
 # `Miosa.ProjectIntegrations`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/project_integrations.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/project_integrations.ex#L1)
 
 Per-project integrations — Stripe, Resend, Twilio, and similar third-party
 provider keys injected as env vars into sandbox/deployment VMs at boot.

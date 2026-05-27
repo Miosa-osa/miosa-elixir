@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.1.0">
 
 
-    <title>Miosa.Sandboxes.Audit — Miosa v1.0.2</title>
+    <title>Miosa.Sandboxes.Audit — Miosa v1.1.0</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-EE8A32CE.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.1.0
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>Sandboxes.<wbr>Audit</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.1.0)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes/audit.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/sandboxes/audit.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -118,13 +118,13 @@ Miosa
 endpoint (<code class="inline">/api/v1/egress/audit/resource/:resource_id</code>) using <code class="inline">:gun</code>
 (which is already a project dependency). The subprotocol is
 <code class="inline">miosa-egress-audit-v1</code> and the API key is passed via <code class="inline">?token=</code> query
-parameter.</p><p>Falls back to REST long-polling if the WebSocket connection fails.</p><h2 id="module-usage" class="section-heading"><a href="#module-usage" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Usage</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="0723388092-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">sandbox</span><span class="p" data-group-id="0723388092-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="0723388092-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0723388092-3">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-box&quot;</span><span class="p" data-group-id="0723388092-3">}</span><span class="p" data-group-id="0723388092-2">)</span><span class="w">
+parameter.</p><p>Falls back to REST long-polling if the WebSocket connection fails.</p><h2 id="module-usage" class="section-heading"><a href="#module-usage" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Usage</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="2491884786-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">sandbox</span><span class="p" data-group-id="2491884786-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="2491884786-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="2491884786-3">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-box&quot;</span><span class="p" data-group-id="2491884786-3">}</span><span class="p" data-group-id="2491884786-2">)</span><span class="w">
 
-</span><span class="p" data-group-id="0723388092-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">events</span><span class="p" data-group-id="0723388092-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes.Audit</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="0723388092-5">(</span><span class="n">sandbox</span><span class="p">,</span><span class="w"> </span><span class="n">client</span><span class="p" data-group-id="0723388092-5">)</span><span class="w">
+</span><span class="p" data-group-id="2491884786-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">events</span><span class="p" data-group-id="2491884786-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes.Audit</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="2491884786-5">(</span><span class="n">sandbox</span><span class="p">,</span><span class="w"> </span><span class="n">client</span><span class="p" data-group-id="2491884786-5">)</span><span class="w">
 
 </span><span class="c1"># Live WebSocket tail — returns a lazy Stream</span><span class="w">
-</span><span class="p" data-group-id="0723388092-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">stream</span><span class="p" data-group-id="0723388092-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes.Audit</span><span class="o">.</span><span class="n">tail</span><span class="p" data-group-id="0723388092-7">(</span><span class="n">sandbox</span><span class="p">,</span><span class="w"> </span><span class="n">client</span><span class="p" data-group-id="0723388092-7">)</span><span class="w">
-</span><span class="n">stream</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Stream</span><span class="o">.</span><span class="n">take</span><span class="p" data-group-id="0723388092-8">(</span><span class="mi">5</span><span class="p" data-group-id="0723388092-8">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="0723388092-9">(</span><span class="p" data-group-id="0723388092-9">)</span></code></pre><p>The <code class="inline">sandbox</code> argument may be either a <code class="inline">Miosa.Types.Computer.t()</code> struct or
+</span><span class="p" data-group-id="2491884786-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">stream</span><span class="p" data-group-id="2491884786-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes.Audit</span><span class="o">.</span><span class="n">tail</span><span class="p" data-group-id="2491884786-7">(</span><span class="n">sandbox</span><span class="p">,</span><span class="w"> </span><span class="n">client</span><span class="p" data-group-id="2491884786-7">)</span><span class="w">
+</span><span class="n">stream</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Stream</span><span class="o">.</span><span class="n">take</span><span class="p" data-group-id="2491884786-8">(</span><span class="mi">5</span><span class="p" data-group-id="2491884786-8">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nc">Enum</span><span class="o">.</span><span class="n">to_list</span><span class="p" data-group-id="2491884786-9">(</span><span class="p" data-group-id="2491884786-9">)</span></code></pre><p>The <code class="inline">sandbox</code> argument may be either a <code class="inline">Miosa.Types.Computer.t()</code> struct or
 a plain binary sandbox ID string.</p>
     </section>
 
@@ -197,7 +197,7 @@ decoded audit-event maps in real time.</p></div>
       <h1 class="signature" translate="no">get(sandbox_or_id, client, event_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes/audit.ex#L60" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/sandboxes/audit.ex#L60" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -228,7 +228,7 @@ decoded audit-event maps in real time.</p></div>
       <h1 class="signature" translate="no">list(sandbox_or_id, client, filters \\ %{})</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes/audit.ex#L45" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/sandboxes/audit.ex#L45" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -259,7 +259,7 @@ decoded audit-event maps in real time.</p></div>
       <h1 class="signature" translate="no">tail(sandbox_or_id, client, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes/audit.ex#L87" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/sandboxes/audit.ex#L87" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -293,9 +293,9 @@ Defaults to <code class="inline">2_000</code>.</li></ul>
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.1.0">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.1.0">Hex Preview</a>
 
             </span>
 

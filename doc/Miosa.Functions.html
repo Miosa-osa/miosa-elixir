@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.0.1">
 
 
-    <title>Miosa.Functions — Miosa v1.0.2</title>
+    <title>Miosa.Functions — Miosa v1.0.1</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-4E64116D.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.0.1
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>Functions</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.0.1)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/functions.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/functions.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -115,17 +115,17 @@ Miosa
 
     <section id="moduledoc">
 <p>Edge functions — serverless, request-driven code that runs close to the user.</p><p>Functions support full CRUD and can be invoked synchronously.
-Mutating calls send an <code class="inline">Idempotency-Key</code> header automatically.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="3701140841-1">(</span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="3701140841-2">(</span><span class="s">&quot;MIOSA_API_KEY&quot;</span><span class="p" data-group-id="3701140841-2">)</span><span class="p" data-group-id="3701140841-1">)</span><span class="w">
+Mutating calls send an <code class="inline">Idempotency-Key</code> header automatically.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="8844907094-1">(</span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="8844907094-2">(</span><span class="s">&quot;MIOSA_API_KEY&quot;</span><span class="p" data-group-id="8844907094-2">)</span><span class="p" data-group-id="8844907094-1">)</span><span class="w">
 
-</span><span class="p" data-group-id="3701140841-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">fn_</span><span class="p" data-group-id="3701140841-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Functions</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="3701140841-4">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3701140841-5">%{</span><span class="w">
+</span><span class="p" data-group-id="8844907094-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">fn_</span><span class="p" data-group-id="8844907094-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Functions</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="8844907094-4">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8844907094-5">%{</span><span class="w">
   </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;resize-image&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">runtime</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;node18&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">source</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;export default (req) =&gt; new Response(&#39;ok&#39;)&quot;</span><span class="w">
-</span><span class="p" data-group-id="3701140841-5">}</span><span class="p" data-group-id="3701140841-4">)</span><span class="w">
+</span><span class="p" data-group-id="8844907094-5">}</span><span class="p" data-group-id="8844907094-4">)</span><span class="w">
 
-</span><span class="p" data-group-id="3701140841-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="3701140841-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Functions</span><span class="o">.</span><span class="n">invoke</span><span class="p" data-group-id="3701140841-7">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">fn_</span><span class="p" data-group-id="3701140841-8">[</span><span class="s">&quot;id&quot;</span><span class="p" data-group-id="3701140841-8">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3701140841-9">%{</span><span class="w">
-  </span><span class="ss">payload</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3701140841-10">%{</span><span class="ss">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://example.com/logo.png&quot;</span><span class="p" data-group-id="3701140841-10">}</span><span class="w">
-</span><span class="p" data-group-id="3701140841-9">}</span><span class="p" data-group-id="3701140841-7">)</span></code></pre>
+</span><span class="p" data-group-id="8844907094-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="8844907094-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Functions</span><span class="o">.</span><span class="n">invoke</span><span class="p" data-group-id="8844907094-7">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">fn_</span><span class="p" data-group-id="8844907094-8">[</span><span class="s">&quot;id&quot;</span><span class="p" data-group-id="8844907094-8">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8844907094-9">%{</span><span class="w">
+  </span><span class="ss">payload</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8844907094-10">%{</span><span class="ss">url</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://example.com/logo.png&quot;</span><span class="p" data-group-id="8844907094-10">}</span><span class="w">
+</span><span class="p" data-group-id="8844907094-9">}</span><span class="p" data-group-id="8844907094-7">)</span></code></pre>
     </section>
 
 </div>
@@ -226,7 +226,7 @@ Mutating calls send an <code class="inline">Idempotency-Key</code> header automa
       <h1 class="signature" translate="no">create(client, attrs)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/functions.ex#L51" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/functions.ex#L51" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -255,7 +255,7 @@ Mutating calls send an <code class="inline">Idempotency-Key</code> header automa
       <h1 class="signature" translate="no">delete(client, function_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/functions.ex#L68" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/functions.ex#L68" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -283,7 +283,7 @@ Mutating calls send an <code class="inline">Idempotency-Key</code> header automa
       <h1 class="signature" translate="no">get(client, function_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/functions.ex#L40" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/functions.ex#L40" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -313,7 +313,7 @@ Mutating calls send an <code class="inline">Idempotency-Key</code> header automa
       <h1 class="signature" translate="no">invoke(client, function_id, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/functions.ex#L82" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/functions.ex#L82" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -344,7 +344,7 @@ Mutating calls send an <code class="inline">Idempotency-Key</code> header automa
       <h1 class="signature" translate="no">list(client, filters \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/functions.ex#L33" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/functions.ex#L33" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -372,7 +372,7 @@ Mutating calls send an <code class="inline">Idempotency-Key</code> header automa
       <h1 class="signature" translate="no">update(client, function_id, attrs)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/functions.ex#L62" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/functions.ex#L62" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -399,9 +399,9 @@ Mutating calls send an <code class="inline">Idempotency-Key</code> header automa
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.0.1">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.0.1">Hex Preview</a>
 
             </span>
 

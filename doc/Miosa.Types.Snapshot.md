@@ -1,5 +1,5 @@
 # `Miosa.Types.Snapshot`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/types.ex#L327)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/types.ex#L327)
 
 Represents a disk checkpoint (snapshot) of a MIOSA computer.
 

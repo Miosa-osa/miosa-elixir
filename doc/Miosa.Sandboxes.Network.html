@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.1.0">
 
 
-    <title>Miosa.Sandboxes.Network — Miosa v1.0.2</title>
+    <title>Miosa.Sandboxes.Network — Miosa v1.1.0</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-EE8A32CE.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.1.0
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>Sandboxes.<wbr>Network</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.1.0)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes/network.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/sandboxes/network.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -115,14 +115,14 @@ Miosa
 
     <section id="moduledoc">
 <p>Sandbox-bound view of <a href="Miosa.Network.html"><code class="inline">Miosa.Network</code></a>.</p><p>Every call pre-populates <code class="inline">resource_id</code> with the sandbox's ID and sets
-<code class="inline">resource_type</code> to <code class="inline">&quot;sandbox&quot;</code>.</p><h2 id="module-usage" class="section-heading"><a href="#module-usage" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Usage</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="4154813778-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">sandbox</span><span class="p" data-group-id="4154813778-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="4154813778-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4154813778-3">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-box&quot;</span><span class="p" data-group-id="4154813778-3">}</span><span class="p" data-group-id="4154813778-2">)</span><span class="w">
+<code class="inline">resource_type</code> to <code class="inline">&quot;sandbox&quot;</code>.</p><h2 id="module-usage" class="section-heading"><a href="#module-usage" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Usage</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="7219751349-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">sandbox</span><span class="p" data-group-id="7219751349-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="7219751349-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7219751349-3">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;my-box&quot;</span><span class="p" data-group-id="7219751349-3">}</span><span class="p" data-group-id="7219751349-2">)</span><span class="w">
 
-</span><span class="p" data-group-id="4154813778-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">rule</span><span class="p" data-group-id="4154813778-4">}</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes.Network</span><span class="o">.</span><span class="n">allow</span><span class="p" data-group-id="4154813778-5">(</span><span class="n">sandbox</span><span class="p">,</span><span class="w"> </span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;api.github.com&quot;</span><span class="p" data-group-id="4154813778-5">)</span><span class="w">
-</span><span class="p" data-group-id="4154813778-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">rule</span><span class="p" data-group-id="4154813778-6">}</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes.Network</span><span class="o">.</span><span class="n">deny</span><span class="p" data-group-id="4154813778-7">(</span><span class="n">sandbox</span><span class="p">,</span><span class="w"> </span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bad.host.io&quot;</span><span class="p" data-group-id="4154813778-7">)</span><span class="w">
-</span><span class="p" data-group-id="4154813778-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">policy</span><span class="p" data-group-id="4154813778-8">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes.Network</span><span class="o">.</span><span class="n">lockdown</span><span class="p" data-group-id="4154813778-9">(</span><span class="n">sandbox</span><span class="p">,</span><span class="w"> </span><span class="n">client</span><span class="p" data-group-id="4154813778-9">)</span><span class="w">
-</span><span class="p" data-group-id="4154813778-10">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">policy</span><span class="p" data-group-id="4154813778-10">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes.Network</span><span class="o">.</span><span class="n">observe</span><span class="p" data-group-id="4154813778-11">(</span><span class="n">sandbox</span><span class="p">,</span><span class="w"> </span><span class="n">client</span><span class="p" data-group-id="4154813778-11">)</span><span class="w">
-</span><span class="p" data-group-id="4154813778-12">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">items</span><span class="p" data-group-id="4154813778-12">}</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes.Network</span><span class="o">.</span><span class="n">suggestions</span><span class="p" data-group-id="4154813778-13">(</span><span class="n">sandbox</span><span class="p">,</span><span class="w"> </span><span class="n">client</span><span class="p" data-group-id="4154813778-13">)</span><span class="w">
-</span><span class="p" data-group-id="4154813778-14">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">rules</span><span class="p" data-group-id="4154813778-14">}</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes.Network</span><span class="o">.</span><span class="n">rules</span><span class="p" data-group-id="4154813778-15">(</span><span class="n">sandbox</span><span class="p">,</span><span class="w"> </span><span class="n">client</span><span class="p" data-group-id="4154813778-15">)</span></code></pre><p>The <code class="inline">sandbox</code> argument may be either a <code class="inline">Miosa.Types.Computer.t()</code> struct or
+</span><span class="p" data-group-id="7219751349-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">rule</span><span class="p" data-group-id="7219751349-4">}</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes.Network</span><span class="o">.</span><span class="n">allow</span><span class="p" data-group-id="7219751349-5">(</span><span class="n">sandbox</span><span class="p">,</span><span class="w"> </span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;api.github.com&quot;</span><span class="p" data-group-id="7219751349-5">)</span><span class="w">
+</span><span class="p" data-group-id="7219751349-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">rule</span><span class="p" data-group-id="7219751349-6">}</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes.Network</span><span class="o">.</span><span class="n">deny</span><span class="p" data-group-id="7219751349-7">(</span><span class="n">sandbox</span><span class="p">,</span><span class="w"> </span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bad.host.io&quot;</span><span class="p" data-group-id="7219751349-7">)</span><span class="w">
+</span><span class="p" data-group-id="7219751349-8">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">policy</span><span class="p" data-group-id="7219751349-8">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes.Network</span><span class="o">.</span><span class="n">lockdown</span><span class="p" data-group-id="7219751349-9">(</span><span class="n">sandbox</span><span class="p">,</span><span class="w"> </span><span class="n">client</span><span class="p" data-group-id="7219751349-9">)</span><span class="w">
+</span><span class="p" data-group-id="7219751349-10">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">policy</span><span class="p" data-group-id="7219751349-10">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes.Network</span><span class="o">.</span><span class="n">observe</span><span class="p" data-group-id="7219751349-11">(</span><span class="n">sandbox</span><span class="p">,</span><span class="w"> </span><span class="n">client</span><span class="p" data-group-id="7219751349-11">)</span><span class="w">
+</span><span class="p" data-group-id="7219751349-12">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">items</span><span class="p" data-group-id="7219751349-12">}</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes.Network</span><span class="o">.</span><span class="n">suggestions</span><span class="p" data-group-id="7219751349-13">(</span><span class="n">sandbox</span><span class="p">,</span><span class="w"> </span><span class="n">client</span><span class="p" data-group-id="7219751349-13">)</span><span class="w">
+</span><span class="p" data-group-id="7219751349-14">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">rules</span><span class="p" data-group-id="7219751349-14">}</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes.Network</span><span class="o">.</span><span class="n">rules</span><span class="p" data-group-id="7219751349-15">(</span><span class="n">sandbox</span><span class="p">,</span><span class="w"> </span><span class="n">client</span><span class="p" data-group-id="7219751349-15">)</span></code></pre><p>The <code class="inline">sandbox</code> argument may be either a <code class="inline">Miosa.Types.Computer.t()</code> struct or
 a plain binary sandbox ID string.</p>
     </section>
 
@@ -246,7 +246,7 @@ a plain binary sandbox ID string.</p>
       <h1 class="signature" translate="no">allow(sandbox_or_id, client, host, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes/network.ex#L31" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/sandboxes/network.ex#L31" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -277,7 +277,7 @@ a plain binary sandbox ID string.</p>
       <h1 class="signature" translate="no">deny(sandbox_or_id, client, host, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes/network.ex#L46" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/sandboxes/network.ex#L46" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -308,7 +308,7 @@ a plain binary sandbox ID string.</p>
       <h1 class="signature" translate="no">lockdown(sandbox_or_id, client, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes/network.ex#L85" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/sandboxes/network.ex#L85" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -339,7 +339,7 @@ a plain binary sandbox ID string.</p>
       <h1 class="signature" translate="no">observe(sandbox_or_id, client, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes/network.ex#L100" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/sandboxes/network.ex#L100" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -370,7 +370,7 @@ a plain binary sandbox ID string.</p>
       <h1 class="signature" translate="no">policies(sandbox_or_id, client, filters \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes/network.ex#L130" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/sandboxes/network.ex#L130" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -399,7 +399,7 @@ a plain binary sandbox ID string.</p>
       <h1 class="signature" translate="no">remove_rule(sandbox_or_id, client, rule_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes/network.ex#L77" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/sandboxes/network.ex#L77" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -430,7 +430,7 @@ a plain binary sandbox ID string.</p>
       <h1 class="signature" translate="no">rules(sandbox_or_id, client, filters \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes/network.ex#L61" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/sandboxes/network.ex#L61" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -461,7 +461,7 @@ a plain binary sandbox ID string.</p>
       <h1 class="signature" translate="no">suggestions(sandbox_or_id, client, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes/network.ex#L115" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/sandboxes/network.ex#L115" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -489,9 +489,9 @@ a plain binary sandbox ID string.</p>
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.1.0">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.1.0">Hex Preview</a>
 
             </span>
 

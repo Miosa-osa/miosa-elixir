@@ -1,5 +1,5 @@
 # `Miosa.Computer`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer.ex#L1)
 
 Lifecycle actions for a specific MIOSA computer.
 

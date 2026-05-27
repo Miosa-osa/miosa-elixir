@@ -1,5 +1,5 @@
 # `Miosa.NetworkPolicy`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network_policy.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/network_policy.ex#L1)
 
 Read and write the network egress/ingress policy for a MIOSA computer.
 

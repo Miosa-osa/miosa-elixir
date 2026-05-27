@@ -1,5 +1,5 @@
 # `Miosa.Sandbox.Events`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandbox/events.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandbox/events.ex#L1)
 
 SSE event streams for a sandbox.
 

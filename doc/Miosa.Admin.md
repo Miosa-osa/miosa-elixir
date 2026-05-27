@@ -1,5 +1,5 @@
 # `Miosa.Admin`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/admin.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/admin.ex#L1)
 
 Admin surface — `/api/v1/admin/*`.
 

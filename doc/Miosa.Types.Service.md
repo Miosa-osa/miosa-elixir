@@ -1,5 +1,5 @@
 # `Miosa.Types.Service`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/types.ex#L369)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/types.ex#L369)
 
 Represents a managed background service running inside a computer.
 

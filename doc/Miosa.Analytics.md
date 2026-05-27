@@ -1,5 +1,5 @@
 # `Miosa.Analytics`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/analytics.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/analytics.ex#L1)
 
 Analytics — admin-scoped overview and timeseries metrics.
 

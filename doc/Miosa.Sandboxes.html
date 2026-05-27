@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.0.1">
 
 
-    <title>Miosa.Sandboxes — Miosa v1.0.2</title>
+    <title>Miosa.Sandboxes — Miosa v1.0.1</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-4E64116D.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.0.1
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>Sandboxes</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.0.1)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandboxes.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -120,12 +120,12 @@ desktop).</p><p>Mirrors the one-resource product model used by E2B and Daytona: 
 computer is the single resource type, and <code class="inline">template_type</code> selects its
 flavour. A sandbox is just a computer with the lightweight template;
 every other module (<a href="Miosa.Computer.html"><code class="inline">Miosa.Computer</code></a>, <a href="Miosa.Exec.html"><code class="inline">Miosa.Exec</code></a>, <a href="Miosa.Files.html"><code class="inline">Miosa.Files</code></a>,
-<a href="Miosa.Desktop.html"><code class="inline">Miosa.Desktop</code></a>) works identically.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="3358836673-1">(</span><span class="s">&quot;msk_u_...&quot;</span><span class="p" data-group-id="3358836673-1">)</span><span class="w">
+<a href="Miosa.Desktop.html"><code class="inline">Miosa.Desktop</code></a>) works identically.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="8091630428-1">(</span><span class="s">&quot;msk_u_...&quot;</span><span class="p" data-group-id="8091630428-1">)</span><span class="w">
 
-</span><span class="p" data-group-id="3358836673-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">sandbox</span><span class="p" data-group-id="3358836673-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="3358836673-3">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3358836673-4">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;quick-exec&quot;</span><span class="p" data-group-id="3358836673-4">}</span><span class="p" data-group-id="3358836673-3">)</span><span class="w">
-</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">start</span><span class="p" data-group-id="3358836673-5">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">sandbox</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="3358836673-5">)</span><span class="w">
-</span><span class="p" data-group-id="3358836673-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3358836673-7">%{</span><span class="ss">output</span><span class="p">:</span><span class="w"> </span><span class="n">out</span><span class="p" data-group-id="3358836673-7">}</span><span class="p" data-group-id="3358836673-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="3358836673-8">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">sandbox</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="ss">command</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;echo hi&quot;</span><span class="p" data-group-id="3358836673-8">)</span><span class="w">
-</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">destroy</span><span class="p" data-group-id="3358836673-9">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">sandbox</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="3358836673-9">)</span></code></pre>
+</span><span class="p" data-group-id="8091630428-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">sandbox</span><span class="p" data-group-id="8091630428-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="8091630428-3">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8091630428-4">%{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;quick-exec&quot;</span><span class="p" data-group-id="8091630428-4">}</span><span class="p" data-group-id="8091630428-3">)</span><span class="w">
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">start</span><span class="p" data-group-id="8091630428-5">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">sandbox</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="8091630428-5">)</span><span class="w">
+</span><span class="p" data-group-id="8091630428-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8091630428-7">%{</span><span class="ss">output</span><span class="p">:</span><span class="w"> </span><span class="n">out</span><span class="p" data-group-id="8091630428-7">}</span><span class="p" data-group-id="8091630428-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="8091630428-8">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">sandbox</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="ss">command</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;echo hi&quot;</span><span class="p" data-group-id="8091630428-8">)</span><span class="w">
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Computer</span><span class="o">.</span><span class="n">destroy</span><span class="p" data-group-id="8091630428-9">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">sandbox</span><span class="o">.</span><span class="n">id</span><span class="p" data-group-id="8091630428-9">)</span></code></pre>
     </section>
 
 </div>
@@ -238,7 +238,7 @@ every other module (<a href="Miosa.Computer.html"><code class="inline">Miosa.Com
       <h1 class="signature" translate="no">create(client, attrs)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes.ex#L56" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandboxes.ex#L56" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -257,12 +257,12 @@ every other module (<a href="Miosa.Computer.html"><code class="inline">Miosa.Com
 <code class="inline">template_type</code> key defaults to <code class="inline">&quot;miosa-sandbox&quot;</code> when omitted.</p><h2 id="create/2-white-label-attribution" class="section-heading"><a href="#create/2-white-label-attribution" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">White-label attribution</span></h2><p>Pass <code class="inline">:external_workspace_id</code>, <code class="inline">:external_user_id</code>, <code class="inline">:external_project_id</code>
 to tag the sandbox with your platform's customer/user/project IDs. These
 fields never authorize anything — tenancy is always derived server-side
-from the API key — but they let your list/usage APIs group by attribution.</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="1836829461-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">sandbox</span><span class="p" data-group-id="1836829461-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="1836829461-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1836829461-3">%{</span><span class="w">
+from the API key — but they let your list/usage APIs group by attribution.</p><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="0389677294-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">sandbox</span><span class="p" data-group-id="0389677294-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="0389677294-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0389677294-3">%{</span><span class="w">
   </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;smile-dental&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">external_workspace_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dental-office-123&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">external_user_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dr-smith-456&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">external_project_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;landing-page-789&quot;</span><span class="w">
-</span><span class="p" data-group-id="1836829461-3">}</span><span class="p" data-group-id="1836829461-2">)</span></code></pre>
+</span><span class="p" data-group-id="0389677294-3">}</span><span class="p" data-group-id="0389677294-2">)</span></code></pre>
   </section>
 </section>
 <section class="detail" id="delete/2">
@@ -275,7 +275,7 @@ from the API key — but they let your list/usage APIs group by attribution.</p>
       <h1 class="signature" translate="no">delete(client, id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes.ex#L89" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandboxes.ex#L89" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -303,7 +303,7 @@ from the API key — but they let your list/usage APIs group by attribution.</p>
       <h1 class="signature" translate="no">get(client, id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes.ex#L83" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandboxes.ex#L83" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -332,7 +332,7 @@ from the API key — but they let your list/usage APIs group by attribution.</p>
       <h1 class="signature" translate="no">list(client)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes.ex#L66" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandboxes.ex#L66" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -361,7 +361,7 @@ from the API key — but they let your list/usage APIs group by attribution.</p>
       <h1 class="signature" translate="no">readiness(client, sandbox_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes.ex#L98" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandboxes.ex#L98" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -390,7 +390,7 @@ from the API key — but they let your list/usage APIs group by attribution.</p>
       <h1 class="signature" translate="no">template()</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes.ex#L32" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandboxes.ex#L32" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -420,7 +420,7 @@ from the API key — but they let your list/usage APIs group by attribution.</p>
       <h1 class="signature" translate="no">wait_until_ready(client, sandbox_id, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandboxes.ex#L125" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandboxes.ex#L125" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -453,9 +453,9 @@ this transparently falls back to polling <a href="#readiness/2"><code class="inl
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.0.1">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.0.1">Hex Preview</a>
 
             </span>
 

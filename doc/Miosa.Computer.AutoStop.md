@@ -1,5 +1,5 @@
 # `Miosa.Computer.AutoStop`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/computer/auto_stop.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/computer/auto_stop.ex#L1)
 
 Read and update idle-timeout config for a computer.
 

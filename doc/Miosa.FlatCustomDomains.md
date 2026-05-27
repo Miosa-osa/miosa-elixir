@@ -1,5 +1,5 @@
 # `Miosa.FlatCustomDomains`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/flat_custom_domains.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/flat_custom_domains.ex#L1)
 
 Tenant-scoped custom domain management across all computers and deployments.
 

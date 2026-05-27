@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.0.1">
 
 
-    <title>Miosa.Files — Miosa v1.0.2</title>
+    <title>Miosa.Files — Miosa v1.0.1</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-4E64116D.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.0.1
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>Files</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.0.1)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/files.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/files.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -116,22 +116,22 @@ Miosa
     <section id="moduledoc">
 <p>Upload, download, list, and manage files inside a MIOSA computer.</p><p>File operations interact with the computer's filesystem via the MIOSA API.
 Paths are absolute paths inside the VM (e.g. <code class="inline">&quot;/home/user/myfile.txt&quot;</code>).</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="c1"># Upload a local file</span><span class="w">
-</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Files</span><span class="o">.</span><span class="n">upload</span><span class="p" data-group-id="2716385997-1">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;./local.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/user/remote.txt&quot;</span><span class="p" data-group-id="2716385997-1">)</span><span class="w">
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Files</span><span class="o">.</span><span class="n">upload</span><span class="p" data-group-id="1236161294-1">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;./local.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/user/remote.txt&quot;</span><span class="p" data-group-id="1236161294-1">)</span><span class="w">
 
 </span><span class="c1"># Download a file</span><span class="w">
-</span><span class="p" data-group-id="2716385997-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">content</span><span class="p" data-group-id="2716385997-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Files</span><span class="o">.</span><span class="n">download</span><span class="p" data-group-id="2716385997-3">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/user/remote.txt&quot;</span><span class="p" data-group-id="2716385997-3">)</span><span class="w">
-</span><span class="nc">File</span><span class="o">.</span><span class="n">write!</span><span class="p" data-group-id="2716385997-4">(</span><span class="s">&quot;local_copy.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">content</span><span class="p" data-group-id="2716385997-4">)</span><span class="w">
+</span><span class="p" data-group-id="1236161294-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">content</span><span class="p" data-group-id="1236161294-2">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Files</span><span class="o">.</span><span class="n">download</span><span class="p" data-group-id="1236161294-3">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/user/remote.txt&quot;</span><span class="p" data-group-id="1236161294-3">)</span><span class="w">
+</span><span class="nc">File</span><span class="o">.</span><span class="n">write!</span><span class="p" data-group-id="1236161294-4">(</span><span class="s">&quot;local_copy.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">content</span><span class="p" data-group-id="1236161294-4">)</span><span class="w">
 
 </span><span class="c1"># List directory contents</span><span class="w">
-</span><span class="p" data-group-id="2716385997-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">entries</span><span class="p" data-group-id="2716385997-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Files</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="2716385997-6">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/user&quot;</span><span class="p" data-group-id="2716385997-6">)</span><span class="w">
-</span><span class="nc">Enum</span><span class="o">.</span><span class="n">each</span><span class="p" data-group-id="2716385997-7">(</span><span class="n">entries</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="2716385997-8">fn</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="2716385997-9">(</span><span class="s">&quot;</span><span class="si" data-group-id="2716385997-10">#{</span><span class="n">e</span><span class="o">.</span><span class="n">type</span><span class="si" data-group-id="2716385997-10">}</span><span class="s">: </span><span class="si" data-group-id="2716385997-11">#{</span><span class="n">e</span><span class="o">.</span><span class="n">name</span><span class="si" data-group-id="2716385997-11">}</span><span class="s">&quot;</span><span class="p" data-group-id="2716385997-9">)</span><span class="w"> </span><span class="k" data-group-id="2716385997-8">end</span><span class="p" data-group-id="2716385997-7">)</span><span class="w">
+</span><span class="p" data-group-id="1236161294-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">entries</span><span class="p" data-group-id="1236161294-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Files</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="1236161294-6">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/user&quot;</span><span class="p" data-group-id="1236161294-6">)</span><span class="w">
+</span><span class="nc">Enum</span><span class="o">.</span><span class="n">each</span><span class="p" data-group-id="1236161294-7">(</span><span class="n">entries</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="1236161294-8">fn</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="1236161294-9">(</span><span class="s">&quot;</span><span class="si" data-group-id="1236161294-10">#{</span><span class="n">e</span><span class="o">.</span><span class="n">type</span><span class="si" data-group-id="1236161294-10">}</span><span class="s">: </span><span class="si" data-group-id="1236161294-11">#{</span><span class="n">e</span><span class="o">.</span><span class="n">name</span><span class="si" data-group-id="1236161294-11">}</span><span class="s">&quot;</span><span class="p" data-group-id="1236161294-9">)</span><span class="w"> </span><span class="k" data-group-id="1236161294-8">end</span><span class="p" data-group-id="1236161294-7">)</span><span class="w">
 
 </span><span class="c1"># Get a temporary download URL</span><span class="w">
-</span><span class="p" data-group-id="2716385997-12">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">export</span><span class="p" data-group-id="2716385997-12">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Files</span><span class="o">.</span><span class="n">export</span><span class="p" data-group-id="2716385997-13">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/user/report.pdf&quot;</span><span class="p" data-group-id="2716385997-13">)</span><span class="w">
-</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="2716385997-14">(</span><span class="s">&quot;Download at: </span><span class="si" data-group-id="2716385997-15">#{</span><span class="n">export</span><span class="o">.</span><span class="n">url</span><span class="si" data-group-id="2716385997-15">}</span><span class="s">&quot;</span><span class="p" data-group-id="2716385997-14">)</span><span class="w">
+</span><span class="p" data-group-id="1236161294-12">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">export</span><span class="p" data-group-id="1236161294-12">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Files</span><span class="o">.</span><span class="n">export</span><span class="p" data-group-id="1236161294-13">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/user/report.pdf&quot;</span><span class="p" data-group-id="1236161294-13">)</span><span class="w">
+</span><span class="nc">IO</span><span class="o">.</span><span class="n">puts</span><span class="p" data-group-id="1236161294-14">(</span><span class="s">&quot;Download at: </span><span class="si" data-group-id="1236161294-15">#{</span><span class="n">export</span><span class="o">.</span><span class="n">url</span><span class="si" data-group-id="1236161294-15">}</span><span class="s">&quot;</span><span class="p" data-group-id="1236161294-14">)</span><span class="w">
 
 </span><span class="c1"># Delete a file</span><span class="w">
-</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Files</span><span class="o">.</span><span class="n">delete</span><span class="p" data-group-id="2716385997-16">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/user/old.txt&quot;</span><span class="p" data-group-id="2716385997-16">)</span></code></pre>
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Files</span><span class="o">.</span><span class="n">delete</span><span class="p" data-group-id="1236161294-16">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/user/old.txt&quot;</span><span class="p" data-group-id="1236161294-16">)</span></code></pre>
     </section>
 
 </div>
@@ -244,7 +244,7 @@ Paths are absolute paths inside the VM (e.g. <code class="inline">&quot;/home/us
       <h1 class="signature" translate="no">delete(client, computer_id, remote_path, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/files.ex#L143" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/files.ex#L143" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -273,7 +273,7 @@ Paths are absolute paths inside the VM (e.g. <code class="inline">&quot;/home/us
       <h1 class="signature" translate="no">download(client, computer_id, remote_path)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/files.ex#L75" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/files.ex#L75" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -302,7 +302,7 @@ Paths are absolute paths inside the VM (e.g. <code class="inline">&quot;/home/us
       <h1 class="signature" translate="no">download_to(client, computer_id, remote_path, local_path)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/files.ex#L89" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/files.ex#L89" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -332,7 +332,7 @@ Paths are absolute paths inside the VM (e.g. <code class="inline">&quot;/home/us
       <h1 class="signature" translate="no">export(client, computer_id, remote_path)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/files.ex#L127" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/files.ex#L127" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -364,7 +364,7 @@ Useful for sharing files without streaming through the API.</p><p>Returns <code 
       <h1 class="signature" translate="no">list(client, computer_id, path \\ &quot;/home/user&quot;)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/files.ex#L103" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/files.ex#L103" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -396,7 +396,7 @@ Useful for sharing files without streaming through the API.</p><p>Returns <code 
       <h1 class="signature" translate="no">upload(client, computer_id, local_path, remote_path, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/files.ex#L52" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/files.ex#L52" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -430,7 +430,7 @@ Useful for sharing files without streaming through the API.</p><p>Returns <code 
       <h1 class="signature" translate="no">write(client, computer_id, remote_path, content)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/files.ex#L165" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/files.ex#L165" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -446,7 +446,7 @@ Useful for sharing files without streaming through the API.</p><p>Returns <code 
 
       </div>
 
-<p>Writes string or binary content directly to a file on the computer.</p><p>Convenience wrapper around <a href="#upload/5"><code class="inline">upload/5</code></a> for in-memory content.</p><h2 id="write/4-example" class="section-heading"><a href="#write/4-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Files</span><span class="o">.</span><span class="n">write</span><span class="p" data-group-id="6259647182-1">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/user/hello.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello, world!&quot;</span><span class="p" data-group-id="6259647182-1">)</span></code></pre>
+<p>Writes string or binary content directly to a file on the computer.</p><p>Convenience wrapper around <a href="#upload/5"><code class="inline">upload/5</code></a> for in-memory content.</p><h2 id="write/4-example" class="section-heading"><a href="#write/4-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Files</span><span class="o">.</span><span class="n">write</span><span class="p" data-group-id="7726642601-1">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;/home/user/hello.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello, world!&quot;</span><span class="p" data-group-id="7726642601-1">)</span></code></pre>
   </section>
 </section>
 
@@ -458,9 +458,9 @@ Useful for sharing files without streaming through the API.</p><p>Returns <code 
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.0.1">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.0.1">Hex Preview</a>
 
             </span>
 

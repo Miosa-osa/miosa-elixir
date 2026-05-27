@@ -1,5 +1,5 @@
 # `Miosa.ApiKeys`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/api_keys.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/api_keys.ex#L1)
 
 API key management — programmatic CRUD for tenant API keys.
 

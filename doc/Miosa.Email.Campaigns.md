@@ -1,5 +1,5 @@
 # `Miosa.Email.Campaigns`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/email.ex#L16)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/email.ex#L16)
 
 Admin email campaign lifecycle (GET/POST/etc. `/admin/email-campaigns`).
 

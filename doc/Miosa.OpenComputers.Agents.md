@@ -1,5 +1,5 @@
 # `Miosa.OpenComputers.Agents`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/open_computers.ex#L294)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/open_computers.ex#L294)
 
 AI agent dispatch for registered hosts.
 

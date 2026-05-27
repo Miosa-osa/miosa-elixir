@@ -1,5 +1,5 @@
 # `Miosa.Types.AgentSession`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/types.ex#L195)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/types.ex#L195)
 
 A CUA (Computer-Use Agent) session running on a computer.
 

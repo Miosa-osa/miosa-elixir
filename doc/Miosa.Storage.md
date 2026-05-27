@@ -1,5 +1,5 @@
 # `Miosa.Storage`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/storage.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/storage.ex#L1)
 
 Managed S3-compatible object storage — buckets, objects, presigned URLs.
 

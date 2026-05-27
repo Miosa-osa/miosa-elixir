@@ -1,4 +1,4 @@
-# Miosa v1.0.2 - Table of Contents
+# Miosa v1.0.1 - Table of Contents
 
 Official Elixir SDK for MIOSA — cloud computers for AI agents. Desktop control, file operations, sandboxes, deployments, databases, and more.
 
@@ -126,15 +126,6 @@ desktop).
   - [Miosa.OpenComputers.Terminal](Miosa.OpenComputers.Terminal.md): Issue WebSocket tickets for terminal sessions on registered hosts.
 
   - [Miosa.OpenComputers.Tunnels](Miosa.OpenComputers.Tunnels.md): HTTP tunnel management for registered hosts.
-
-- Egress
-  - [Miosa.Audit](Miosa.Audit.md): Tenant-wide egress audit log.
-  - [Miosa.Network](Miosa.Network.md): Tenant-wide egress network policy and allowlist management.
-  - [Miosa.OauthFlow](Miosa.OauthFlow.md): A pending OAuth Connect flow.
-  - [Miosa.Sandboxes.Audit](Miosa.Sandboxes.Audit.md): Sandbox-bound view of `Miosa.Audit`.
-  - [Miosa.Sandboxes.Network](Miosa.Sandboxes.Network.md): Sandbox-bound view of `Miosa.Network`.
-  - [Miosa.Sandboxes.Secrets](Miosa.Sandboxes.Secrets.md): Sandbox-bound view of `Miosa.Secrets`.
-  - [Miosa.Secrets](Miosa.Secrets.md): Tenant-wide egress secret and OAuth credential vault.
 
 - Types
   - [Miosa.Types](Miosa.Types.md): Typed structs representing all MIOSA API response objects.

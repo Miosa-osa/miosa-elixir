@@ -1,5 +1,5 @@
 # `Miosa.OpenComputers.Hosts`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/open_computers.ex#L32)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/open_computers.ex#L32)
 
 Host registration and lifecycle.
 

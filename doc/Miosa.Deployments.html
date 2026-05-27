@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.0.1">
 
 
-    <title>Miosa.Deployments — Miosa v1.0.2</title>
+    <title>Miosa.Deployments — Miosa v1.0.1</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-4E64116D.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.0.1
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>Deployments</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.0.1)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -117,21 +117,21 @@ Miosa
 <p>Deployments — sandbox → production publishing surface.</p><p>Backend phase status (2026-05-15):</p><ul><li><a href="#list/2"><code class="inline">list/2</code></a>, <a href="#get/2"><code class="inline">get/2</code></a>, <a href="#list_builds/2"><code class="inline">list_builds/2</code></a>, <a href="#get_build/3"><code class="inline">get_build/3</code></a>, env helpers: pre-existing
 repo flow.</li><li><a href="#publish/3"><code class="inline">publish/3</code></a>, <code class="inline">versions.*</code>, <a href="#rollback/3"><code class="inline">rollback/3</code></a>, <code class="inline">domains.*</code>: Phase 2B/3 target —
 returns the steady-state shape once the publish pipeline lands.</li><li><a href="#publish_from_sandbox/3"><code class="inline">publish_from_sandbox/3</code></a>: backward-compatible bridge, works today.</li></ul><p>All mutating calls send an <code class="inline">Idempotency-Key</code> header. Provide your own via
-the <code class="inline">:idempotency_key</code> option or one is generated automatically.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="7382333255-1">(</span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="7382333255-2">(</span><span class="s">&quot;MIOSA_API_KEY&quot;</span><span class="p" data-group-id="7382333255-2">)</span><span class="p" data-group-id="7382333255-1">)</span><span class="w">
+the <code class="inline">:idempotency_key</code> option or one is generated automatically.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="3232266314-1">(</span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="3232266314-2">(</span><span class="s">&quot;MIOSA_API_KEY&quot;</span><span class="p" data-group-id="3232266314-2">)</span><span class="p" data-group-id="3232266314-1">)</span><span class="w">
 
-</span><span class="p" data-group-id="7382333255-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">sandbox</span><span class="p" data-group-id="7382333255-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="7382333255-4">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7382333255-5">%{</span><span class="w">
+</span><span class="p" data-group-id="3232266314-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">sandbox</span><span class="p" data-group-id="3232266314-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Sandboxes</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="3232266314-4">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3232266314-5">%{</span><span class="w">
   </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;smile-dental&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">external_workspace_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dental-office-123&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">external_user_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dr-smith-456&quot;</span><span class="w">
-</span><span class="p" data-group-id="7382333255-5">}</span><span class="p" data-group-id="7382333255-4">)</span><span class="w">
+</span><span class="p" data-group-id="3232266314-5">}</span><span class="p" data-group-id="3232266314-4">)</span><span class="w">
 
 </span><span class="c1"># ... agent writes files, runs dev server ...</span><span class="w">
 
-</span><span class="p" data-group-id="7382333255-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="7382333255-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Deployments</span><span class="o">.</span><span class="n">publish_from_sandbox</span><span class="p" data-group-id="7382333255-7">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">sandbox</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7382333255-8">%{</span><span class="w">
+</span><span class="p" data-group-id="3232266314-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">result</span><span class="p" data-group-id="3232266314-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Deployments</span><span class="o">.</span><span class="n">publish_from_sandbox</span><span class="p" data-group-id="3232266314-7">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">sandbox</span><span class="o">.</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3232266314-8">%{</span><span class="w">
   </span><span class="ss">kind</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;static&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">environment</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;production&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">external_workspace_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;dental-office-123&quot;</span><span class="w">
-</span><span class="p" data-group-id="7382333255-8">}</span><span class="p" data-group-id="7382333255-7">)</span></code></pre>
+</span><span class="p" data-group-id="3232266314-8">}</span><span class="p" data-group-id="3232266314-7">)</span></code></pre>
     </section>
 
 </div>
@@ -363,7 +363,7 @@ Works today. Prefer <a href="#publish/3"><code class="inline">publish/3</code></
       <h1 class="signature" translate="no">add_domain(client, deployment_id, attrs)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L243" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L243" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -392,7 +392,7 @@ Works today. Prefer <a href="#publish/3"><code class="inline">publish/3</code></
       <h1 class="signature" translate="no">create(client, attrs)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L77" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L77" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -420,7 +420,7 @@ Works today. Prefer <a href="#publish/3"><code class="inline">publish/3</code></
       <h1 class="signature" translate="no">delete(client, id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L96" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L96" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -448,7 +448,7 @@ Works today. Prefer <a href="#publish/3"><code class="inline">publish/3</code></
       <h1 class="signature" translate="no">delete_domain(client, deployment_id, domain_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L267" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L267" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -477,7 +477,7 @@ Works today. Prefer <a href="#publish/3"><code class="inline">publish/3</code></
       <h1 class="signature" translate="no">get(client, id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L60" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L60" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -505,7 +505,7 @@ Works today. Prefer <a href="#publish/3"><code class="inline">publish/3</code></
       <h1 class="signature" translate="no">get_build(client, deployment_id, build_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L170" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L170" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -534,7 +534,7 @@ Works today. Prefer <a href="#publish/3"><code class="inline">publish/3</code></
       <h1 class="signature" translate="no">get_version(client, deployment_id, version_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L207" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L207" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -565,7 +565,7 @@ Works today. Prefer <a href="#publish/3"><code class="inline">publish/3</code></
       <h1 class="signature" translate="no">list(client, filters \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L49" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L49" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -593,7 +593,7 @@ Works today. Prefer <a href="#publish/3"><code class="inline">publish/3</code></
       <h1 class="signature" translate="no">list_builds(client, deployment_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L164" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L164" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -623,7 +623,7 @@ Works today. Prefer <a href="#publish/3"><code class="inline">publish/3</code></
       <h1 class="signature" translate="no">list_domains(client, deployment_id, filters \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L254" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L254" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -652,7 +652,7 @@ Works today. Prefer <a href="#publish/3"><code class="inline">publish/3</code></
       <h1 class="signature" translate="no">list_env(client, deployment_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L178" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L178" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -682,7 +682,7 @@ Works today. Prefer <a href="#publish/3"><code class="inline">publish/3</code></
       <h1 class="signature" translate="no">list_versions(client, deployment_id, filters \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L200" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L200" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -713,7 +713,7 @@ Works today. Prefer <a href="#publish/3"><code class="inline">publish/3</code></
       <h1 class="signature" translate="no">promote_version(client, deployment_id, version_id, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L219" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L219" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -743,7 +743,7 @@ the active slot, no rebuild.</p>
       <h1 class="signature" translate="no">publish(client, deployment_id, attrs)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L110" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L110" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -773,7 +773,7 @@ the active slot, no rebuild.</p>
       <h1 class="signature" translate="no">publish_from_sandbox(client, sandbox_id, attrs)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L129" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L129" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -805,7 +805,7 @@ Works today. Prefer <a href="#publish/3"><code class="inline">publish/3</code></
       <h1 class="signature" translate="no">rollback(client, deployment_id, attrs \\ %{})</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L151" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L151" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -836,7 +836,7 @@ previous version.</p>
       <h1 class="signature" translate="no">set_env(client, deployment_id, vars, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L188" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L188" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -865,7 +865,7 @@ previous version.</p>
       <h1 class="signature" translate="no">update(client, id, attrs)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L90" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L90" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -893,7 +893,7 @@ previous version.</p>
       <h1 class="signature" translate="no">verify_domain(client, deployment_id, domain_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/deployments.ex#L261" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/deployments.ex#L261" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -921,9 +921,9 @@ previous version.</p>
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.0.1">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.0.1">Hex Preview</a>
 
             </span>
 

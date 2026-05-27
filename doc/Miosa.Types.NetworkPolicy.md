@@ -1,5 +1,5 @@
 # `Miosa.Types.NetworkPolicy`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/types.ex#L544)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/types.ex#L544)
 
 The full network policy for a computer, expressed as an ordered list of rules.
 

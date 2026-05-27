@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.0.1">
 
 
-    <title>Miosa.NetworkPolicy — Miosa v1.0.2</title>
+    <title>Miosa.NetworkPolicy — Miosa v1.0.1</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-4E64116D.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.0.1
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>NetworkPolicy</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.0.1)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network_policy.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/network_policy.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -115,16 +115,16 @@ Miosa
 
     <section id="moduledoc">
 <p>Read and write the network egress/ingress policy for a MIOSA computer.</p><p>A network policy controls which hosts and ports a computer can reach on the
-public internet. The default policy allows all outbound traffic.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="5692119285-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">policy</span><span class="p" data-group-id="5692119285-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.NetworkPolicy</span><span class="o">.</span><span class="n">get</span><span class="p" data-group-id="5692119285-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p" data-group-id="5692119285-2">)</span><span class="w">
+public internet. The default policy allows all outbound traffic.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="5158263693-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">policy</span><span class="p" data-group-id="5158263693-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.NetworkPolicy</span><span class="o">.</span><span class="n">get</span><span class="p" data-group-id="5158263693-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p" data-group-id="5158263693-2">)</span><span class="w">
 
-</span><span class="p" data-group-id="5692119285-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">policy</span><span class="p" data-group-id="5692119285-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.NetworkPolicy</span><span class="o">.</span><span class="n">set</span><span class="p" data-group-id="5692119285-4">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5692119285-5">%{</span><span class="w">
-  </span><span class="ss">rules</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5692119285-6">[</span><span class="w">
-    </span><span class="p" data-group-id="5692119285-7">%{</span><span class="ss">direction</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;egress&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;allow&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">host</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;api.example.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">port</span><span class="p">:</span><span class="w"> </span><span class="mi">443</span><span class="p" data-group-id="5692119285-7">}</span><span class="p">,</span><span class="w">
-    </span><span class="p" data-group-id="5692119285-8">%{</span><span class="ss">direction</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;egress&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;deny&quot;</span><span class="p">,</span><span class="w">  </span><span class="ss">host</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">port</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p" data-group-id="5692119285-8">}</span><span class="w">
-  </span><span class="p" data-group-id="5692119285-6">]</span><span class="w">
-</span><span class="p" data-group-id="5692119285-5">}</span><span class="p" data-group-id="5692119285-4">)</span><span class="w">
+</span><span class="p" data-group-id="5158263693-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">policy</span><span class="p" data-group-id="5158263693-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.NetworkPolicy</span><span class="o">.</span><span class="n">set</span><span class="p" data-group-id="5158263693-4">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5158263693-5">%{</span><span class="w">
+  </span><span class="ss">rules</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="5158263693-6">[</span><span class="w">
+    </span><span class="p" data-group-id="5158263693-7">%{</span><span class="ss">direction</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;egress&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;allow&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">host</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;api.example.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">port</span><span class="p">:</span><span class="w"> </span><span class="mi">443</span><span class="p" data-group-id="5158263693-7">}</span><span class="p">,</span><span class="w">
+    </span><span class="p" data-group-id="5158263693-8">%{</span><span class="ss">direction</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;egress&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">action</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;deny&quot;</span><span class="p">,</span><span class="w">  </span><span class="ss">host</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">port</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;*&quot;</span><span class="p" data-group-id="5158263693-8">}</span><span class="w">
+  </span><span class="p" data-group-id="5158263693-6">]</span><span class="w">
+</span><span class="p" data-group-id="5158263693-5">}</span><span class="p" data-group-id="5158263693-4">)</span><span class="w">
 
-</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.NetworkPolicy</span><span class="o">.</span><span class="n">reset</span><span class="p" data-group-id="5692119285-9">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p" data-group-id="5692119285-9">)</span></code></pre>
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.NetworkPolicy</span><span class="o">.</span><span class="n">reset</span><span class="p" data-group-id="5158263693-9">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p" data-group-id="5158263693-9">)</span></code></pre>
     </section>
 
 </div>
@@ -217,7 +217,7 @@ public internet. The default policy allows all outbound traffic.</p><h2 id="modu
       <h1 class="signature" translate="no">policy_params()</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network_policy.ex#L25" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/network_policy.ex#L25" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -245,7 +245,7 @@ public internet. The default policy allows all outbound traffic.</p><h2 id="modu
       <h1 class="signature" translate="no">rule_params()</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network_policy.ex#L29" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/network_policy.ex#L29" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -291,7 +291,7 @@ public internet. The default policy allows all outbound traffic.</p><h2 id="modu
       <h1 class="signature" translate="no">get(client, computer_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network_policy.ex#L40" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/network_policy.ex#L40" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -320,7 +320,7 @@ public internet. The default policy allows all outbound traffic.</p><h2 id="modu
       <h1 class="signature" translate="no">reset(client, computer_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network_policy.ex#L79" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/network_policy.ex#L79" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -348,7 +348,7 @@ public internet. The default policy allows all outbound traffic.</p><h2 id="modu
       <h1 class="signature" translate="no">set(client, computer_id, params)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/network_policy.ex#L63" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/network_policy.ex#L63" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -377,9 +377,9 @@ and optionally <code class="inline">:host</code> and <code class="inline">:port<
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.0.1">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.0.1">Hex Preview</a>
 
             </span>
 

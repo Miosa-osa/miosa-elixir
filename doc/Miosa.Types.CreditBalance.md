@@ -1,5 +1,5 @@
 # `Miosa.Types.CreditBalance`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/types.ex#L710)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/types.ex#L710)
 
 Current credit balance for the authenticated tenant.
 

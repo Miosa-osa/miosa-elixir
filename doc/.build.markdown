@@ -1,7 +1,6 @@
 Miosa.Admin.md
 Miosa.Analytics.md
 Miosa.ApiKeys.md
-Miosa.Audit.md
 Miosa.AuditLog.md
 Miosa.Benchmarks.md
 Miosa.BuilderSessions.md
@@ -47,9 +46,7 @@ Miosa.HealthChecks.md
 Miosa.Integrations.md
 Miosa.Mcp.md
 Miosa.Models.md
-Miosa.Network.md
 Miosa.NetworkPolicy.md
-Miosa.OauthFlow.md
 Miosa.OpenComputers.Agents.md
 Miosa.OpenComputers.Clusters.md
 Miosa.OpenComputers.DesktopVnc.md
@@ -71,11 +68,7 @@ Miosa.Sandbox.Processes.md
 Miosa.Sandbox.Tags.md
 Miosa.Sandbox.Terminal.md
 Miosa.SandboxTemplates.md
-Miosa.Sandboxes.Audit.md
-Miosa.Sandboxes.Network.md
-Miosa.Sandboxes.Secrets.md
 Miosa.Sandboxes.md
-Miosa.Secrets.md
 Miosa.Services.md
 Miosa.Settings.md
 Miosa.SnapshotsStandalone.md

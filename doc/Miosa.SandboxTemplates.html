@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.0.1">
 
 
-    <title>Miosa.SandboxTemplates — Miosa v1.0.2</title>
+    <title>Miosa.SandboxTemplates — Miosa v1.0.1</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-4E64116D.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.0.1
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>SandboxTemplates</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.0.1)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandbox_templates.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandbox_templates.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -118,16 +118,16 @@ Miosa
 base image). Use <a href="#build_spec_schema/1"><code class="inline">build_spec_schema/1</code></a> to discover the schema, <a href="#validate/2"><code class="inline">validate/2</code></a>
 to check a spec before creating a template, and <a href="#create_build/2"><code class="inline">create_build/2</code></a> to trigger
 a build.</p><p>Mutating calls (create, create_build) send an <code class="inline">Idempotency-Key</code> header
-automatically.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="0478980537-1">(</span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="0478980537-2">(</span><span class="s">&quot;MIOSA_API_KEY&quot;</span><span class="p" data-group-id="0478980537-2">)</span><span class="p" data-group-id="0478980537-1">)</span><span class="w">
+automatically.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="4382356456-1">(</span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="4382356456-2">(</span><span class="s">&quot;MIOSA_API_KEY&quot;</span><span class="p" data-group-id="4382356456-2">)</span><span class="p" data-group-id="4382356456-1">)</span><span class="w">
 
-</span><span class="p" data-group-id="0478980537-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">schema</span><span class="p" data-group-id="0478980537-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.SandboxTemplates</span><span class="o">.</span><span class="n">build_spec_schema</span><span class="p" data-group-id="0478980537-4">(</span><span class="n">client</span><span class="p" data-group-id="0478980537-4">)</span><span class="w">
+</span><span class="p" data-group-id="4382356456-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">schema</span><span class="p" data-group-id="4382356456-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.SandboxTemplates</span><span class="o">.</span><span class="n">build_spec_schema</span><span class="p" data-group-id="4382356456-4">(</span><span class="n">client</span><span class="p" data-group-id="4382356456-4">)</span><span class="w">
 
-</span><span class="p" data-group-id="0478980537-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">tmpl</span><span class="p" data-group-id="0478980537-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.SandboxTemplates</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="0478980537-6">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0478980537-7">%{</span><span class="w">
+</span><span class="p" data-group-id="4382356456-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">tmpl</span><span class="p" data-group-id="4382356456-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.SandboxTemplates</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="4382356456-6">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4382356456-7">%{</span><span class="w">
   </span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;node-20-base&quot;</span><span class="p">,</span><span class="w">
-  </span><span class="ss">build_spec</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0478980537-8">%{</span><span class="ss">runtime</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;node&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;20&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">packages</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0478980537-9">[</span><span class="s">&quot;curl&quot;</span><span class="p" data-group-id="0478980537-9">]</span><span class="p" data-group-id="0478980537-8">}</span><span class="w">
-</span><span class="p" data-group-id="0478980537-7">}</span><span class="p" data-group-id="0478980537-6">)</span><span class="w">
+  </span><span class="ss">build_spec</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4382356456-8">%{</span><span class="ss">runtime</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;node&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;20&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">packages</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="4382356456-9">[</span><span class="s">&quot;curl&quot;</span><span class="p" data-group-id="4382356456-9">]</span><span class="p" data-group-id="4382356456-8">}</span><span class="w">
+</span><span class="p" data-group-id="4382356456-7">}</span><span class="p" data-group-id="4382356456-6">)</span><span class="w">
 
-</span><span class="p" data-group-id="0478980537-10">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">build</span><span class="p" data-group-id="0478980537-10">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.SandboxTemplates</span><span class="o">.</span><span class="n">create_build</span><span class="p" data-group-id="0478980537-11">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">tmpl</span><span class="p" data-group-id="0478980537-12">[</span><span class="s">&quot;id&quot;</span><span class="p" data-group-id="0478980537-12">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="0478980537-13">%{</span><span class="p" data-group-id="0478980537-13">}</span><span class="p" data-group-id="0478980537-11">)</span></code></pre>
+</span><span class="p" data-group-id="4382356456-10">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">build</span><span class="p" data-group-id="4382356456-10">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.SandboxTemplates</span><span class="o">.</span><span class="n">create_build</span><span class="p" data-group-id="4382356456-11">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">tmpl</span><span class="p" data-group-id="4382356456-12">[</span><span class="s">&quot;id&quot;</span><span class="p" data-group-id="4382356456-12">]</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="4382356456-13">%{</span><span class="p" data-group-id="4382356456-13">}</span><span class="p" data-group-id="4382356456-11">)</span></code></pre>
     </section>
 
 </div>
@@ -238,7 +238,7 @@ automatically.</p><h2 id="module-example" class="section-heading"><a href="#modu
       <h1 class="signature" translate="no">build_spec_schema(client)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandbox_templates.ex#L68" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandbox_templates.ex#L68" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -266,7 +266,7 @@ automatically.</p><h2 id="module-example" class="section-heading"><a href="#modu
       <h1 class="signature" translate="no">create(client, attrs)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandbox_templates.ex#L56" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandbox_templates.ex#L56" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -297,7 +297,7 @@ automatically.</p><h2 id="module-example" class="section-heading"><a href="#modu
       <h1 class="signature" translate="no">create_build(client, template_id, attrs \\ %{})</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandbox_templates.ex#L97" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandbox_templates.ex#L97" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -326,7 +326,7 @@ to supply your own idempotency key.</p>
       <h1 class="signature" translate="no">get(client, template_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandbox_templates.ex#L45" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandbox_templates.ex#L45" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -356,7 +356,7 @@ to supply your own idempotency key.</p>
       <h1 class="signature" translate="no">list(client, opts \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandbox_templates.ex#L38" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandbox_templates.ex#L38" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -384,7 +384,7 @@ to supply your own idempotency key.</p>
       <h1 class="signature" translate="no">list_builds(client, template_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandbox_templates.ex#L86" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandbox_templates.ex#L86" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -412,7 +412,7 @@ to supply your own idempotency key.</p>
       <h1 class="signature" translate="no">validate(client, build_spec)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/sandbox_templates.ex#L78" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/sandbox_templates.ex#L78" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -439,9 +439,9 @@ to supply your own idempotency key.</p>
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.0.1">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.0.1">Hex Preview</a>
 
             </span>
 

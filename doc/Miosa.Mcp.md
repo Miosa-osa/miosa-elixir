@@ -1,5 +1,5 @@
 # `Miosa.Mcp`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/mcp.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/mcp.ex#L1)
 
 Model Context Protocol — JSON-RPC dispatch and streaming SSE channel.
 

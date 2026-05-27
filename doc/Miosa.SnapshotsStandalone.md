@@ -1,5 +1,5 @@
 # `Miosa.SnapshotsStandalone`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/snapshots_standalone.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/snapshots_standalone.ex#L1)
 
 Fleet-wide snapshot index for admin callers.
 

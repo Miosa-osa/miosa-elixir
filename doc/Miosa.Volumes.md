@@ -1,5 +1,5 @@
 # `Miosa.Volumes`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/volumes.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/volumes.ex#L1)
 
 Persistent block storage volumes that survive instance restarts.
 

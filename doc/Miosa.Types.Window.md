@@ -1,5 +1,5 @@
 # `Miosa.Types.Window`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/types.ex#L70)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/types.ex#L70)
 
 Represents an open window on the computer desktop.
 

@@ -1,5 +1,5 @@
 # `Miosa`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa.ex#L1)
 
 Official Elixir SDK for the MIOSA API.
 
@@ -118,13 +118,6 @@ Set via environment variable for safety:
   * `Miosa.Sandbox.Previews` — Preview URL CRUD + share/revoke token
   * `Miosa.Sandbox.Env` — Per-sandbox env-var reader
   * `Miosa.Sandbox.Tags` — Sandbox tag replacement
-  * `Miosa.Secrets` — Tenant-wide encrypted secret vault + OAuth Connect flows
-  * `Miosa.Network` — Tenant-wide egress allowlist and policy management
-  * `Miosa.Audit` — Tenant-wide egress audit log query and long-poll Stream tail
-  * `Miosa.OauthFlow` — OAuth Connect flow handle with `wait_for_completion/2`
-  * `Miosa.Sandboxes.Secrets` — Sandbox-bound secrets (pre-scoped resource_id)
-  * `Miosa.Sandboxes.Network` — Sandbox-bound network rules (pre-scoped resource_id)
-  * `Miosa.Sandboxes.Audit` — Sandbox-bound audit tail with WebSocket upgrade
   * `Miosa.Client` — Low-level HTTP client (use directly for custom requests)
   * `Miosa.Types` — All response struct types
   * `Miosa.Error` — Exception type raised/returned on errors

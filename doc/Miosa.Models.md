@@ -1,5 +1,5 @@
 # `Miosa.Models`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/models.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/models.ex#L1)
 
 List available LLM models routed through the MIOSA intelligence gateway.
 

@@ -1,5 +1,5 @@
 # `Miosa.Tenant`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/tenant.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/tenant.ex#L1)
 
 Current tenant info — plan limits and live usage counters.
 

@@ -1,5 +1,5 @@
 # `Miosa.Desktop`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/desktop.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/desktop.ex#L1)
 
 Control the desktop environment of a running MIOSA computer.
 

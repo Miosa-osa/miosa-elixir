@@ -1,5 +1,5 @@
 # `Miosa.OpenComputers.Clusters`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/open_computers.ex#L349)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/open_computers.ex#L349)
 
 Inference cluster management.
 

@@ -1,5 +1,5 @@
 # `Miosa.Exec.Command`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/exec/command.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/exec/command.ex#L1)
 
 A GenServer holding a long-lived interactive command session over WebSocket.
 

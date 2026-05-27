@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.0.1">
 
 
-    <title>Miosa.Exec.Command — Miosa v1.0.2</title>
+    <title>Miosa.Exec.Command — Miosa v1.0.1</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-4E64116D.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.0.1
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>Exec.<wbr>Command</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.0.1)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/exec/command.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/exec/command.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -116,13 +116,13 @@ Miosa
     <section id="moduledoc">
 <p>A GenServer holding a long-lived interactive command session over WebSocket.</p><p>Obtained via <a href="Miosa.Exec.html#spawn/3"><code class="inline">Miosa.Exec.spawn/3</code></a>. Provides stdin/stdout interaction and
 terminal resize for PTY-based commands.</p><p>The underlying WebSocket is managed via <code class="inline">:gun</code>. The GenServer owns the
-connection and shuts it down on termination.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="5164943378-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">cmd</span><span class="p" data-group-id="5164943378-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec</span><span class="o">.</span><span class="n">spawn</span><span class="p" data-group-id="5164943378-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bash&quot;</span><span class="p" data-group-id="5164943378-2">)</span><span class="w">
+connection and shuts it down on termination.</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="p" data-group-id="8353650343-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">cmd</span><span class="p" data-group-id="8353650343-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec</span><span class="o">.</span><span class="n">spawn</span><span class="p" data-group-id="8353650343-2">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="n">computer_id</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bash&quot;</span><span class="p" data-group-id="8353650343-2">)</span><span class="w">
 
-</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec.Command</span><span class="o">.</span><span class="n">send_stdin</span><span class="p" data-group-id="5164943378-3">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ls -la</span><span class="se">\n</span><span class="s">&quot;</span><span class="p" data-group-id="5164943378-3">)</span><span class="w">
-</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec.Command</span><span class="o">.</span><span class="n">resize</span><span class="p" data-group-id="5164943378-4">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p" data-group-id="5164943378-4">)</span><span class="w">
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec.Command</span><span class="o">.</span><span class="n">send_stdin</span><span class="p" data-group-id="8353650343-3">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ls -la</span><span class="se">\n</span><span class="s">&quot;</span><span class="p" data-group-id="8353650343-3">)</span><span class="w">
+</span><span class="ss">:ok</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec.Command</span><span class="o">.</span><span class="n">resize</span><span class="p" data-group-id="8353650343-4">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="mi">40</span><span class="p" data-group-id="8353650343-4">)</span><span class="w">
 
 </span><span class="c1"># Block until the command exits (or timeout)</span><span class="w">
-</span><span class="p" data-group-id="5164943378-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">exit_code</span><span class="p" data-group-id="5164943378-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec.Command</span><span class="o">.</span><span class="n">await</span><span class="p" data-group-id="5164943378-6">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="mi">30_000</span><span class="p" data-group-id="5164943378-6">)</span></code></pre>
+</span><span class="p" data-group-id="8353650343-5">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">exit_code</span><span class="p" data-group-id="8353650343-5">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.Exec.Command</span><span class="o">.</span><span class="n">await</span><span class="p" data-group-id="8353650343-6">(</span><span class="n">cmd</span><span class="p">,</span><span class="w"> </span><span class="mi">30_000</span><span class="p" data-group-id="8353650343-6">)</span></code></pre>
     </section>
 
 </div>
@@ -227,7 +227,7 @@ connection and shuts it down on termination.</p><h2 id="module-example" class="s
       <h1 class="signature" translate="no">t()</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/exec/command.ex#L40" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/exec/command.ex#L40" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -270,7 +270,7 @@ connection and shuts it down on termination.</p><h2 id="module-example" class="s
       <h1 class="signature" translate="no">await(pid, timeout_ms \\ 30000)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/exec/command.ex#L82" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/exec/command.ex#L82" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -299,7 +299,7 @@ The GenServer process is stopped after <a href="#await/2"><code class="inline">a
       <h1 class="signature" translate="no">child_spec(init_arg)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/exec/command.ex#L23" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/exec/command.ex#L23" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -321,7 +321,7 @@ The GenServer process is stopped after <a href="#await/2"><code class="inline">a
       <h1 class="signature" translate="no">close_stdin(pid)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/exec/command.ex#L61" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/exec/command.ex#L61" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -349,7 +349,7 @@ The GenServer process is stopped after <a href="#await/2"><code class="inline">a
       <h1 class="signature" translate="no">resize(pid, cols, rows)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/exec/command.ex#L71" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/exec/command.ex#L71" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -377,7 +377,7 @@ The GenServer process is stopped after <a href="#await/2"><code class="inline">a
       <h1 class="signature" translate="no">send_stdin(pid, data)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/exec/command.ex#L53" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/exec/command.ex#L53" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -405,9 +405,9 @@ Returns <code class="inline">:ok</code> immediately; delivery is async over the 
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.0.1">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.0.1">Hex Preview</a>
 
             </span>
 

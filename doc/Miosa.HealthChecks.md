@@ -1,5 +1,5 @@
 # `Miosa.HealthChecks`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/health_checks.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/health_checks.ex#L1)
 
 Health checks — uptime monitoring for URLs and TCP endpoints.
 

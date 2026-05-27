@@ -1,5 +1,5 @@
 # `Miosa.OauthFlow`
-[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/oauth_flow.ex#L1)
+[🔗](https://github.com/Miosa-osa/miosa-elixir/blob/v1.1.0/lib/miosa/oauth_flow.ex#L1)
 
 A pending OAuth Connect flow.
 

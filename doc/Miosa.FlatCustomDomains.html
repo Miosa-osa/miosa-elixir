@@ -5,14 +5,14 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="ExDoc v0.40.1">
-    <meta name="project" content="Miosa v1.0.2">
+    <meta name="project" content="Miosa v1.0.1">
 
 
-    <title>Miosa.FlatCustomDomains — Miosa v1.0.2</title>
+    <title>Miosa.FlatCustomDomains — Miosa v1.0.1</title>
 
     <link rel="stylesheet" href="dist/html-elixir-YJO4MOOW.css" />
 
-    <script defer src="dist/sidebar_items-A5923345.js"></script>
+    <script defer src="dist/sidebar_items-4E64116D.js"></script>
     <script defer src="docs_config.js"></script>
     <script defer src="dist/html-YU4BZFVS.js"></script>
 
@@ -37,7 +37,7 @@
 Miosa
         </a>
         <div class="sidebar-projectVersion" translate="no">
-          v1.0.2
+          v1.0.1
         </div>
       </div>
     </div>
@@ -94,7 +94,7 @@ Miosa
   <div class="heading-with-actions top-heading">
     <h1>
       <span translate="no">Miosa.<wbr>FlatCustomDomains</span> 
-      <small class="app-vsn" translate="no">(Miosa v1.0.2)</small>
+      <small class="app-vsn" translate="no">(Miosa v1.0.1)</small>
 
     </h1>
 
@@ -105,7 +105,7 @@ Miosa
 
 
 
-      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/flat_custom_domains.ex#L1" title="View Source" class="icon-action" rel="help">
+      <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/flat_custom_domains.ex#L1" title="View Source" class="icon-action" rel="help">
         <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         <span class="sr-only">View Source</span>
       </a>
@@ -115,15 +115,15 @@ Miosa
 
     <section id="moduledoc">
 <p>Tenant-scoped custom domain management across all computers and deployments.</p><p>This is the flat listing at <code class="inline">/custom-domains</code>. Per-deployment domain
-management lives in <a href="Miosa.Deployments.html"><code class="inline">Miosa.Deployments</code></a> (e.g. <code class="inline">add_domain/3</code>, <code class="inline">list_domains/2</code>).</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="6182702348-1">(</span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="6182702348-2">(</span><span class="s">&quot;MIOSA_API_KEY&quot;</span><span class="p" data-group-id="6182702348-2">)</span><span class="p" data-group-id="6182702348-1">)</span><span class="w">
+management lives in <a href="Miosa.Deployments.html"><code class="inline">Miosa.Deployments</code></a> (e.g. <code class="inline">add_domain/3</code>, <code class="inline">list_domains/2</code>).</p><h2 id="module-example" class="section-heading"><a href="#module-example" class="hover-link"><i class="ri-link-m" aria-hidden="true"></i></a><span class="text">Example</span></h2><pre><code class="makeup elixir" translate="no"><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa</span><span class="o">.</span><span class="n">client</span><span class="p" data-group-id="1071635183-1">(</span><span class="nc">System</span><span class="o">.</span><span class="n">fetch_env!</span><span class="p" data-group-id="1071635183-2">(</span><span class="s">&quot;MIOSA_API_KEY&quot;</span><span class="p" data-group-id="1071635183-2">)</span><span class="p" data-group-id="1071635183-1">)</span><span class="w">
 
-</span><span class="p" data-group-id="6182702348-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">domain</span><span class="p" data-group-id="6182702348-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.FlatCustomDomains</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="6182702348-4">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="6182702348-5">%{</span><span class="w">
+</span><span class="p" data-group-id="1071635183-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">domain</span><span class="p" data-group-id="1071635183-3">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.FlatCustomDomains</span><span class="o">.</span><span class="n">create</span><span class="p" data-group-id="1071635183-4">(</span><span class="n">client</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="1071635183-5">%{</span><span class="w">
   </span><span class="ss">domain</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;app.example.com&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">target_id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;depl_abc123&quot;</span><span class="p">,</span><span class="w">
   </span><span class="ss">target_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;deployment&quot;</span><span class="w">
-</span><span class="p" data-group-id="6182702348-5">}</span><span class="p" data-group-id="6182702348-4">)</span><span class="w">
+</span><span class="p" data-group-id="1071635183-5">}</span><span class="p" data-group-id="1071635183-4">)</span><span class="w">
 
-</span><span class="p" data-group-id="6182702348-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="6182702348-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.FlatCustomDomains</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="6182702348-7">(</span><span class="n">client</span><span class="p" data-group-id="6182702348-7">)</span></code></pre>
+</span><span class="p" data-group-id="1071635183-6">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="bp">_</span><span class="p" data-group-id="1071635183-6">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Miosa.FlatCustomDomains</span><span class="o">.</span><span class="n">list</span><span class="p" data-group-id="1071635183-7">(</span><span class="n">client</span><span class="p" data-group-id="1071635183-7">)</span></code></pre>
     </section>
 
 </div>
@@ -194,7 +194,7 @@ management lives in <a href="Miosa.Deployments.html"><code class="inline">Miosa.
       <h1 class="signature" translate="no">create(client, attrs)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/flat_custom_domains.ex#L42" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/flat_custom_domains.ex#L42" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -223,7 +223,7 @@ attribution fields, <code class="inline">:idempotency_key</code>.</p>
       <h1 class="signature" translate="no">delete(client, domain_id)</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/flat_custom_domains.ex#L49" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/flat_custom_domains.ex#L49" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -253,7 +253,7 @@ attribution fields, <code class="inline">:idempotency_key</code>.</p>
       <h1 class="signature" translate="no">list(client, filters \\ [])</h1>
 
 
-        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.2/lib/miosa/flat_custom_domains.ex#L30" class="icon-action" rel="help" aria-label="View Source">
+        <a href="https://github.com/Miosa-osa/miosa-elixir/blob/v1.0.1/lib/miosa/flat_custom_domains.ex#L30" class="icon-action" rel="help" aria-label="View Source">
           <i class="ri-code-s-slash-line" aria-hidden="true"></i>
         </a>
 
@@ -281,9 +281,9 @@ attribution fields, <code class="inline">:idempotency_key</code>.</p>
         <p>
 
             <span class="line">
-              <a href="https://hex.pm/packages/miosa/1.0.2">Hex Package</a>
+              <a href="https://hex.pm/packages/miosa/1.0.1">Hex Package</a>
 
-              <a href="https://preview.hex.pm/preview/miosa/1.0.2">Hex Preview</a>
+              <a href="https://preview.hex.pm/preview/miosa/1.0.1">Hex Preview</a>
 
             </span>
 
