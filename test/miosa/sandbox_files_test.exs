@@ -14,7 +14,10 @@ defmodule Miosa.Sandbox.FilesTest do
       Bypass.expect_once(bypass, "GET", "/api/v1/sandboxes/sbx-1/files/tree", fn conn ->
         conn
         |> Plug.Conn.put_resp_content_type("application/json")
-        |> Plug.Conn.send_resp(200, Jason.encode!(%{"data" => %{"path" => "/workspace", "type" => "dir", "children" => []}}))
+        |> Plug.Conn.send_resp(
+          200,
+          Jason.encode!(%{"data" => %{"path" => "/workspace", "type" => "dir", "children" => []}})
+        )
       end)
 
       assert {:ok, tree} = Files.tree(client, "sbx-1")
@@ -34,10 +37,22 @@ defmodule Miosa.Sandbox.FilesTest do
 
         conn
         |> Plug.Conn.put_resp_content_type("application/json")
-        |> Plug.Conn.send_resp(200, Jason.encode!(%{"data" => %{"written" => [%{"path" => "/workspace/hello.txt", "size_bytes" => 5}], "failed" => []}}))
+        |> Plug.Conn.send_resp(
+          200,
+          Jason.encode!(%{
+            "data" => %{
+              "written" => [%{"path" => "/workspace/hello.txt", "size_bytes" => 5}],
+              "failed" => []
+            }
+          })
+        )
       end)
 
-      assert {:ok, result} = Files.write_many(client, "sbx-1", [%{path: "/workspace/hello.txt", content: "hello"}])
+      assert {:ok, result} =
+               Files.write_many(client, "sbx-1", [
+                 %{path: "/workspace/hello.txt", content: "hello"}
+               ])
+
       assert length(result["written"]) == 1
     end
   end

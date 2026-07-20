@@ -105,7 +105,9 @@ defmodule Miosa.Phase1CoverageTest do
         |> Plug.Conn.send_resp(200, Jason.encode!(%{"id" => "sbx_123", "name" => "renamed"}))
       end)
 
-      assert {:ok, body} = Sandboxes.update(client, "sbx_123", %{name: "renamed", slug: "my-slug"})
+      assert {:ok, body} =
+               Sandboxes.update(client, "sbx_123", %{name: "renamed", slug: "my-slug"})
+
       assert body["name"] == "renamed"
     end
 
@@ -171,18 +173,23 @@ defmodule Miosa.Phase1CoverageTest do
     test "returns {:error, :invalid_signature} for wrong secret" do
       payload = ~s({"event":"sandbox.created"})
       header = make_header(payload, "secret123")
-      assert {:error, :invalid_signature} = Webhooks.verify_signature(payload, header, "wrongsecret")
+
+      assert {:error, :invalid_signature} =
+               Webhooks.verify_signature(payload, header, "wrongsecret")
     end
 
     test "returns {:error, :timestamp_too_old} for stale timestamp" do
       payload = "body"
       old_ts = System.os_time(:second) - 400
       header = make_header(payload, "secret123", old_ts)
-      assert {:error, :timestamp_too_old} = Webhooks.verify_signature(payload, header, "secret123")
+
+      assert {:error, :timestamp_too_old} =
+               Webhooks.verify_signature(payload, header, "secret123")
     end
 
     test "returns {:error, :malformed_header} for unparseable header" do
-      assert {:error, :malformed_header} = Webhooks.verify_signature("body", "malformed", "secret")
+      assert {:error, :malformed_header} =
+               Webhooks.verify_signature("body", "malformed", "secret")
     end
   end
 end

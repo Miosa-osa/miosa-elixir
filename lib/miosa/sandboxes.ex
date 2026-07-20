@@ -21,7 +21,7 @@ defmodule Miosa.Sandboxes do
 
   """
 
-  alias Miosa.{Client, Computers}
+  alias Miosa.Client
 
   @sandbox_template "miosa-sandbox"
 
@@ -54,39 +54,142 @@ defmodule Miosa.Sandboxes do
   """
   @spec create(Client.t(), map()) :: Client.result(Miosa.Types.Computer.t())
   def create(client, attrs) when is_map(attrs) do
-    attrs = Map.put_new(attrs, :template_type, @sandbox_template)
-    Computers.create(client, attrs)
+    attrs = stringify_keys(attrs)
+    idempotency_key = Map.get(attrs, "idempotency_key")
+
+    template_id =
+      Map.get(attrs, "template_id") || Map.get(attrs, "template_type") || @sandbox_template
+
+    body =
+      attrs
+      |> Map.drop(["idempotency_key", "template_type"])
+      |> Map.put("template_id", template_id)
+
+    body =
+      case resolve_size!(body) do
+        nil -> body
+        size -> Map.put(body, "size", size)
+      end
+
+    opts =
+      if is_binary(idempotency_key) and idempotency_key != "" do
+        [headers: [{"idempotency-key", idempotency_key}]]
+      else
+        []
+      end
+
+    client
+    |> Client.post("/sandboxes", body, opts)
+    |> unwrap_data()
   end
 
   @doc """
-  List sandboxes — filtered to computers whose `template_type` is
-  `"miosa-sandbox"`.
+  List native sandboxes.
   """
   @spec list(Client.t()) :: Client.result([Miosa.Types.Computer.t()])
   def list(client) do
-    case Computers.list(client) do
-      {:ok, %{computers: computers} = page} ->
-        {:ok, %{page | computers: Enum.filter(computers, &sandbox?/1)}}
-
-      {:ok, computers} when is_list(computers) ->
-        {:ok, Enum.filter(computers, &sandbox?/1)}
-
-      other ->
-        other
-    end
+    client
+    |> Client.get("/sandboxes")
+    |> unwrap_list()
   end
 
   @doc """
-  Get a sandbox by ID. Alias for `Miosa.Computers.get/2`.
+  Get a native sandbox by ID.
   """
   @spec get(Client.t(), String.t()) :: Client.result(Miosa.Types.Computer.t())
-  def get(client, id), do: Computers.get(client, id)
+  def get(client, id), do: client |> Client.get("/sandboxes/#{id}") |> unwrap_data()
 
   @doc """
   Destroy a sandbox. Alias for `Miosa.Computers.delete/2`.
   """
   @spec delete(Client.t(), String.t()) :: Client.result(map())
-  def delete(client, id), do: Computers.delete(client, id)
+  def delete(client, id), do: Client.delete(client, "/sandboxes/#{id}")
+
+  @doc "Replace the activity timeout and reset the sandbox deadline."
+  @spec extend(Client.t(), String.t(), pos_integer()) :: Client.result(map())
+  def extend(client, id, timeout_sec) when is_integer(timeout_sec) and timeout_sec > 0 do
+    client
+    |> Client.post("/sandboxes/#{id}/extend", %{"timeout_sec" => timeout_sec})
+    |> unwrap_data()
+  end
+
+  def extend(client, id, nil) do
+    client
+    |> Client.post("/sandboxes/#{id}/extend", %{})
+    |> unwrap_data()
+  end
+
+  @doc "Return measured runtime and timeout visibility for a sandbox."
+  @spec usage(Client.t(), String.t()) :: Client.result(map())
+  def usage(client, id), do: client |> Client.get("/sandboxes/#{id}/usage") |> unwrap_data()
+
+  @doc "Stop a sandbox while preserving state according to its persistence policy."
+  @spec stop(Client.t(), String.t()) :: Client.result(map())
+  def stop(client, id), do: lifecycle(client, id, "stop")
+
+  @doc "Pause a sandbox for later resume."
+  @spec pause(Client.t(), String.t()) :: Client.result(map())
+  def pause(client, id), do: lifecycle(client, id, "pause")
+
+  @doc "Resume a paused sandbox."
+  @spec resume(Client.t(), String.t()) :: Client.result(map())
+  def resume(client, id), do: lifecycle(client, id, "resume")
+
+  @spec resume(Client.t(), String.t(), keyword()) :: Client.result(map())
+  def resume(client, id, opts) when is_list(opts) do
+    idempotency_key = Keyword.get(opts, :idempotency_key)
+
+    request_opts =
+      if is_binary(idempotency_key) and idempotency_key != "" do
+        [headers: [{"idempotency-key", idempotency_key}]]
+      else
+        []
+      end
+
+    client
+    |> Client.post("/sandboxes/#{id}/resume", %{}, request_opts)
+    |> unwrap_data()
+  end
+
+  @doc "Create a retained point-in-time sandbox checkpoint."
+  @spec create_snapshot(Client.t(), String.t(), map()) :: Client.result(map())
+  def create_snapshot(client, id, attrs \\ %{}) when is_map(attrs) do
+    body =
+      attrs
+      |> stringify_keys()
+      |> Map.take([
+        "comment",
+        "keep",
+        "retention_seconds",
+        "expiration_seconds",
+        "expiration_days"
+      ])
+
+    client
+    |> Client.post("/sandboxes/#{id}/snapshots", body)
+    |> unwrap_data()
+  end
+
+  @doc "List non-deleted checkpoints for a sandbox."
+  @spec list_snapshots(Client.t(), String.t()) :: Client.result([map()])
+  def list_snapshots(client, id) do
+    client
+    |> Client.get("/sandboxes/#{id}/snapshots")
+    |> unwrap_data()
+  end
+
+  @doc "Restore a sandbox from a ready, unexpired checkpoint."
+  @spec restore_snapshot(Client.t(), String.t(), String.t()) :: Client.result(map())
+  def restore_snapshot(client, id, snapshot_id) do
+    client
+    |> Client.post("/sandboxes/#{id}/restore/#{snapshot_id}", %{})
+    |> unwrap_data()
+  end
+
+  @doc "Retire a sandbox checkpoint."
+  @spec delete_snapshot(Client.t(), String.t(), String.t()) :: Client.result(map())
+  def delete_snapshot(client, id, snapshot_id),
+    do: Client.delete(client, "/sandboxes/#{id}/snapshots/#{snapshot_id}")
 
   @doc """
   Return the readiness-probe state for a sandbox
@@ -261,6 +364,75 @@ defmodule Miosa.Sandboxes do
   defp ready?(%{status: "ready"}), do: true
   defp ready?(_), do: false
 
+  defp lifecycle(client, id, action) do
+    client
+    |> Client.post("/sandboxes/#{id}/#{action}", %{})
+    |> unwrap_data()
+  end
+
+  defp unwrap_data({:ok, %{"data" => data}}), do: {:ok, data}
+  defp unwrap_data(result), do: result
+
+  defp unwrap_list({:ok, %{"data" => data}}) when is_list(data), do: {:ok, data}
+  defp unwrap_list({:ok, %{"sandboxes" => data}}) when is_list(data), do: {:ok, data}
+  defp unwrap_list({:ok, data}) when is_list(data), do: {:ok, data}
+  defp unwrap_list(result), do: result
+
+  defp stringify_keys(map) do
+    Map.new(map, fn {key, value} -> {to_string(key), value} end)
+  end
+
+  defp resolve_size!(body) do
+    contracts = %{
+      "xs" => {1, 2_048, 10_240},
+      "small" => {2, 4_096, 10_240},
+      "medium" => {4, 8_192, 20_480},
+      "large" => {8, 16_384, 40_960},
+      "xl" => {16, 32_768, 81_920}
+    }
+
+    disk = Map.get(body, "disk_size_mb") || Map.get(body, "disk_mb")
+    resources = {Map.get(body, "cpu_count"), Map.get(body, "memory_mb"), disk}
+    supplied = resources |> Tuple.to_list() |> Enum.count(&(not is_nil(&1)))
+    requested = Map.get(body, "size")
+
+    case {supplied, requested} do
+      {0, nil} ->
+        nil
+
+      {0, size} ->
+        validate_named_size!(contracts, size)
+
+      {3, size} ->
+        match_resource_contract!(contracts, resources, size)
+
+      _ ->
+        raise ArgumentError,
+              "raw sandbox resources require cpu_count, memory_mb, and disk_size_mb together"
+    end
+  end
+
+  defp validate_named_size!(contracts, size) do
+    if Map.has_key?(contracts, size) do
+      size
+    else
+      raise ArgumentError, "unknown sandbox size #{inspect(size)}"
+    end
+  end
+
+  defp match_resource_contract!(contracts, resources, requested) do
+    case Enum.find(contracts, fn {_size, contract} -> contract == resources end) do
+      {size, _} when is_nil(requested) or size == requested ->
+        size
+
+      {size, _} ->
+        raise ArgumentError, "raw sandbox resources match #{size}, not #{requested}"
+
+      nil ->
+        raise ArgumentError, "raw sandbox resources must match a named size contract"
+    end
+  end
+
   @doc """
   Fork a sandbox from an existing snapshot or a running sandbox.
 
@@ -275,13 +447,28 @@ defmodule Miosa.Sandboxes do
   """
   @spec fork(Client.t(), String.t(), keyword()) :: Client.result(map())
   def fork(%Client{} = client, sandbox_id, opts \\ []) when is_binary(sandbox_id) do
+    idempotency_key = Keyword.get(opts, :idempotency_key)
+
     body =
       opts
-      |> Keyword.take([:snapshot_id, :name, :external_user_id])
+      |> Keyword.take([
+        :snapshot_id,
+        :name,
+        :external_user_id,
+        :timeout_sec,
+        :template_id
+      ])
       |> Enum.reject(fn {_k, v} -> is_nil(v) end)
       |> Map.new(fn {k, v} -> {Atom.to_string(k), v} end)
 
-    case Client.post(client, "/sandboxes/#{sandbox_id}/fork", body) do
+    request_opts =
+      if is_binary(idempotency_key) and idempotency_key != "" do
+        [headers: [{"idempotency-key", idempotency_key}]]
+      else
+        []
+      end
+
+    case Client.post(client, "/sandboxes/#{sandbox_id}/fork", body, request_opts) do
       {:ok, %{"data" => data}} -> {:ok, data}
       {:ok, body} -> {:ok, body}
       err -> err
@@ -300,6 +487,7 @@ defmodule Miosa.Sandboxes do
   @spec update(Client.t(), String.t(), map()) :: Client.result(map())
   def update(client, sandbox_id, attrs) when is_binary(sandbox_id) and is_map(attrs) do
     allowed = ~w(name slug tags metadata always_on timeout_sec idle_timeout_sec)a
+
     body =
       attrs
       |> Map.take(allowed)
@@ -338,10 +526,4 @@ defmodule Miosa.Sandboxes do
       err -> err
     end
   end
-
-  # ── Internal sandbox? predicate (unchanged) ─────────────────────────
-
-  defp sandbox?(%{template_type: template}), do: template == @sandbox_template
-  defp sandbox?(%{"template_type" => template}), do: template == @sandbox_template
-  defp sandbox?(_), do: false
 end

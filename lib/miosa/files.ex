@@ -56,9 +56,9 @@ defmodule Miosa.Files do
     {file_content, filename} = read_upload_source(local_path)
 
     parts = [
-      {"file", {file_content, filename: filename, content_type: "application/octet-stream"}},
-      {"path", remote_path},
-      {"create_dirs", to_string(create_dirs)}
+      {:file, {file_content, filename: filename, content_type: "application/octet-stream"}},
+      {:path, remote_path},
+      {:create_dirs, to_string(create_dirs)}
     ]
 
     client

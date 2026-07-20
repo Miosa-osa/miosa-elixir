@@ -14,7 +14,16 @@ defmodule Miosa.Sandbox.ShareTest do
       Bypass.expect_once(bypass, "POST", "/api/v1/sandboxes/sbx-1/shares", fn conn ->
         conn
         |> Plug.Conn.put_resp_content_type("application/json")
-        |> Plug.Conn.send_resp(201, Jason.encode!(%{"data" => %{"share_id" => "sh_1", "share_url" => "https://example.com?ms=tok", "scope" => "read"}}))
+        |> Plug.Conn.send_resp(
+          201,
+          Jason.encode!(%{
+            "data" => %{
+              "share_id" => "sh_1",
+              "share_url" => "https://example.com?ms=tok",
+              "scope" => "read"
+            }
+          })
+        )
       end)
 
       assert {:ok, share} = Share.create(client, "sbx-1")

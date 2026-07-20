@@ -145,6 +145,48 @@ defmodule Miosa.ComputersTest do
     end
   end
 
+  describe "viewer password" do
+    test "fetches external viewer password status", %{bypass: bypass, client: client} do
+      Bypass.expect_once(bypass, "GET", "/api/v1/computers/comp_view/viewer-password", fn conn ->
+        conn
+        |> Plug.Conn.put_resp_content_type("application/json")
+        |> Plug.Conn.send_resp(
+          200,
+          Jason.encode!(%{
+            "viewer_password_set" => true,
+            "viewer_password_set_at" => "2026-06-24T00:00:00Z"
+          })
+        )
+      end)
+
+      assert {:ok, status} = Computers.viewer_password(client, "comp_view")
+      assert status["viewer_password_set"] == true
+      assert status["viewer_password_set_at"] == "2026-06-24T00:00:00Z"
+    end
+
+    test "rotates and returns external viewer password once", %{bypass: bypass, client: client} do
+      Bypass.expect_once(
+        bypass,
+        "POST",
+        "/api/v1/computers/comp_view/viewer-password/rotate",
+        fn conn ->
+          conn
+          |> Plug.Conn.put_resp_content_type("application/json")
+          |> Plug.Conn.send_resp(
+            200,
+            Jason.encode!(%{
+              "viewer_password" => "xxxx-yyyy-zzzz-wwww",
+              "viewer_password_set_at" => "2026-06-24T00:00:00Z"
+            })
+          )
+        end
+      )
+
+      assert {:ok, rotation} = Computers.rotate_viewer_password(client, "comp_view")
+      assert rotation["viewer_password"] == "xxxx-yyyy-zzzz-wwww"
+    end
+  end
+
   describe "delete/2" do
     test "returns :ok on success", %{bypass: bypass, client: client} do
       Bypass.expect_once(bypass, "DELETE", "/api/v1/computers/comp_xyz", fn conn ->

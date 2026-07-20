@@ -5,8 +5,8 @@ defmodule Miosa.Exec.Command do
   Obtained via `Miosa.Exec.spawn/3`. Provides stdin/stdout interaction and
   terminal resize for PTY-based commands.
 
-  The underlying WebSocket is managed via `:gun`. The GenServer owns the
-  connection and shuts it down on termination.
+  The GenServer owns the WebSocket connection and shuts it down on
+  termination.
 
   ## Example
 
@@ -29,10 +29,10 @@ defmodule Miosa.Exec.Command do
     :client,
     :computer_id,
     :command,
-    :gun_pid,
-    :stream_ref,
+    :websocket_pid,
     :status,
     :exit_code,
+    :error_reason,
     :output_buffer,
     :waiters
   ]
@@ -81,9 +81,9 @@ defmodule Miosa.Exec.Command do
   @spec await(t(), pos_integer()) :: {:ok, integer()} | {:error, :timeout | term()}
   def await(pid, timeout_ms \\ @default_await_timeout) when is_pid(pid) do
     try do
-      GenServer.call(pid, :await, timeout_ms)
+      GenServer.call(pid, {:await, timeout_ms}, :infinity)
     catch
-      :exit, {:timeout, _} -> {:error, :timeout}
+      :exit, reason -> {:error, reason}
     end
   end
 
@@ -111,7 +111,7 @@ defmodule Miosa.Exec.Command do
       status: :connecting,
       exit_code: nil,
       output_buffer: [],
-      waiters: []
+      waiters: %{}
     }
 
     # Connect asynchronously so init does not block the caller.
@@ -125,9 +125,13 @@ defmodule Miosa.Exec.Command do
 
     ws_url = build_ws_url(client, cid, command, pty)
 
-    case open_gun_ws(ws_url) do
-      {:ok, gun_pid, stream_ref} ->
-        {:noreply, %{state | gun_pid: gun_pid, stream_ref: stream_ref, status: :running}}
+    case Miosa.WebSocket.connect(ws_url,
+           owner: self(),
+           headers: [{"authorization", "Bearer #{client.api_key}"}],
+           connect_timeout: client.timeout
+         ) do
+      {:ok, websocket_pid} ->
+        {:noreply, %{state | websocket_pid: websocket_pid, status: :running}}
 
       {:error, reason} ->
         Logger.error("[Miosa.Exec.Command] WebSocket connect failed: #{inspect(reason)}")
@@ -135,40 +139,77 @@ defmodule Miosa.Exec.Command do
     end
   end
 
-  # Receive text frame from the server (stdout/stderr data).
-  def handle_info({:gun_ws, _gun, _stream, {:text, data}}, state) do
+  def handle_info(
+        {:miosa_web_socket, websocket_pid, {:frame, {:text, data}}},
+        %{
+          websocket_pid: websocket_pid
+        } = state
+      ) do
     new_buffer = [data | state.output_buffer]
     {:noreply, %{state | output_buffer: new_buffer}}
   end
 
-  # Binary frame (raw stdout bytes).
-  def handle_info({:gun_ws, _gun, _stream, {:binary, data}}, state) do
+  def handle_info(
+        {:miosa_web_socket, websocket_pid, {:frame, {:binary, data}}},
+        %{
+          websocket_pid: websocket_pid
+        } = state
+      ) do
     new_buffer = [data | state.output_buffer]
     {:noreply, %{state | output_buffer: new_buffer}}
   end
 
-  # WebSocket close frame — command exited.
-  def handle_info({:gun_ws, _gun, _stream, {:close, code, _reason}}, state) do
+  def handle_info(
+        {:miosa_web_socket, websocket_pid, {:closed, code, _reason}},
+        %{
+          websocket_pid: websocket_pid
+        } = state
+      ) do
     exit_code = if code in 1000..1999, do: code - 1000, else: 0
     new_state = %{state | status: :done, exit_code: exit_code}
     reply_waiters(new_state)
-    {:stop, :normal, new_state}
+
+    if map_size(state.waiters) == 0 do
+      {:noreply, new_state}
+    else
+      {:stop, :normal, new_state}
+    end
   end
 
-  # gun connection down.
-  def handle_info({:gun_down, _gun, _proto, reason, _streams}, state) do
-    Logger.warning("[Miosa.Exec.Command] gun connection down: #{inspect(reason)}")
-    new_state = %{state | status: :error, exit_code: -1}
-    reply_waiters(new_state)
-    {:stop, {:gun_down, reason}, new_state}
+  def handle_info(
+        {:miosa_web_socket, websocket_pid, {:error, reason}},
+        %{
+          websocket_pid: websocket_pid
+        } = state
+      ) do
+    Logger.warning("[Miosa.Exec.Command] WebSocket connection failed: #{inspect(reason)}")
+    new_state = %{state | status: :error, exit_code: -1, error_reason: reason}
+    reply_waiters(new_state, {:error, reason})
+
+    if map_size(state.waiters) == 0 do
+      {:noreply, new_state}
+    else
+      {:stop, :normal, new_state}
+    end
+  end
+
+  def handle_info({:await_timeout, token}, state) do
+    case Map.pop(state.waiters, token) do
+      {nil, _waiters} ->
+        {:noreply, state}
+
+      {{from, _timer}, waiters} ->
+        GenServer.reply(from, {:error, :timeout})
+        reply_waiters(%{state | waiters: waiters}, {:error, :timeout})
+        {:stop, :normal, %{state | waiters: %{}}}
+    end
   end
 
   def handle_info(_msg, state), do: {:noreply, state}
 
   @impl true
   def handle_call({:send_stdin, data}, _from, %{status: :running} = state) do
-    :gun.ws_send(state.gun_pid, state.stream_ref, {:text, data})
-    {:reply, :ok, state}
+    {:reply, Miosa.WebSocket.send_frame(state.websocket_pid, {:text, data}), state}
   end
 
   def handle_call({:send_stdin, _data}, _from, state) do
@@ -176,8 +217,7 @@ defmodule Miosa.Exec.Command do
   end
 
   def handle_call(:close_stdin, _from, %{status: :running} = state) do
-    :gun.ws_send(state.gun_pid, state.stream_ref, :close)
-    {:reply, :ok, state}
+    {:reply, Miosa.WebSocket.send_frame(state.websocket_pid, :close), state}
   end
 
   def handle_call(:close_stdin, _from, state) do
@@ -186,26 +226,31 @@ defmodule Miosa.Exec.Command do
 
   def handle_call({:resize, cols, rows}, _from, %{status: :running} = state) do
     payload = Jason.encode!(%{"type" => "resize", "cols" => cols, "rows" => rows})
-    :gun.ws_send(state.gun_pid, state.stream_ref, {:text, payload})
-    {:reply, :ok, state}
+    {:reply, Miosa.WebSocket.send_frame(state.websocket_pid, {:text, payload}), state}
   end
 
   def handle_call({:resize, _cols, _rows}, _from, state) do
     {:reply, {:error, :not_running}, state}
   end
 
-  def handle_call(:await, _from, %{status: :done} = state) do
+  def handle_call({:await, _timeout_ms}, _from, %{status: :done} = state) do
     {:stop, :normal, {:ok, state.exit_code || 0}, state}
   end
 
-  def handle_call(:await, from, state) do
-    # Park the caller; reply when we receive the close frame.
-    {:noreply, %{state | waiters: [from | state.waiters]}}
+  def handle_call({:await, _timeout_ms}, _from, %{status: :error} = state) do
+    {:stop, :normal, {:error, state.error_reason}, state}
+  end
+
+  def handle_call({:await, timeout_ms}, from, state)
+      when is_integer(timeout_ms) and timeout_ms >= 0 do
+    token = make_ref()
+    timer = Process.send_after(self(), {:await_timeout, token}, timeout_ms)
+    {:noreply, %{state | waiters: Map.put(state.waiters, token, {from, timer})}}
   end
 
   @impl true
-  def terminate(_reason, %{gun_pid: gun_pid}) when is_pid(gun_pid) do
-    :gun.close(gun_pid)
+  def terminate(_reason, %{websocket_pid: websocket_pid}) when is_pid(websocket_pid) do
+    Miosa.WebSocket.close(websocket_pid)
     :ok
   end
 
@@ -215,50 +260,26 @@ defmodule Miosa.Exec.Command do
   # Private
   # ---------------------------------------------------------------------------
 
-  defp reply_waiters(%{waiters: waiters, exit_code: code}) do
-    Enum.each(waiters, fn from ->
-      GenServer.reply(from, {:ok, code || 0})
+  defp reply_waiters(%{waiters: waiters, exit_code: code}, reply \\ nil) do
+    Enum.each(waiters, fn {_token, {from, timer}} ->
+      Process.cancel_timer(timer)
+      GenServer.reply(from, reply || {:ok, code || 0})
     end)
   end
 
   defp build_ws_url(client, computer_id, command, pty) do
-    encoded_cmd = URI.encode_www_form(command)
-    pty_param = if pty, do: "&pty=true", else: ""
-    base = String.replace(client.base_url, ~r|^https?|, "ws")
-    "#{base}/computers/#{computer_id}/exec/ws?command=#{encoded_cmd}#{pty_param}"
+    uri = URI.parse(client.base_url)
+    scheme = if uri.scheme == "https", do: "wss", else: "ws"
+    base_path = String.trim_trailing(uri.path || "", "/")
+    path = "#{base_path}/computers/#{encode_path_segment(computer_id)}/exec/ws"
+
+    command_query = URI.encode_query(%{"command" => command})
+    command_query = if pty, do: command_query <> "&pty=true", else: command_query
+    query = Enum.reject([uri.query, command_query], &is_nil/1) |> Enum.join("&")
+
+    %{uri | scheme: scheme, path: path, query: query, fragment: nil}
+    |> URI.to_string()
   end
 
-  defp open_gun_ws(ws_url) do
-    uri = URI.parse(ws_url)
-    host = String.to_charlist(uri.host)
-    port = uri.port || 443
-    transport = if uri.scheme == "wss", do: :tls, else: :tcp
-
-    opts = %{
-      transport: transport,
-      protocols: [:http]
-    }
-
-    with {:ok, gun_pid} <- :gun.open(host, port, opts),
-         {:ok, _protocol} <- :gun.await_up(gun_pid, 5_000),
-         stream_ref = :gun.ws_upgrade(gun_pid, uri.path || "/"),
-         :ok <- await_ws_upgrade(gun_pid, stream_ref) do
-      {:ok, gun_pid, stream_ref}
-    end
-  end
-
-  defp await_ws_upgrade(gun_pid, stream_ref) do
-    receive do
-      {:gun_upgrade, ^gun_pid, ^stream_ref, ["websocket"], _headers} ->
-        :ok
-
-      {:gun_response, ^gun_pid, _ref, _fin, status, _headers} ->
-        {:error, {:http_error, status}}
-
-      {:gun_error, ^gun_pid, ^stream_ref, reason} ->
-        {:error, reason}
-    after
-      10_000 -> {:error, :upgrade_timeout}
-    end
-  end
+  defp encode_path_segment(value), do: URI.encode(value, &URI.char_unreserved?/1)
 end

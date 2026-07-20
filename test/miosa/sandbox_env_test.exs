@@ -14,7 +14,10 @@ defmodule Miosa.Sandbox.EnvTest do
       Bypass.expect_once(bypass, "GET", "/api/v1/sandboxes/sbx-1/env", fn conn ->
         conn
         |> Plug.Conn.put_resp_content_type("application/json")
-        |> Plug.Conn.send_resp(200, Jason.encode!(%{"data" => [%{"key" => "FOO", "encrypted" => false}]}))
+        |> Plug.Conn.send_resp(
+          200,
+          Jason.encode!(%{"data" => [%{"key" => "FOO", "encrypted" => false}]})
+        )
       end)
 
       assert {:ok, [var]} = Env.list(client, "sbx-1")

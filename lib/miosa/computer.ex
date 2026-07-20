@@ -220,40 +220,51 @@ defmodule Miosa.Computer do
     * `computer_id` — Computer ID string.
     * `port` — Port number the service is listening on inside the VM.
     * `opts`:
-      * `:base_url` — Override the base domain. Defaults to `"https://preview.miosa.ai"`.
+      * `:preview_domain` — Tenant preview/base domain. Defaults to `"miosa.app"`.
+      * `:slug` — URL-safe computer slug. Defaults to `computer_id`.
 
   ## Example
 
-      url = Miosa.Computer.preview_url(client, "comp_abc", 3000)
-      # => "https://preview.miosa.ai/comp_abc/3000"
+      url = Miosa.Computer.preview_url(client, "comp_abc", 3000,
+        preview_domain: "cliniciq.com",
+        slug: "abc12345"
+      )
+      # => "https://3000-abc12345.sandbox.cliniciq.com"
 
   """
   @spec preview_url(Client.t(), String.t(), pos_integer(), keyword()) :: String.t()
   def preview_url(%Client{} = client, computer_id, port, opts \\ [])
       when is_binary(computer_id) and is_integer(port) do
-    base = Keyword.get(opts, :base_url, "https://preview.miosa.ai")
     _ = client
-    "#{base}/#{computer_id}/#{port}"
+    preview_domain = Keyword.get(opts, :preview_domain, "miosa.app")
+    slug = Keyword.get(opts, :slug, computer_id)
+    path = Keyword.get(opts, :path, "/")
+    p = if String.starts_with?(path, "/"), do: path, else: "/" <> path
+    "https://#{port}-#{slug}.sandbox.#{preview_domain}#{p}"
   end
 
   @doc """
-  Returns the public URL for the computer desktop stream.
+  Returns the public root preview URL for the computer.
 
-  This URL is the root access point for the computer's web interface
-  (VNC/KasmVNC). Requires the computer to be running and `:visibility`
-  set to `:public` or authenticated with an API key.
+  Uses the tenant preview/base domain. For a hydrated computer response, prefer
+  the server-provided URL fields directly; this helper is only for constructing
+  a URL from known `computer_id`/`slug` + `preview_domain`.
 
   ## Example
 
-      url = Miosa.Computer.public_url(client, "comp_abc")
-      # => "https://desktop.miosa.ai/comp_abc"
+      url = Miosa.Computer.public_url(client, "comp_abc",
+        preview_domain: "cliniciq.com",
+        slug: "abc12345"
+      )
+      # => "https://abc12345.sandbox.cliniciq.com"
 
   """
   @spec public_url(Client.t(), String.t(), keyword()) :: String.t()
   def public_url(%Client{} = client, computer_id, opts \\ []) when is_binary(computer_id) do
-    base = Keyword.get(opts, :base_url, "https://desktop.miosa.ai")
     _ = client
-    "#{base}/#{computer_id}"
+    preview_domain = Keyword.get(opts, :preview_domain, "miosa.app")
+    slug = Keyword.get(opts, :slug, computer_id)
+    "https://#{slug}.sandbox.#{preview_domain}"
   end
 
   # ---------------------------------------------------------------------------

@@ -84,6 +84,29 @@ defmodule Miosa.Computers do
   end
 
   @doc """
+  Return whether the external/raw desktop viewer password is set.
+
+  Authenticated MIOSA platform users should use the platform desktop entry URL
+  and do not need this password. This is only for raw external viewer links such
+  as `*.computer.miosa.ai/desktop/index.html`.
+  """
+  @spec viewer_password(Client.t(), String.t()) :: Client.result(map())
+  def viewer_password(%Client{} = client, id) when is_binary(id) do
+    Client.get(client, "/computers/#{id}/viewer-password")
+  end
+
+  @doc """
+  Rotate the external/raw desktop viewer password and return the plaintext once.
+
+  Store the returned password if it needs to be shared outside the authenticated
+  MIOSA platform UI.
+  """
+  @spec rotate_viewer_password(Client.t(), String.t()) :: Client.result(map())
+  def rotate_viewer_password(%Client{} = client, id) when is_binary(id) do
+    Client.post(client, "/computers/#{id}/viewer-password/rotate", %{})
+  end
+
+  @doc """
   Deletes a computer and destroys all associated resources.
 
   The computer must be stopped before deletion, or pass `force: true` to

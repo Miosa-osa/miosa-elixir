@@ -78,6 +78,7 @@ defmodule Miosa do
     * `Miosa.CronJobs` — Scheduled jobs: CRUD, pause/resume, run-now, execution history
     * `Miosa.HealthChecks` — Uptime monitors: CRUD
     * `Miosa.Webhooks` — Outgoing webhooks: CRUD, test delivery, delivery history
+    * `Miosa.Templates` — Read-only product/template/size readiness catalog
     * `Miosa.SandboxTemplates` — Sandbox base images: CRUD, build-spec schema, validate, builds
     * `Miosa.ApiKeys` — Programmatic API key management: list, create, revoke
     * `Miosa.Tenant` — Current tenant plan limits and live usage counters

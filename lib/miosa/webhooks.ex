@@ -88,7 +88,77 @@ defmodule Miosa.Webhooks do
     Client.get(client, "/webhooks/#{webhook_id}/deliveries" <> query)
   end
 
+  @doc """
+  Verify a MIOSA webhook signature header.
+
+  The expected header format is `t=<unix_seconds>,v1=<hex_hmac>`.
+  """
+  @spec verify_signature(binary(), binary(), binary(), non_neg_integer()) ::
+          {:ok, true}
+          | {:error, :malformed_header | :timestamp_too_old | :invalid_signature}
+  def verify_signature(payload, header, secret, tolerance_seconds \\ 300)
+      when is_binary(payload) and is_binary(header) and is_binary(secret) do
+    with {:ok, timestamp, signature} <- parse_signature_header(header),
+         :ok <- check_timestamp(timestamp, tolerance_seconds),
+         true <- valid_signature?(payload, timestamp, secret, signature) do
+      {:ok, true}
+    else
+      {:error, reason} -> {:error, reason}
+      false -> {:error, :invalid_signature}
+    end
+  end
+
   # ── Helpers ──────────────────────────────────────────────────────────────────
+
+  defp parse_signature_header(header) do
+    parts =
+      header
+      |> String.split(",", trim: true)
+      |> Enum.map(fn part ->
+        case String.split(part, "=", parts: 2) do
+          [key, value] -> {key, value}
+          _ -> nil
+        end
+      end)
+
+    with {_, timestamp_raw} <- Enum.find(parts, fn part -> match?({"t", _}, part) end),
+         {_, signature} <- Enum.find(parts, fn part -> match?({"v1", _}, part) end),
+         {timestamp, ""} <- Integer.parse(timestamp_raw) do
+      {:ok, timestamp, signature}
+    else
+      _ -> {:error, :malformed_header}
+    end
+  end
+
+  defp check_timestamp(timestamp, tolerance_seconds) do
+    now = System.os_time(:second)
+
+    if abs(now - timestamp) <= tolerance_seconds do
+      :ok
+    else
+      {:error, :timestamp_too_old}
+    end
+  end
+
+  defp valid_signature?(payload, timestamp, secret, signature) do
+    expected =
+      :crypto.mac(:hmac, :sha256, secret, "#{timestamp}.#{payload}")
+      |> Base.encode16(case: :lower)
+
+    secure_compare(expected, signature)
+  end
+
+  defp secure_compare(left, right) when byte_size(left) == byte_size(right) do
+    secure_compare(left, right, 0) == 0
+  end
+
+  defp secure_compare(_left, _right), do: false
+
+  defp secure_compare(<<left, left_rest::binary>>, <<right, right_rest::binary>>, acc) do
+    secure_compare(left_rest, right_rest, :erlang.bor(acc, :erlang.bxor(left, right)))
+  end
+
+  defp secure_compare(<<>>, <<>>, acc), do: acc
 
   defp pop_idempotency(attrs) do
     cond do

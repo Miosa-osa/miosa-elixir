@@ -166,5 +166,4 @@ defmodule Miosa.Events do
       fn _state -> :ok end
     )
   end
-
 end

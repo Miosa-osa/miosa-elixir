@@ -1,7 +1,7 @@
 defmodule Miosa.MixProject do
   use Mix.Project
 
-  @version "1.2.0"
+  @version "2.0.0"
   @source_url "https://github.com/Miosa-osa/miosa-elixir"
 
   def project do
@@ -16,6 +16,7 @@ defmodule Miosa.MixProject do
       docs: docs(),
       name: "Miosa",
       source_url: @source_url,
+      test_ignore_filters: [~r{^test/support/}],
       dialyzer: [
         plt_add_apps: [:ex_unit],
         flags: [:error_handling, :underspecs]
@@ -32,14 +33,16 @@ defmodule Miosa.MixProject do
 
   defp deps do
     [
-      {:req, "~> 0.5"},
-      {:finch, "~> 0.21"},
-      {:jason, "~> 1.4"},
-      {:gun, "~> 2.1"},
+      {:req, "~> 0.6.3"},
+      {:finch, "~> 0.23.0"},
+      {:jason, "~> 1.4.5"},
+      {:mint, "1.9.3"},
+      {:mint_web_socket, "1.0.5"},
       # Dev/test
       {:ex_doc, "~> 0.31", only: :dev, runtime: false},
       {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:yamerl, "~> 0.10", only: :test},
       {:bypass, "~> 2.1", only: :test},
       {:plug_cowboy, "~> 2.7", only: :test}
     ]

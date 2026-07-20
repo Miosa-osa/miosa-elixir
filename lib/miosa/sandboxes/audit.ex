@@ -5,8 +5,7 @@ defmodule Miosa.Sandboxes.Audit do
   `list/3` pre-scopes `resource_id` and `resource_type="sandbox"`.
 
   `tail/2` opens a live WebSocket connection to the per-sandbox stream
-  endpoint (`/api/v1/egress/audit/resource/:resource_id`) using `:gun`
-  (which is already a project dependency). The subprotocol is
+  endpoint (`/api/v1/egress/audit/resource/:resource_id`). The subprotocol is
   `miosa-egress-audit-v1` and the API key is passed via `?token=` query
   parameter.
 
@@ -69,8 +68,8 @@ defmodule Miosa.Sandboxes.Audit do
   Return `{:ok, stream}` where `stream` is a lazy `Stream` that yields
   decoded audit-event maps in real time.
 
-  Internally opens a `:gun` WebSocket to
-  `/api/v1/egress/audit/resource/:resource_id` using subprotocol
+  Internally opens a WebSocket to `/api/v1/egress/audit/resource/:resource_id`
+  using subprotocol
   `miosa-egress-audit-v1`. The API key is passed via `?token=` query string
   so the `Authorization` header is not needed on the upgrade request.
 
@@ -98,107 +97,57 @@ defmodule Miosa.Sandboxes.Audit do
   end
 
   # ---------------------------------------------------------------------------
-  # Private — WebSocket stream via :gun
+  # Private WebSocket stream
   # ---------------------------------------------------------------------------
 
   defp try_ws_stream(client, resource_id, _poll_interval_ms) do
     uri = URI.parse(client.base_url)
-    host = String.to_charlist(uri.host || "api.miosa.ai")
-    port = uri.port || if(uri.scheme == "https", do: 443, else: 80)
-    secure? = uri.scheme == "https"
+    scheme = if uri.scheme == "https", do: "wss", else: "ws"
+    base_path = String.trim_trailing(uri.path || "/api/v1", "/")
+    path = "#{base_path}/egress/audit/resource/#{encode_path_segment(resource_id)}"
+    token_query = URI.encode_query(%{"token" => client.api_key})
+    query = Enum.reject([uri.query, token_query], &is_nil/1) |> Enum.join("&")
+    url = %{uri | scheme: scheme, path: path, query: query, fragment: nil} |> URI.to_string()
 
-    transport = if secure?, do: :tls, else: :tcp
-
-    gun_opts = %{
-      protocols: [:http],
-      transport: transport,
-      connect_timeout: @ws_connect_timeout_ms,
-      tls_opts: [verify: :verify_peer, cacerts: :public_key.cacerts_get()]
-    }
-
-    path =
-      (uri.path || "/api/v1") <>
-        "/egress/audit/resource/#{resource_id}" <>
-        "?token=#{URI.encode(client.api_key)}"
-
-    case :gun.open(host, port, gun_opts) do
-      {:ok, conn_pid} ->
-        case :gun.await_up(conn_pid, @ws_connect_timeout_ms) do
-          {:ok, _protocol} ->
-            stream_ref =
-              :gun.ws_upgrade(conn_pid, path, [
-                {<<"sec-websocket-protocol">>, @ws_subprotocol}
-              ])
-
-            case await_ws_upgrade(conn_pid, stream_ref) do
-              :ok ->
-                {:ok, build_ws_stream(conn_pid, stream_ref)}
-
-              :error ->
-                :gun.close(conn_pid)
-                :fallback
-            end
-
-          {:error, _} ->
-            :gun.close(conn_pid)
-            :fallback
-        end
-
-      {:error, _} ->
-        :fallback
+    case Miosa.WebSocket.connect(url,
+           owner: self(),
+           subprotocol: @ws_subprotocol,
+           connect_timeout: @ws_connect_timeout_ms
+         ) do
+      {:ok, websocket_pid} -> {:ok, build_ws_stream(websocket_pid)}
+      {:error, _reason} -> :fallback
     end
   end
 
-  defp await_ws_upgrade(conn_pid, stream_ref) do
-    receive do
-      {:gun_upgrade, ^conn_pid, ^stream_ref, [<<"websocket">>], _headers} ->
-        :ok
-
-      {:gun_response, ^conn_pid, ^stream_ref, _, status, _headers} when status >= 400 ->
-        :error
-
-      {:gun_error, ^conn_pid, ^stream_ref, _reason} ->
-        :error
-    after
-      @ws_connect_timeout_ms -> :error
-    end
-  end
-
-  defp build_ws_stream(conn_pid, stream_ref) do
+  defp build_ws_stream(websocket_pid) do
     Stream.resource(
-      fn -> {conn_pid, stream_ref} end,
-      fn {cpid, sref} = state ->
+      fn -> websocket_pid end,
+      fn websocket_pid = state ->
         receive do
-          {:gun_ws, ^cpid, ^sref, {:text, data}} ->
+          {:miosa_web_socket, ^websocket_pid, {:frame, {:text, data}}} ->
             case Jason.decode(data) do
               {:ok, event} -> {[event], state}
               {:error, _} -> {[%{"raw" => data}], state}
             end
 
-          {:gun_ws, ^cpid, ^sref, {:binary, data}} ->
+          {:miosa_web_socket, ^websocket_pid, {:frame, {:binary, data}}} ->
             case Jason.decode(data) do
               {:ok, event} -> {[event], state}
               {:error, _} -> {[], state}
             end
 
-          {:gun_ws, ^cpid, ^sref, :close} ->
+          {:miosa_web_socket, ^websocket_pid, {:closed, _code, _reason}} ->
             {:halt, state}
 
-          {:gun_ws, ^cpid, ^sref, {:close, _code, _reason}} ->
-            {:halt, state}
-
-          {:gun_down, ^cpid, _protocol, _reason, _killed} ->
+          {:miosa_web_socket, ^websocket_pid, {:error, _reason}} ->
             {:halt, state}
         after
           30_000 ->
-            # Send a ping to keep the connection alive and keep waiting.
-            :gun.ws_send(cpid, sref, :ping)
+            _ = Miosa.WebSocket.send_frame(websocket_pid, :ping)
             {[], state}
         end
       end,
-      fn {cpid, _sref} ->
-        :gun.close(cpid)
-      end
+      &Miosa.WebSocket.close/1
     )
   end
 
@@ -208,4 +157,6 @@ defmodule Miosa.Sandboxes.Audit do
 
   defp resource_id(%{id: id}), do: id
   defp resource_id(id) when is_binary(id), do: id
+
+  defp encode_path_segment(value), do: URI.encode(value, &URI.char_unreserved?/1)
 end

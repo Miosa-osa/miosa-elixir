@@ -215,7 +215,8 @@ defmodule Miosa.Client do
   Performs a multipart POST for file uploads.
 
   `parts` should be a list of `{name, value}` tuples or `{name, value, opts}` tuples
-  compatible with `Req`'s `:form_multipart` option.
+  compatible with `Req`'s `:form_multipart` option. Multipart names are atoms,
+  as required by Req 0.6 and later.
   """
   @spec post_multipart(t(), String.t(), list(), keyword()) :: result(map())
   def post_multipart(%__MODULE__{_req: req}, path, parts, opts \\ []) do

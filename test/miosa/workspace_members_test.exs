@@ -9,7 +9,7 @@ defmodule Miosa.WorkspaceMembersTest do
     {:ok, bypass: bypass, client: client}
   end
 
-  defp member_json(user_id \\ "usr_abc", role \\ "member") do
+  defp member_json(user_id, role) do
     %{
       "user_id" => user_id,
       "email" => "#{user_id}@example.com",
@@ -38,7 +38,9 @@ defmodule Miosa.WorkspaceMembersTest do
         |> Plug.Conn.put_resp_content_type("application/json")
         |> Plug.Conn.send_resp(
           200,
-          Jason.encode!(%{"data" => [member_json("usr_alice", "owner"), member_json("usr_bob", "member")]})
+          Jason.encode!(%{
+            "data" => [member_json("usr_alice", "owner"), member_json("usr_bob", "member")]
+          })
         )
       end)
 
@@ -83,7 +85,12 @@ defmodule Miosa.WorkspaceMembersTest do
         |> Plug.Conn.put_resp_content_type("application/json")
         |> Plug.Conn.send_resp(
           422,
-          Jason.encode!(%{"error" => %{"code" => "NOT_TENANT_MEMBER", "message" => "User is not a tenant member"}})
+          Jason.encode!(%{
+            "error" => %{
+              "code" => "NOT_TENANT_MEMBER",
+              "message" => "User is not a tenant member"
+            }
+          })
         )
       end)
 
@@ -100,7 +107,10 @@ defmodule Miosa.WorkspaceMembersTest do
 
         conn
         |> Plug.Conn.put_resp_content_type("application/json")
-        |> Plug.Conn.send_resp(200, Jason.encode!(%{"data" => member_record_json("usr_def", "admin")}))
+        |> Plug.Conn.send_resp(
+          200,
+          Jason.encode!(%{"data" => member_record_json("usr_def", "admin")})
+        )
       end)
 
       assert {:ok, record} = WorkspaceMembers.update_role(client, "ws-uuid", "usr_def", "admin")
@@ -110,24 +120,39 @@ defmodule Miosa.WorkspaceMembersTest do
 
   describe "remove/3" do
     test "sends DELETE and returns ok", %{bypass: bypass, client: client} do
-      Bypass.expect_once(bypass, "DELETE", "/api/v1/workspaces/ws-uuid/members/usr_def", fn conn ->
-        conn
-        |> Plug.Conn.put_resp_content_type("application/json")
-        |> Plug.Conn.send_resp(200, Jason.encode!(%{"deleted" => true}))
-      end)
+      Bypass.expect_once(
+        bypass,
+        "DELETE",
+        "/api/v1/workspaces/ws-uuid/members/usr_def",
+        fn conn ->
+          conn
+          |> Plug.Conn.put_resp_content_type("application/json")
+          |> Plug.Conn.send_resp(200, Jason.encode!(%{"deleted" => true}))
+        end
+      )
 
       assert {:ok, %{"deleted" => true}} = WorkspaceMembers.remove(client, "ws-uuid", "usr_def")
     end
 
     test "returns error on LAST_OWNER conflict", %{bypass: bypass, client: client} do
-      Bypass.expect_once(bypass, "DELETE", "/api/v1/workspaces/ws-uuid/members/usr_owner", fn conn ->
-        conn
-        |> Plug.Conn.put_resp_content_type("application/json")
-        |> Plug.Conn.send_resp(
-          409,
-          Jason.encode!(%{"error" => %{"code" => "LAST_OWNER", "message" => "Cannot remove the last workspace owner"}})
-        )
-      end)
+      Bypass.expect_once(
+        bypass,
+        "DELETE",
+        "/api/v1/workspaces/ws-uuid/members/usr_owner",
+        fn conn ->
+          conn
+          |> Plug.Conn.put_resp_content_type("application/json")
+          |> Plug.Conn.send_resp(
+            409,
+            Jason.encode!(%{
+              "error" => %{
+                "code" => "LAST_OWNER",
+                "message" => "Cannot remove the last workspace owner"
+              }
+            })
+          )
+        end
+      )
 
       assert {:error, _} = WorkspaceMembers.remove(client, "ws-uuid", "usr_owner")
     end
